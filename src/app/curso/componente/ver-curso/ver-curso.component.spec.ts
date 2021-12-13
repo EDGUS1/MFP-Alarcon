@@ -3,10 +3,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { VerCursoComponent } from './ver-curso.component';
+import { of } from 'rxjs';
 
 describe('VerCursoComponent', () => {
   let component: VerCursoComponent;
   let fixture: ComponentFixture<VerCursoComponent>;
+  let httpClientSpy: { post: jasmine.Spy };
 
   const fakeActivatedRoute = {
     snapshot: { data: {} },
@@ -30,6 +32,7 @@ describe('VerCursoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(VerCursoComponent);
     component = fixture.componentInstance;
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['post']);
     fixture.detectChanges();
   });
 
@@ -69,5 +72,29 @@ describe('VerCursoComponent', () => {
 
   it('listar curso', () => {
     component.listarCurso(5);
+  });
+
+  it('Unirse a un curso', () => {
+    const mockData = {
+      idCurso: 5,
+      idPrivacidad: 5,
+      usuarioId: 1,
+    };
+
+    const mockResult = [
+      {
+        data: {
+          id: 1,
+        },
+      },
+    ];
+
+    httpClientSpy.post.and.returnValue(of(mockResult));
+
+    component.unirCurso(
+      mockData.idCurso,
+      mockData.idPrivacidad,
+      mockData.usuarioId
+    );
   });
 });

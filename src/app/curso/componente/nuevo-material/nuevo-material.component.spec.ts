@@ -1,10 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tarea } from '../../modelo/tarea';
-import { NuevoMaterialService } from '../../servicios/nuevo-material.service';
-import { TareaService } from '../../servicios/tarea.service';
 
 import { NuevoMaterialComponent } from './nuevo-material.component';
 
@@ -38,7 +36,7 @@ describe('NuevoMaterialComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Añadir material', () => {
+  it('Añadir material cuando la longitud es 0', () => {
     let event = {
       target: {
         files: ['nuevo', 'archivo'],
@@ -48,7 +46,33 @@ describe('NuevoMaterialComponent', () => {
     expect(component.archivos.length).toEqual(1);
   });
 
-  it('Eliminar material', () => {
+  it('Añadir material cuando la longitud es 1', () => {
+    let event = {
+      target: {
+        files: ['nuevo', 'archivo'],
+      },
+    };
+    component.subirArvhivos(event);
+    component.subirArvhivos(event);
+    expect(component.archivos.length).toEqual(1);
+  });
+
+  it('Añadir material cuando la longitud es 5', () => {
+    let event = {
+      target: {
+        files: ['nuevo', 'archivo'],
+      },
+    };
+    component.subirArvhivos(event);
+    component.subirArvhivos(event);
+    component.subirArvhivos(event);
+    component.subirArvhivos(event);
+    component.subirArvhivos(event);
+    component.subirArvhivos(event);
+    expect(component.archivos.length).toEqual(1);
+  });
+
+  it('Eliminar archivo seleccionado', () => {
     let event = {
       target: {
         files: ['nuevo', 'archivo'],

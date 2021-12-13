@@ -18,6 +18,7 @@ export class NuevoMaterialComponent implements OnInit {
   editarTarea: boolean;
 
   objeto: Tarea;
+  maxFiles: boolean = false;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -65,7 +66,11 @@ export class NuevoMaterialComponent implements OnInit {
    * @param event Evento que se emite al subir un archivo
    */
   subirArvhivos(event) {
-    this.archivos.push(event.target.files[0]);
+    if (this.archivos.length >= 5) {
+      this.maxFiles = true;
+    } else {
+      this.archivos.push(event.target.files[0]);
+    }
   }
 
   /**

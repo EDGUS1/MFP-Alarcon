@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod",
+    "source": "source-map-explorer dist/aula-virtual/main*"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
+    "source-map-explorer": "^2.5.2",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0"
   },

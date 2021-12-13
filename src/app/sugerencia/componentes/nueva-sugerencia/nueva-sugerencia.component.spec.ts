@@ -13,6 +13,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
  */
 import { FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Sugerencia } from '../../modelos/sugerencia';
 
 /**
  * Se importa el componente para realizar las pruebas
@@ -24,7 +25,6 @@ import { NuevaSugerenciaComponent } from './nueva-sugerencia.component';
  */
 
 describe('NuevaSugerenciaComponent', () => {
-
   /**
    * Se instancia al componente al cual se hara pruebas
    */
@@ -39,7 +39,6 @@ describe('NuevaSugerenciaComponent', () => {
    */
 
   beforeEach(async () => {
-
     /**
      * Se configura el testbed
      */
@@ -54,7 +53,6 @@ describe('NuevaSugerenciaComponent', () => {
    * Se crea el componente antes de cada prueba
    */
   beforeEach(() => {
-
     /**
      * Se asigna el contenido de las pruebas a fixture
      */
@@ -74,10 +72,34 @@ describe('NuevaSugerenciaComponent', () => {
    * Prueba para comprobar la creación del componente
    */
   it('should create', () => {
-
     /**
      * Comprobacion si esl componente se ha creado
      */
     expect(component).toBeTruthy();
   });
+
+  /* it('Crear nueva sugerencia', () => {
+    Sugerencia sugerencia = {sugerencia_id: 1,
+      categoria_id:1,
+      sugerencia_nombre_curso: 'Base de datos',
+      sugerencia_puntuacion_curso: 1,
+      numero_votos: 1,
+      sugerencia_estado: '1',
+      descripcion:'',
+      sugerencia_fecha_creacion: new Date()};
+  
+    component.guardarSugerencia();
+    expect(component).toBeTruthy();
+  });
+
+  it('Crear nueva sugerencia no valida', () => {
+    Sugerencia sugerencia = {sugerencia_id: 1,
+      categoria_id:1,
+      sugerencia_nombre_curso: 'Base de datos',
+      sugerencia_puntuacion_curso: 1,
+      }
+  
+    component.guardarSugerencia();
+    expect(component).toBeFalsy();
+  }); */
 });
