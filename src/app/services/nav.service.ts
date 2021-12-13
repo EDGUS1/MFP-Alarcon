@@ -30,6 +30,7 @@ export class NavService {
     sessionStorage.removeItem('usuario_nombre');
     sessionStorage.removeItem('correo');
     sessionStorage.removeItem('url');
+    sessionStorage.removeItem('descripcion');
     this.router.navigate(['/']);
   }
 }
