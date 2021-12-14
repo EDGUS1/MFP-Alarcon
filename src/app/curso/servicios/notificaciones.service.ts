@@ -14,10 +14,12 @@ export class NotificacionService extends AppServiceBase {
   }
 
   listarCursosSolicitudAccesoAlumnos(idUsuario: number): Observable<any> {
-    return this.get(`listarCursosConSolicicitudAccesoParaAlumnos/${idUsuario}`).pipe();
+    return this.get(
+      `listarCursosConSolicicitudAccesoParaAlumnos/${idUsuario}`
+    ).pipe();
   }
-  
- /**
+
+  /**
    * Servicio para aceptar invitacion a un curso
    * @param notifiacion {Notificacion} - Objeto con la informacion de la notificacion
    * @returns invitacion realizada

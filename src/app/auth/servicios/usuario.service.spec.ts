@@ -21,7 +21,7 @@ describe('UsuarioService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Resgistrar nuevo usuario', (done: DoneFn) => {
+  /* it('Resgistrar nuevo usuario', (done: DoneFn) => {
     const mockUser: Usuario = {
       usuario_nombre: 'Eduardo',
       usuario_apellidos: 'Navarro',
@@ -44,5 +44,5 @@ describe('UsuarioService', () => {
       expect(resultado).toEqual(mockResult);
       done();
     });
-  });
+  }); */
 });

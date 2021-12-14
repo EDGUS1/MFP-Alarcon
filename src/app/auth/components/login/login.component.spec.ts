@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
  * Se importa las funciones respectivas para realizar consultas hacia las rutas
  */
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../servicios/authentication.service';
 
 /**
  * Se importa el componente para realizar las pruebas
@@ -24,40 +25,48 @@ import { LoginComponent } from './login.component';
 /**
  * Se comienza las pruebas con un describe general
  */
+class AuthenticationServiceTesting {}
 describe('LoginComponent', () => {
-
-    /**
+  /**
    * Se instancia al componente al cual se hara pruebas
    */
   let component: LoginComponent;
 
-    /**
+  /**
    * Se instancia un fixture que contenido al componente
    */
   let fixture: ComponentFixture<LoginComponent>;
 
-    /**
+  /**
    * Se realiza la llamada a las funciones que se inicializaran antes de cada prueba
    */
 
   beforeEach(async () => {
-
     /**
      * Se configura el testbed
      */
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports: [HttpClientModule, ReactiveFormsModule],
-      providers: [ { provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }]
-    })
-    .compileComponents();
+      declarations: [LoginComponent],
+      imports: [ReactiveFormsModule],
+      providers: [
+        {
+          provide: Router,
+          useClass: class {
+            navigate = jasmine.createSpy('navigate');
+          },
+        },
+        {
+          provide: AuthenticationService,
+          useClass: AuthenticationServiceTesting,
+        },
+      ],
+    }).compileComponents();
   });
 
   /**
    * Se crea el componente antes de cada prueba
    */
   beforeEach(() => {
-
     /**
      * Se asigna el contenido de las pruebas a fixture
      */
@@ -74,15 +83,13 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-
   /**
    * Prueba para comprobar la creación del componente
    */
   it('should create', () => {
-
     /**
      * Comprobacion si esl componente se ha creado
-     */ 
+     */
     expect(component).toBeTruthy();
   });
 });

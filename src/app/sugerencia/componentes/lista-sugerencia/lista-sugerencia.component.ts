@@ -47,18 +47,11 @@ export class ListaSugerenciaComponent implements OnInit {
   /**
    * Se crea un array para listar las categorias de las sugerencias
    */
-  categorias: Categoria[] = [
-    {
-      categoria_id: 0,
-      categoria_nombre: 'Todas las categorias',
-      categoria_estado: null,
-      categoria_fecha_creacion: null,
-    },
-  ];
+  categorias: Categoria[];
   /**
    * Se crea una instancia del voto
    */
-  sugerencia = new Voto();
+  sugerencia: Voto;
   /**
    * se crea un array para listas las sugerencias iniciales
    */
@@ -74,11 +67,11 @@ export class ListaSugerenciaComponent implements OnInit {
   /**
    * Se crea la etiqueta para la pagina anterior
    */
-  previousLabel = 'Anterior';
+  previousLabel: String;
   /**
    * Se crea la etiqueta para la pagina siguiente
    */
-  nextLabel = 'Siguiente';
+  nextLabel: String;
   /**
    * se declara si la paginación sera responsiva
    */
@@ -98,7 +91,7 @@ export class ListaSugerenciaComponent implements OnInit {
   /**
    * array con los votos de un usuario
    */
-  usuariosVotos: any[];
+  usuariosVotos: Sugerencia[];
 
   /**
    * Constructor para el componente listar sugerencias
@@ -116,6 +109,17 @@ export class ListaSugerenciaComponent implements OnInit {
    * Función que se inicia al crear el componente
    */
   ngOnInit(): void {
+    this.sugerencia = new Voto();
+    this.categorias = [
+      {
+        categoria_id: 0,
+        categoria_nombre: 'Todas las categorias',
+        categoria_estado: null,
+        categoria_fecha_creacion: null,
+      },
+    ];
+    this.previousLabel = 'Anterior';
+    this.nextLabel = 'Siguiente';
     /**
      * Se crea la primera pagina
      */
@@ -132,6 +136,7 @@ export class ListaSugerenciaComponent implements OnInit {
      * Se obtiene al usuario registrado
      */
     this.usuarioRegistrado = +sessionStorage.getItem('usuario_id') !== 0;
+
     /**
      * validar usuario registrado
      */
@@ -202,21 +207,22 @@ export class ListaSugerenciaComponent implements OnInit {
    * Función para filtrar la busqueda por la categoria seleccionada
    * @param id {Number} - Identiicador de la categoria
    */
-  actualizarCategoria(categoria) {
+  actualizarCategoria(categoria: Categoria) {
     /**
      * Se comprueba que la categoria no tenga el id cero
      */
-    if (categoria?.categoria_id === 0) {
-      /**
-       * Se lista todas las sugerencias
-       */
+    if (
+      categoria === undefined ||
+      categoria.categoria_id === undefined ||
+      categoria.categoria_id === 0
+    ) {
       this.sugerencias = this.sugerenciasIniciales;
     } else {
       /**
        * Se filtra las sugerencias por el id de la categoria
        */
       this.sugerencias = this.sugerenciasIniciales.filter(
-        (c) => c?.categoria_id === categoria?.categoria_id
+        (c) => c.categoria_id === categoria.categoria_id
       );
     }
   }
@@ -315,7 +321,7 @@ export class ListaSugerenciaComponent implements OnInit {
     /**
      * Se filtra la búsqueda de las categorias por el identificador de la cateogoria
      */
-    const resultado = this.categorias.find((c) => c?.categoria_id === id);
+    const resultado = this.categorias.find((c) => c.categoria_id === id);
     /**
      * Se devuleve el nombre de la categoria
      */
@@ -338,9 +344,7 @@ export class ListaSugerenciaComponent implements OnInit {
    * @returns retorna verdadero o false
    */
   obtenerVotoUsuario(id: number) {
-    return (
-      this.usuariosVotos.find((v) => v?.sugerencia_id === id) !== undefined
-    );
+    return this.usuariosVotos.find((v) => v.sugerencia_id === id) !== undefined;
   }
 
   /**
@@ -352,7 +356,7 @@ export class ListaSugerenciaComponent implements OnInit {
     /**
      * se busca el numero de votos
      */
-    const votos = this.sugerenciasVotos.find((s) => s?.sugerencia_id === id);
+    const votos = this.sugerenciasVotos?.find((s) => s.sugerencia_id === id);
     /**
      * Se valida que la cantidad de votos exista
      */

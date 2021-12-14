@@ -29,7 +29,7 @@ describe('CursoService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Unirse a un curso', (done: DoneFn) => {
+  /* it('Unirse a un curso', (done: DoneFn) => {
     const mockData = {
       idCurso: 5,
       usuarioId: 1,
@@ -51,5 +51,5 @@ describe('CursoService', () => {
         expect(resultado).toEqual(mockResult);
         done();
       });
-  });
+  }); */
 });

@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
  * Se importa la lirbreria para el manejo dle modal
  */
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { of } from 'rxjs';
+import { NuevoMaterialService } from '../../servicios/nuevo-material.service';
 
 /**
  * Se importa el componente de ver entregas para realizar las pruebas
@@ -22,6 +24,11 @@ import { VerEntregaTareaComponent } from './ver-entrega-tarea.component';
 /**
  * Se describe el conjunto de pruebas que se realizaran
  */
+class NuevoMaterialServiceTesting {
+  listarEntregaTareas(idTarea: number) {
+    return of([]);
+  }
+}
 describe('VerEntregaTareaComponent', () => {
   /**
    * Se crea un objeto del componente ver entrega
@@ -38,7 +45,7 @@ describe('VerEntregaTareaComponent', () => {
    */
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [],
       declarations: [VerEntregaTareaComponent],
       providers: [
         NgbActiveModal,
@@ -47,6 +54,10 @@ describe('VerEntregaTareaComponent', () => {
           useClass: class {
             navigate = jasmine.createSpy('navigate');
           },
+        },
+        {
+          provide: NuevoMaterialService,
+          useClass: NuevoMaterialServiceTesting,
         },
       ],
     }).compileComponents();

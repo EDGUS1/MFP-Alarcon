@@ -1,17 +1,24 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Observable, of } from 'rxjs';
 import { Usuario } from '../../modelo/usuario';
+import { TareaService } from '../../servicios/tarea.service';
 
 import { TareaCursoComponent } from './tarea-curso.component';
-
+class TareaServiceTesting {
+  listarTareaCurso(id: number): Observable<any> {
+    return of([]);
+  }
+}
 describe('TareaCursoComponent', () => {
   let component: TareaCursoComponent;
   let fixture: ComponentFixture<TareaCursoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
       declarations: [TareaCursoComponent],
+      imports: [],
+      providers: [{ provide: TareaService, useClass: TareaServiceTesting }],
     }).compileComponents();
   });
 

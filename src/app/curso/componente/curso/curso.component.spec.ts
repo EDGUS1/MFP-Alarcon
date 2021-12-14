@@ -12,6 +12,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
  * Se importa las funciones respectivas para realizar consultas hacia las rutas
  */
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { CursoService } from '../../servicios/curso.service';
 
 /**
  * Se importa el componente para realizar las pruebas
@@ -21,6 +23,11 @@ import { CursoComponent } from './curso.component';
 /**
  * Se comienza las pruebas con un describe general
  */
+class CursoServiceTesting {
+  obtenerCurso(id: number): Observable<any> {
+    return of([]);
+  }
+}
 describe('CursoComponent', () => {
   /**
    * Se instancia al componente al cual se hara pruebas
@@ -45,7 +52,7 @@ describe('CursoComponent', () => {
      */
     await TestBed.configureTestingModule({
       declarations: [CursoComponent],
-      imports: [HttpClientModule],
+      imports: [],
       providers: [
         { provide: ActivatedRoute, useValue: fakeActivatedRoute },
         {
@@ -54,6 +61,7 @@ describe('CursoComponent', () => {
             navigate = jasmine.createSpy('navigate');
           },
         },
+        { provide: CursoService, useClass: CursoServiceTesting },
       ],
     }).compileComponents();
   });

@@ -1,17 +1,13 @@
 /**
- * Se importa el modulo de http para realizar consultas
- */
-import { HttpClientModule } from '@angular/common/http';
-
-/**
  * Se importa dos modulos para poder realizar las pruebas
  */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 /**
  * Se importa modulo del formulario Builder
  */
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Observable, of } from 'rxjs';
 
 /**
  * Se importa el componente Categoria para la realización de las pruebas
@@ -20,11 +16,13 @@ import { Categoria } from 'src/app/curso/modelo/categoria';
 /**
  * Se importa el componente Usuario para la realización de las pruebas
  */
-import { Usuario } from 'src/app/curso/modelo/usuario';
+import { CategoriaService } from 'src/app/curso/servicios/categoria.service';
+
 /**
  * Se importa el componente Sugerencia para la realización de las pruebas
  */
 import { Sugerencia } from '../../modelos/sugerencia';
+import { Voto } from '../../modelos/voto';
 
 /**
  * Se importa el componente  para la realización de las pruebas
@@ -34,8 +32,152 @@ import { ListaSugerenciaComponent } from './lista-sugerencia.component';
 /**
  * Se crea la descripción del contexto de pruebas
  */
+import { SugerenciaService } from '../../servicios/sugerencia.service';
+import { FilterPipe } from 'src/app/shared/pipes/filter.pipe';
+
+class SugerenciaServiceTesting {
+  data = [
+    {
+      sugerencia_id: 25,
+      'COUNT(sugerencia_id)': 2,
+    },
+    {
+      sugerencia_id: 35,
+      'COUNT(sugerencia_id)': 1,
+    },
+    {
+      sugerencia_id: 45,
+      'COUNT(sugerencia_id)': 2,
+    },
+    {
+      sugerencia_id: 65,
+      'COUNT(sugerencia_id)': 1,
+    },
+    {
+      sugerencia_id: 185,
+      'COUNT(sugerencia_id)': 1,
+    },
+    {
+      sugerencia_id: 245,
+      'COUNT(sugerencia_id)': 4,
+    },
+  ];
+  listarSugerencias(): Observable<Object> {
+    return of({
+      list: [
+        {
+          sugerencia_id: 25,
+          categoria_id: 5,
+          sugerencia_nombre_curso: 'nombre',
+          descripcion: 'dsss',
+          sugerencia_fecha_creacion: null,
+          sugerencia_estado: '1',
+          sugerencia_puntuacion_curso: 10,
+          numero_votos: 1,
+        },
+        {
+          sugerencia_id: 35,
+          categoria_id: 5,
+          sugerencia_nombre_curso: 'nombre sugerencia',
+          descripcion: null,
+          sugerencia_fecha_creacion: null,
+          sugerencia_estado: '1',
+          sugerencia_puntuacion_curso: 10,
+          numero_votos: 1,
+        },
+        {
+          sugerencia_id: 45,
+          categoria_id: 3,
+          sugerencia_nombre_curso: 'nombre sugerencia',
+          descripcion: null,
+          sugerencia_fecha_creacion: null,
+          sugerencia_estado: '1',
+          sugerencia_puntuacion_curso: 10,
+          numero_votos: 1,
+        },
+        {
+          sugerencia_id: 55,
+          categoria_id: 5,
+          sugerencia_nombre_curso: 'nombre',
+          descripcion: 'dsss',
+          sugerencia_fecha_creacion: null,
+          sugerencia_estado: '1',
+          sugerencia_puntuacion_curso: 10,
+          numero_votos: 1,
+        },
+      ],
+    });
+  }
+
+  votarSugerencia(sugerencia: Voto): Observable<any> {
+    this.data = [
+      {
+        sugerencia_id: 25,
+        'COUNT(sugerencia_id)': 3,
+      },
+      ...this.data,
+    ];
+    return of([]);
+  }
+
+  listarSugerenciasVotos(): Observable<any> {
+    return of({
+      list: this.data,
+    });
+  }
+
+  listarVotosPorusuario(id: number): Observable<any> {
+    return of({
+      list: [
+        {
+          usuario_id: 5,
+          sugerencia_id: 35,
+        },
+        {
+          usuario_id: 5,
+          sugerencia_id: 45,
+        },
+        {
+          usuario_id: 5,
+          sugerencia_id: 65,
+        },
+      ],
+    });
+  }
+
+  crearSugerencia(sugerencia: Sugerencia): Observable<any> {
+    return of([]);
+  }
+}
+
+class categoriaServiceTesting {
+  listarCategorias(): Observable<any> {
+    return of({
+      categories: [
+        {
+          categoria_id: 5,
+          categoria_nombre: 'Programación',
+          categoria_estado: null,
+          categoria_fecha_creacion: null,
+        },
+        {
+          categoria_id: 15,
+          categoria_nombre: 'Ofimática',
+          categoria_estado: null,
+          categoria_fecha_creacion: null,
+        },
+        {
+          categoria_id: 25,
+          categoria_nombre: 'Negocios',
+          categoria_estado: null,
+          categoria_fecha_creacion: null,
+        },
+      ],
+    });
+  }
+}
 describe('ListaSugerenciaComponent', () => {
-    /**
+  /**
    * Se instancia al componente al cual se hara pruebas
    */
   let component: ListaSugerenciaComponent;
@@ -43,19 +185,23 @@ describe('ListaSugerenciaComponent', () => {
    * Se instancia un fixture que contenido al componente
    */
   let fixture: ComponentFixture<ListaSugerenciaComponent>;
-
+  let sugerenciaService: SugerenciaService;
+  let categoriaService: CategoriaService;
   /**
    * Se realiza la llamada a las funciones que se inicializaran antes de cada prueba
    */
   beforeEach(async () => {
-
     /**
      * Se configura el testbed
      */
     await TestBed.configureTestingModule({
-      declarations: [ListaSugerenciaComponent],
-      imports: [HttpClientModule, NgxPaginationModule],
-      providers: [FormBuilder],
+      declarations: [ListaSugerenciaComponent, FilterPipe],
+      imports: [NgxPaginationModule, FormsModule],
+      providers: [
+        FormBuilder,
+        { provide: SugerenciaService, useClass: SugerenciaServiceTesting },
+        { provide: CategoriaService, useClass: categoriaServiceTesting },
+      ],
     }).compileComponents();
   });
 
@@ -75,13 +221,15 @@ describe('ListaSugerenciaComponent', () => {
      * Se detectan los cambios realizados
      */
     fixture.detectChanges();
+
+    sugerenciaService = TestBed.inject(SugerenciaService);
+    categoriaService = TestBed.inject(CategoriaService);
   });
 
   /**
    * Prueba para comprobar la creación del componente
    */
   it('should create', () => {
-
     /**
      * Comprobacion si el componente se ha creado
      */
@@ -89,37 +237,23 @@ describe('ListaSugerenciaComponent', () => {
   });
 
   /**
-   * Se comprueba si se abrio el modal de nueva sugerencia
-   */
-
-  it('abrir modal de neva sugerencia', () => {
-    component.openModal();
-  });
-
-  /**
    * Se comprueba si se obtuvo el nombre de la categoria
    */
 
-  it('obtener el nombre de la categoria', () => {
-    let categoriaTest = new Categoria();
-    categoriaTest.categoria_nombre = 'uno';
-    categoriaTest.categoria_id = 1;
-    component.categorias = [categoriaTest];
-    expect(component.getNombreCategoria(1)).toEqual('uno');
-  });
+  describe('getNombreCategoria', () => {
+    it('Nombre de la categoria si existe', () => {
+      expect(component.getNombreCategoria(5)).toEqual('Programación');
+    });
 
+    it('Nombre de la categoria undefined', () => {
+      expect(component.getNombreCategoria(undefined)).toEqual(
+        'Categoria no definida'
+      );
+    });
 
-  /**
-   * Se comprueba si se obtuvo el nombre de la cateogira indefinida
-   */
-  it('obtener el nombre de la categoria undefined', () => {
-    let categoriaTest = new Categoria();
-    categoriaTest.categoria_nombre = 'uno';
-    categoriaTest.categoria_id = 1;
-    component.categorias = [categoriaTest];
-    expect(component.getNombreCategoria(undefined)).toEqual(
-      'Categoria no definida'
-    );
+    it('Id de la categoria no existe', () => {
+      expect(component.getNombreCategoria(6)).toEqual('Nombre no encontrado');
+    });
   });
 
   /**
@@ -131,76 +265,86 @@ describe('ListaSugerenciaComponent', () => {
     expect(component.pageActual).toEqual(1);
   });
 
-  /**
-   * Se comprueba la actualizacion de la categoria
-   */
-  it('actualizar categoria', () => {
-    let categoriaTest = new Categoria();
-    categoriaTest.categoria_id = 0;
-    component.actualizarCategoria(categoriaTest);
+  describe('obtenerCantidadVotos', () => {
+    it('Id si existe', () => {
+      expect(component.obtenerCantidadVotos(25)).toEqual(2);
+    });
+
+    it('Id no existe', () => {
+      expect(component.obtenerCantidadVotos(15)).toEqual('0');
+    });
   });
 
   /**
    * Se comprueba la actualizacion de la categoria
    */
-  it('actualizar categoria', () => {
-    let categoriaTest = new Categoria();
-    categoriaTest.categoria_id = 1;
-    let sugerenciaTest = new Sugerencia();
-    sugerenciaTest.sugerencia_id = 1;
-    component.sugerenciasIniciales = [sugerenciaTest];
-    component.actualizarCategoria(categoriaTest);
+  describe('Actualizar categoria', () => {
+    it('Categoria id igual a cero', () => {
+      let categoriaTest = new Categoria();
+      categoriaTest.categoria_id = 0;
+
+      component.actualizarCategoria(categoriaTest);
+      expect(component.sugerencias.length).toEqual(
+        component.sugerenciasIniciales.length
+      );
+    });
+
+    it('Categoria id diferente a cero', () => {
+      let categoriaTest = new Categoria();
+      categoriaTest.categoria_id = 1;
+
+      component.actualizarCategoria(categoriaTest);
+      expect(component.sugerencias.length).toEqual(0);
+    });
+
+    it('Categoria id undefined', () => {
+      component.actualizarCategoria(new Categoria());
+      expect(component.sugerencias.length).toEqual(
+        component.sugerenciasIniciales.length
+      );
+    });
+
+    it('Categoria undefined', () => {
+      component.actualizarCategoria(undefined);
+      expect(component.sugerencias.length).toEqual(
+        component.sugerenciasIniciales.length
+      );
+    });
+
+    it('Existe categoria id', () => {
+      let categoriaTest = new Categoria();
+      categoriaTest.categoria_id = 3;
+
+      component.actualizarCategoria(categoriaTest);
+      expect(component.sugerencias.length).toEqual(1);
+    });
+
+    it('No existe categoria id', () => {
+      let categoriaTest = new Categoria();
+      categoriaTest.categoria_id = 1;
+
+      component.actualizarCategoria(categoriaTest);
+      expect(component.sugerencias.length).toEqual(0);
+    });
   });
 
-  /**
-   * Se comprueba si se obtiene voto
-   */
-  it('obtener voto', () => {
-    let newUser = new Usuario();
-    component.usuariosVotos = [newUser];
-    component.obtenerVotoUsuario(1);
+  it('Listar sugerencias', () => {
+    spyOn(sugerenciaService, 'listarSugerencias').and.callThrough();
+    component.listarSugerencias();
+    expect(component.sugerencias.length).toEqual(4);
   });
 
-  /**
-   * Se comprueba la obtencion de la cantidad de votos indefinidos
-   */
-
-  it('obtener cantidad de votos undefined', () => {
-    component.sugerenciasVotos = [
-      { 'COUNT(sugerencia_id)': 2, sugerencia_id: 2 },
-    ];
-    component.obtenerCantidadVotos(1);
+  it('cambiarEstado', () => {
+    // no agrega valor ni se puede proba
+    spyOn(sugerenciaService, 'votarSugerencia').and.callThrough();
+    const numero = component.sugerenciasVotos[0]['COUNT(sugerencia_id)'];
+    component.cambiarEstado(25);
+    expect(component.sugerenciasVotos[0]['COUNT(sugerencia_id)']).toEqual(
+      numero + 1
+    );
   });
 
-  /**
-   * Se comprueba la obtencion de la cantidad de votos
-   */
-  it('obtener cantidad de votos ', () => {
-    component.sugerenciasVotos = [
-      { 'COUNT(sugerencia_id)': 2, sugerencia_id: 1 },
-    ];
-    component.obtenerCantidadVotos(1);
-  });
-
-  /**
-   * Se comprueba el listado de votos por usuario
-   */
-  it('listar votos usuario', () => {
-    component.listarVotosUsuarios(5);
-  });
-
-  /**
-   * Se comprueba la creacion de componente
-   */
-  it('crear componente', () => {
-    sessionStorage.setItem('usuario_id', '5');
-    component = fixture.componentInstance;
-  });
-
-  /**
-   * Se comprueba el cambio de estado
-   */
-  it('cambiar estado', () => {
-    component.cambiarEstado(5);
-  });
+  /* it('modal', () => {
+    component.openModal();
+  }); */
 });

@@ -50,7 +50,7 @@ export class SugerenciaService extends AppServiceBase {
     );
   }
 
-    /**
+  /**
    * Servicio para crear un nueva sugerencia
    * @param sugerencia {Voto} - Objeto con la informacion del voto
    * @returns Voto creado
