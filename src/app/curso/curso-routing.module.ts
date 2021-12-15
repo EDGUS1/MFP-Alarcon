@@ -1,17 +1,17 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CursoPublicoComponent } from './componente/curso-publico/curso-publico.component';
-import { CursoComponent } from './componente/curso/curso.component';
-import { DashboardComponent } from './componente/dashboard/dashboard.component';
-import { VerCursoComponent } from './componente/ver-curso/ver-curso.component';
+/* import { CursoPublicoComponent } from '../home/components/curso-publico/curso-publico.component'; */
+import { CursoComponent } from './pages/curso/curso.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { VerCursoComponent } from '../home/components/ver-curso/ver-curso.component';
 
-//variable array contastante para agregar cada ruta y el componente que correnponda 
+//variable array contastante para agregar cada ruta y el componente que correnponda
 const routes: Routes = [
   //ruta por defecto
   {
     path: '',
-    component: CursoPublicoComponent,
+    component: DashboardComponent,
   },
   //visualizacion del bashboard de cursos
   {
@@ -32,7 +32,7 @@ const routes: Routes = [
 
 @NgModule({
   //Otros módulos cuyas clases exportadas son necesarias para las plantillas de componentes declaradas en este NgModule.
-  imports: [RouterModule.forChild(routes),HttpClientModule],
+  imports: [RouterModule.forChild(routes), HttpClientModule],
   //El subconjunto de declaraciones que deberían ser visibles y utilizables en las plantillas de componentes de otros NgModules.
   exports: [RouterModule],
 })

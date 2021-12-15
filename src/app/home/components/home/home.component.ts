@@ -5,19 +5,19 @@ import { Component, OnInit } from '@angular/core';
 /**
  * Se importa el modelo de la categoria
  */
-import { Categoria } from 'src/app/curso/modelo/categoria';
+import { Categoria } from 'src/app/curso/models/categoria';
 /**
  * Se importa el modelo del curso
  */
-import { Curso } from 'src/app/curso/modelo/curso';
+import { Curso } from 'src/app/curso/models/curso';
 /**
  * Se importa el servicio de categorias
  */
-import { CategoriaService } from 'src/app/curso/servicios/categoria.service';
+import { CategoriaService } from 'src/app/curso/services/categoria.service';
 /**
  * Se importa el modelo de la sugerencias
  */
-import { Sugerencia } from 'src/app/sugerencia/modelos/sugerencia';
+import { Sugerencia } from 'src/app/sugerencia/models/sugerencia';
 /**
  * Se importa el servicio de los cursos
  */

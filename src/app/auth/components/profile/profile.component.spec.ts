@@ -2,9 +2,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-import { CursoService } from 'src/app/curso/servicios/curso.service';
+import { CursoService } from 'src/app/curso/services/curso.service';
 import { CloudBinaryService } from 'src/app/services/cloud-binary.service';
-import { NewUsuarioService } from '../../servicios/editarperfil.service';
+import { NewUsuarioService } from '../../services/editarperfil.service';
 
 import { ProfileComponent } from './profile.component';
 

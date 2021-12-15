@@ -2,23 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CursoRoutingModule } from './curso-routing.module';
-import { AgregarUsuarioComponent } from './componente/agregar-usuario/agregar-usuario.component';
-import { CrearCursoComponent } from './componente/crear-curso/crear-curso.component';
+import { AgregarUsuarioComponent } from './components/agregar-usuario/agregar-usuario.component';
+import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CursoPublicoComponent } from './componente/curso-publico/curso-publico.component';
-import { VerCursoComponent } from './componente/ver-curso/ver-curso.component';
-import { CursoComponent } from './componente/curso/curso.component';
-import { TareaCursoComponent } from './componente/tarea-curso/tarea-curso.component';
+import { VerCursoComponent } from '../home/components/ver-curso/ver-curso.component';
+import { CursoComponent } from './pages/curso/curso.component';
+import { TareaCursoComponent } from './components/tarea-curso/tarea-curso.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { DashboardComponent } from './componente/dashboard/dashboard.component';
-import { ListaCursoComponent } from './componente/lista-curso/lista-curso.component';
-import { NotificacionComponent } from './componente/notificacion/notificacion.component';
-import { MaterialCursoComponent } from './componente/material-curso/material-curso.component';
-import { NuevoMaterialComponent } from './componente/nuevo-material/nuevo-material.component';
-import { VerEntregaTareaComponent } from './componente/ver-entrega-tarea/ver-entrega-tarea.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ListaCursoComponent } from './components/lista-curso/lista-curso.component';
+import { NotificacionComponent } from './components/notificacion/notificacion.component';
+import { MaterialCursoComponent } from './components/material-curso/material-curso.component';
+import { NuevoMaterialComponent } from './components/nuevo-material/nuevo-material.component';
+import { VerEntregaTareaComponent } from './components/ver-entrega-tarea/ver-entrega-tarea.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
-import { EditarCursoComponent } from './componente/editar-curso/editar-curso.component';
+import { EditarCursoComponent } from './components/editar-curso/editar-curso.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* es una función que toma un solo objeto de metadatos, cuyas propiedades describen el módulo */
@@ -32,7 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     //componente para ver un curso
     CursoComponent,
     //componente donde se listan los curso publicos en el home
-    CursoPublicoComponent,
+
     //componente donde se suben la tarea de los cursos
     TareaCursoComponent,
     //componente donde se ven los cursos

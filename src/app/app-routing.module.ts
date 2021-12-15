@@ -14,7 +14,12 @@ const routes: Routes = [
   /*Json que define la ruta del componente hogar como un String vacio*/
   {
     path: '',
-    component: HomeComponent,
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   /*Json que define la ruta del componente de modulo de cursos con la terminacion "cursos"*/
   {

@@ -9,9 +9,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/curso/modelo/usuario';
+import { Usuario } from 'src/app/curso/models/usuario';
 import Swal from 'sweetalert2';
-import { UsuarioService } from '../../servicios/usuario.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 /* Elementos del coponente para definir sus rutas especificas de valores */
 @Component({
@@ -113,7 +113,7 @@ export class RegisterComponent implements OnInit {
         title: 'Registro exitoso',
         text: `La cuenta se ha creado con exito`,
         icon: 'success',
-        confirmButtonColor: '#2F6DF2'
+        confirmButtonColor: '#2F6DF2',
       });
       this.router.navigate(['user/login']);
     });

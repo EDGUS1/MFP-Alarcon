@@ -13,7 +13,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
  * Se importa el modulo de rutas estaticas
  */
 import { Router } from '@angular/router';
-import { UsuarioService } from '../../servicios/usuario.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 /**
  * Se importa el componente para realizar las pruebas

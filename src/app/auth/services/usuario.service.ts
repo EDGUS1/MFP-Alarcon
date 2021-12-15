@@ -1,23 +1,24 @@
+/**
+ * Importaciones principales
+ */
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AppServiceBase } from 'src/app/core/appServiceBase';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CursoService extends AppServiceBase {
+export class UsuarioService extends AppServiceBase {
   /**
-   * Servicio para buscar los cursos con mas usuarios
-   * @returns Listado con los cursos con la mayor cantidad de alumnos
+   * Servicio para crear un nuevo usuario
+   * @param usuario {Usuario} - Objeto con la información del usuario
+   * @returns Objeto creado
    */
-  listarCursosPublicos(): Observable<any> {
-    return this.get('coursespublicmax').pipe(catchError(this.handleError));
-  }
-
-  listarCursosPublicosTotal(): Observable<any> {
-    return this.get(`coursespublic`).pipe(catchError(this.handleError));
+  crearUsuario(usuario: Usuario) {
+    return this.post('register', usuario).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

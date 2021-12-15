@@ -122,7 +122,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.navService.logout();
-    this.isLogged();
+    this.navService.toggle();
+    // this.isLogged();
     //this.router.navigate(['/']);
   }
 }

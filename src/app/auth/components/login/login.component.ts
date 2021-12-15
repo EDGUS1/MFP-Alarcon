@@ -9,8 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/curso/modelo/usuario';
-import { AuthenticationService } from '../../servicios/authentication.service';
+import { Usuario } from 'src/app/curso/models/usuario';
+import { AuthenticationService } from '../../services/authentication.service';
 import Swal from 'sweetalert2';
 import { NavService } from 'src/app/services/nav.service';
 

@@ -32,8 +32,8 @@ import { FormsModule } from '@angular/forms';
 /*Modulo principal del componente basado en angular*/
 @NgModule({
   /*Declaraciones del componente que coloca en un array a los componentes importados*/
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent],
-  /*Importaciones de las funciones de las funciones obtenidas de la biblioteca angular*/ 
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  /*Importaciones de las funciones de las funciones obtenidas de la biblioteca angular*/
   imports: [
     BrowserModule,
     CommonModule,

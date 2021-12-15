@@ -3,21 +3,32 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AppServiceBase } from 'src/app/core/appServiceBase';
+import { Tarea } from '../models/tarea';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CursoService extends AppServiceBase {
-  /**
-   * Servicio para buscar los cursos con mas usuarios
-   * @returns Listado con los cursos con la mayor cantidad de alumnos
-   */
-  listarCursosPublicos(): Observable<any> {
-    return this.get('coursespublicmax').pipe(catchError(this.handleError));
+export class NuevoMaterialService extends AppServiceBase {
+  crearTarea(tarea: Tarea): Observable<any> {
+    return this.post('creartarea', tarea).pipe(catchError(this.handleError));
   }
 
-  listarCursosPublicosTotal(): Observable<any> {
-    return this.get(`coursespublic`).pipe(catchError(this.handleError));
+  listarMaterial(idcurso: number): Observable<any> {
+    return this.get(`listMaterials/${idcurso}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  crearMaterialCurso(idCurso: number, material: Tarea) {
+    return this.post(`course-material/${idCurso}`, material).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  listarEntregaTareas(idTarea: number) {
+    return this.get(`list-task-submissions/${idTarea}`).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
