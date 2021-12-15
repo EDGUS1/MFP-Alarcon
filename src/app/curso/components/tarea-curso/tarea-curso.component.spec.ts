@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
-import { Usuario } from '../../modelo/usuario';
+import { Usuario } from '../../models/usuario';
 import { TareaService } from '../../services/tarea.service';
 
 import { TareaCursoComponent } from './tarea-curso.component';

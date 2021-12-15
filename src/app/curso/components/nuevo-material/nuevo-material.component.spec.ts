@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, of } from 'rxjs';
-import { Tarea } from '../../modelo/tarea';
+import { Tarea } from '../../models/tarea';
 import { NuevoMaterialService } from '../../services/nuevo-material.service';
 import { TareaService } from '../../services/tarea.service';
 

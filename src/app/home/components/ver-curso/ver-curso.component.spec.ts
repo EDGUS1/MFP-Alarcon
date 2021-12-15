@@ -10,16 +10,89 @@ import { CategoriaService } from '../../../curso/services/categoria.service';
 import { FilterPipe } from 'src/app/shared/pipes/filter.pipe';
 class CursoServiceTesting {
   obtenerCurso(id: number): Observable<any> {
-    return of([]);
+    return of({
+      data: {
+        curso_id: 5,
+        usuario_id: 25,
+        categoria_id: 5,
+        codigo: null,
+        imagen:
+          'https://res.cloudinary.com/dfkrcsufm/image/upload/v1627193465/y43zlwrn7v8vn6ggxnmy.jpg',
+        curso_nombre: 'Curso de Python 3',
+        descripcion:
+          'Aprende a programar con clases y objetos, a usar ficheros y bases de datos SQLite, interfaces gráficas y más con Python!',
+        conoci_previo: '',
+        privacidad_id: 1,
+        curso_fecha_creacion: null,
+      },
+      alumnos: 9,
+    });
   }
   listarCursosPorUsuario2(id: number): Observable<any> {
-    return of([]);
+    return of({
+      message: 'Lista de cursos del usuario: 5',
+      data: [
+        {
+          curso_id: 245,
+          usuario_id: 1635,
+          categoria_id: 85,
+          codigo: null,
+          imagen: null,
+          curso_nombre: 'Canto',
+          descripcion: 'Curso de canto',
+          conoci_previo: 'No ser mudo.',
+          privacidad_id: 2,
+          curso_fecha_creacion: null,
+        },
+        {
+          curso_id: 7195,
+          usuario_id: 23435,
+          categoria_id: 55,
+          codigo: 'KRU2Q988',
+          imagen:
+            'https://res.cloudinary.com/dfkrcsufm/image/upload/v1630110217/rbdeoxzewcstypfvvbvs.jpg',
+          curso_nombre: 'Seguridad ',
+          descripcion: 'Aprenderás a proteger tu información privada',
+          conoci_previo: 'Ninguno ',
+          privacidad_id: 5,
+          curso_fecha_creacion: null,
+        },
+      ],
+    });
   }
   solicitarAcceso(curso_id, usuario_id): Observable<any> {
     return of([]);
   }
   listarCursosPublicosPorUsuario(id: number): Observable<any> {
-    return of([]);
+    return of({
+      cursos: [
+        {
+          curso_id: 295,
+          usuario_id: 5,
+          categoria_id: 85,
+          codigo: null,
+          imagen:
+            'https://res.cloudinary.com/dfkrcsufm/image/upload/v1629054416/lmtlqcy6kqdlp8s4cpj5.jpg',
+          curso_nombre: 'Dibujo ',
+          descripcion: 'Dibujando con paint 3d',
+          conoci_previo: 'Dibujar en cuadernos ',
+          privacidad_id: 1,
+          curso_fecha_creacion: null,
+        },
+        {
+          curso_id: 7175,
+          usuario_id: 5,
+          categoria_id: 35,
+          codigo: 'RQY61656',
+          imagen: null,
+          curso_nombre: 'Algebra',
+          descripcion: 'asdas',
+          conoci_previo: 'dfsdfsd',
+          privacidad_id: 1,
+          curso_fecha_creacion: null,
+        },
+      ],
+    });
   }
   unirCursoPublico(idCurso: number, idUser: number) {
     return of([]);
@@ -27,12 +100,37 @@ class CursoServiceTesting {
 }
 class UsuarioServiceTesting {
   obtenerUsuario(id: number) {
-    return of([]);
+    return of({
+      user: [
+        {
+          usuario_id: 5,
+          usuario_nombre: 'admin',
+          usuario_apellidos: 'admin',
+          usuario_contrasenia:
+            '$2b$10$ehU0k4GL11lUAqwJxc8jueDx/2dGdupXA05u1B2Mp.SLLR9vs.7ra',
+          correo: 'admin@gmail.com',
+          usuario_fecha_creacion: '0000-00-00',
+          url: null,
+          descripcion: null,
+        },
+      ],
+      cantidadEstudiantes: 6,
+      cantidadCursosPublicos: 3,
+    });
   }
 }
 class CategoriaServiceTesting {
   getCategoria(id: number): Observable<any> {
-    return of([]);
+    return of({
+      categories: [
+        {
+          categoria_id: 5,
+          categoria_nombre: 'Programación',
+          categoria_estado: null,
+          categoria_fecha_creacion: null,
+        },
+      ],
+    });
   }
 }
 describe('VerCursoComponent', () => {

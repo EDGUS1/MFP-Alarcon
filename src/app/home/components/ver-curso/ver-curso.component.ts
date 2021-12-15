@@ -152,7 +152,7 @@ export class VerCursoComponent implements OnInit {
        * Se valida si es profesor del curso
        */
       this.esProfesorCurso =
-        x['data']['usuario_id'] === +sessionStorage.getItem('usuario_id');
+        x['data']['usuario_id'] === +sessionStorage?.getItem('usuario_id');
       /**
        * Se obtiene la información del usuario
        */

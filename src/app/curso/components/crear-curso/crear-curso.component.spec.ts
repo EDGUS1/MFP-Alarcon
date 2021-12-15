@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { CloudBinaryService } from 'src/app/services/cloud-binary.service';
-import { Curso } from '../../modelo/curso';
+import { Curso } from '../../models/curso';
 import { CategoriaService } from '../../services/categoria.service';
 import { CursoService } from '../../services/curso.service';
 
