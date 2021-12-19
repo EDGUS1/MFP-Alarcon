@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/curso/models/usuario';
 import { AuthenticationService } from '../../services/authentication.service';
 import Swal from 'sweetalert2';
-import { NavService } from 'src/app/services/nav.service';
+import { NavbarService } from 'src/app/services/navbar.service';
 
 /* Elementos del coponente para definir sus rutas especificas de valores */
 @Component({
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router,
-    private nav: NavService
+    private navbarService: NavbarService
   ) {}
 
   /* Funciones principales para validar los datos ingresados en los forms */
@@ -83,7 +83,10 @@ export class LoginComponent implements OnInit {
   login(usuario: Usuario) {
     this.authenticationService.authUser(usuario).subscribe((response) => {
       if (response['user']?.usuario_id != null) {
-        this.nav.toggle();
+        /* this.nav.toggle(); */
+        this.navbarService.changeLogin.emit(
+          this.navbarService.getIsAuthenticated()
+        );
         this.router.navigate(['cursos/dashboard']);
       } else {
         Swal.fire({

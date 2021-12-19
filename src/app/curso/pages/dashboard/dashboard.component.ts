@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
 /**
  * Se importa el modulo de rutas para poder realizar el manejo a otras secciones
  */
-import { Router } from '@angular/router';
-import { NavService } from 'src/app/services/nav.service';
+import { NavbarService } from 'src/app/services/navbar.service';
 
 /**
  * Se declara las variables que corresponden al componente
@@ -29,12 +28,8 @@ export class DashboardComponent implements OnInit {
 
   /**
    * Constructor para incializar los modulos que se van a utilizar dentro del componente
-   * @param router Modulo para el manejo de las rutas dentro de la página
    */
-  constructor(
-    private readonly router: Router,
-    private navService: NavService
-  ) {}
+  constructor(private navService: NavbarService) {}
 
   /**
    * Función que incializa las variables y hace llamadas a funciones
@@ -49,7 +44,7 @@ export class DashboardComponent implements OnInit {
   //
   logout() {
     this.navService.logout();
-    this.navService.toggle();
+    /* this.navService.toggle(); */
     // this.isLogged();
     //this.router.navigate(['/']);
   }

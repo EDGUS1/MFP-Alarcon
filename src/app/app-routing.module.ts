@@ -4,7 +4,7 @@
 /*Importacion de las principales modulos de angular*/
 import { NgModule } from '@angular/core';
 /*Importacion del modulo Router y sus respectivas variaciones*/
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 /*Importacion del componente hogar desde su respectiva ubicacion*/
 import { HomeComponent } from './home/components/home/home.component';
 
@@ -51,7 +51,10 @@ const routes: Routes = [
   /* Las importaciones contienen el modulo de ruta de las importaciones para definir correctamente las rutas
   establecidas anteriormente*/
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      preloadingStrategy: PreloadAllModules,
+    }),
   ],
   /* La exportacion definida contiene el elemento */
   exports: [RouterModule],
