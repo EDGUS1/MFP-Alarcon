@@ -17,7 +17,7 @@ export class NewUsuarioService extends AppServiceBase {
   /* Metodo para editar el usuario, se exporta hacia el ts del perfil (profile) */
   editarUsuario(formData: FormData) {
     var object = {};
-    formData.forEach((value, key) => object[key] = value);
+    formData.forEach((value, key) => (object[key] = value));
     /* Se iguala una constante al id del usuario logueado */
     const usuario_id = sessionStorage.getItem('usuario_id');
     /* Se retorna dicho valor al usuario en cuestion */

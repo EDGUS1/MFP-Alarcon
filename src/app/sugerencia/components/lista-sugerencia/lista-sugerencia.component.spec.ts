@@ -34,6 +34,8 @@ import { ListaSugerenciaComponent } from './lista-sugerencia.component';
  */
 import { SugerenciaService } from '../../services/sugerencia.service';
 import { FilterPipe } from 'src/app/shared/pipes/filter.pipe';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NuevaSugerenciaComponent } from '../nueva-sugerencia/nueva-sugerencia.component';
 
 class SugerenciaServiceTesting {
   data = [
@@ -176,6 +178,13 @@ class categoriaServiceTesting {
     });
   }
 }
+
+export class MockNgbModalRef {
+  componentInstance = {
+    fromParent: undefined,
+  };
+  result: Promise<any> = new Promise((resolve, reject) => resolve(true));
+}
 describe('ListaSugerenciaComponent', () => {
   /**
    * Se instancia al componente al cual se hara pruebas
@@ -187,6 +196,9 @@ describe('ListaSugerenciaComponent', () => {
   let fixture: ComponentFixture<ListaSugerenciaComponent>;
   let sugerenciaService: SugerenciaService;
   let categoriaService: CategoriaService;
+  let modalSpy: jasmine.SpyObj<NgbModal>;
+  let ngbModal: NgbModal;
+  let mockModalRef: MockNgbModalRef = new MockNgbModalRef();
   /**
    * Se realiza la llamada a las funciones que se inicializaran antes de cada prueba
    */
@@ -194,6 +206,7 @@ describe('ListaSugerenciaComponent', () => {
     /**
      * Se configura el testbed
      */
+    //modalSpy = jasmine.createSpyObj<NgbModal>('NgbModal', ['open']);
     await TestBed.configureTestingModule({
       declarations: [ListaSugerenciaComponent, FilterPipe],
       imports: [NgxPaginationModule, FormsModule],
@@ -201,6 +214,7 @@ describe('ListaSugerenciaComponent', () => {
         FormBuilder,
         { provide: SugerenciaService, useClass: SugerenciaServiceTesting },
         { provide: CategoriaService, useClass: categoriaServiceTesting },
+        //{ provide: NgbModal, useValue: modalSpy },
       ],
     }).compileComponents();
   });
@@ -220,12 +234,17 @@ describe('ListaSugerenciaComponent', () => {
     /**
      * Se detectan los cambios realizados
      */
+    sessionStorage.setItem('usuario_id', '5');
     fixture.detectChanges();
 
     sugerenciaService = TestBed.inject(SugerenciaService);
     categoriaService = TestBed.inject(CategoriaService);
+    ngbModal = TestBed.inject(NgbModal);
   });
 
+  afterEach(() => {
+    sessionStorage.removeItem('usuario_id');
+  });
   /**
    * Prueba para comprobar la creación del componente
    */
@@ -233,6 +252,14 @@ describe('ListaSugerenciaComponent', () => {
     /**
      * Comprobacion si el componente se ha creado
      */
+    expect(component).toBeTruthy();
+  });
+
+  it('should create usuario no registrado', () => {
+    /**
+     * Comprobacion si el componente se ha creado
+     */
+    sessionStorage.removeItem('usuario_id');
     expect(component).toBeTruthy();
   });
 
@@ -339,12 +366,24 @@ describe('ListaSugerenciaComponent', () => {
     spyOn(sugerenciaService, 'votarSugerencia').and.callThrough();
     const numero = component.sugerenciasVotos[0]['COUNT(sugerencia_id)'];
     component.cambiarEstado(25);
+
     expect(component.sugerenciasVotos[0]['COUNT(sugerencia_id)']).toEqual(
       numero + 1
     );
   });
 
-  /* it('modal', () => {
+  /*it('open modal', () => {
+    const modalRefTest = {} as NgbModal;
+    https://stackoverflow.com/questions/59524515/writing-a-unit-test-for-ng-bootstrap-modal-ngbmodal-angular-6
+    //modalSpy.open.and.returnValue;
+    spyOn(ngbModal, 'open').and.returnValue(null);
+
     component.openModal();
-  }); */
+
+    expect(modalSpy.open).toHaveBeenCalledWith(NuevaSugerenciaComponent, {
+      scrollable: true,
+      windowClass: 'myCustomModalClass',
+      size: 'lg',
+    });
+  });*/
 });

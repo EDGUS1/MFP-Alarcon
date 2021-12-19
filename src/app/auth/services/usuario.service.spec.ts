@@ -1,7 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { Usuario } from '../models/usuario';
 
 import { UsuarioService } from './usuario.service';
 

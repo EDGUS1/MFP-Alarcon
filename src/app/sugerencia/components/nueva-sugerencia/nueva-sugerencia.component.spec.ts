@@ -139,7 +139,7 @@ class SugerenciaServiceTesting {
   }
 
   crearSugerencia(sugerencia: Sugerencia): Observable<any> {
-    return of([]);
+    return of();
   }
 }
 
@@ -232,5 +232,16 @@ describe('NuevaSugerenciaComponent', () => {
      * Comprobacion si esl componente se ha creado
      */
     expect(component).toBeTruthy();
+  });
+
+  it('guardar sugerencia', (done) => {
+    component.sugerenciaForm.get('nombre').setValue('nvoiansvoindsv');
+    component.sugerenciaForm.get('categoria').setValue(1);
+    component.sugerenciaForm.get('descripcion').setValue('nvoiansvoindsv');
+    component.guardarSugerencia();
+    done();
+  });
+  it('guardar sugerencia', () => {
+    component.guardarSugerencia();
   });
 });

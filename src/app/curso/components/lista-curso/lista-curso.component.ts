@@ -58,7 +58,7 @@ export class ListaCursoComponent implements OnInit {
       preConfirm: (login) => {
         this.codigo.codigo = login;
         this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {
-          console.log('M');
+          /* console.log('M'); */
         });
       },
       allowOutsideClick: () => !Swal.isLoading(),
@@ -82,7 +82,7 @@ export class ListaCursoComponent implements OnInit {
   listarCursos(id: number) {
     this.cursoService.listarCursosPorUsuario(id).subscribe((x) => {
       this.cursos = x['list'];
-      console.log(this.cursos);
+      /* console.log(this.cursos); */
 
       this.listarCursos2(id);
     });

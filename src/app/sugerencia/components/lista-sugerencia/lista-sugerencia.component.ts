@@ -176,6 +176,7 @@ export class ListaSugerenciaComponent implements OnInit {
       windowClass: 'myCustomModalClass',
       size: 'lg',
     });
+
     let data = {};
     modalRef.componentInstance.fromParent = data;
   }

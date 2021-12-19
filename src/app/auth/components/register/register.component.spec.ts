@@ -1,7 +1,6 @@
 /**
  * Se importa el modulo de http para realizar consultas
  */
-import { HttpClientModule } from '@angular/common/http';
 
 /**
  * Se importa dos modulos para poder realizar las pruebas
