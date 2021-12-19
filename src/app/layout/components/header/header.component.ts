@@ -1,7 +1,7 @@
 /**
  * Se importa los modulos de angular
  */
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, OnInit } from '@angular/core';
 /**
  * Se importa el modulo de manejo de rutas
  */
@@ -18,7 +18,7 @@ import { NavbarService } from 'src/app/services/navbar.service';
 /**
  * Se crea la clase para el componente header
  */
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   /**
    * Variable para definir si el usuario se ha registro
    */
@@ -40,6 +40,9 @@ export class HeaderComponent implements OnInit {
    * Constructor para el componente header
    */
   constructor(private navService: NavbarService) {}
+  ngAfterViewInit(): void {
+    this.navService.changeLogin.emit(this.navService.getIsAuthenticated());
+  }
 
   /**
    * Función que se ejecuta al momento de crear el componente

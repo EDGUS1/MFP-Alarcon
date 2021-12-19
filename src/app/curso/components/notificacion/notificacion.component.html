@@ -1,7 +1,7 @@
 <div class="container">
   <div
     class="row"
-    *ngIf="notificaciones?.length == 0 && solicutdAcceso?.length == 0"
+    *ngIf="solicutdAcceso2?.length == 0 && solicutdAcceso?.length == 0"
   >
     <div class="col-12">
       <div class="card">
@@ -17,7 +17,9 @@
           <button class="btn btn-secondary">X</button>
         </div>
         <div class="card-body">
-          <p class="card-text">El usuario {{ c?.usuario_nombre }} desea unirse a su curso. </p>
+          <p class="card-text">
+            El usuario {{ c?.usuario_nombre }} desea unirse a su curso.
+          </p>
           <div class="d-flex flex-row-reverse">
             <button
               class="btn btn-danger"
@@ -42,7 +44,9 @@
           <button class="btn btn-secondary">X</button>
         </div>
         <div class="card-body">
-          <p class="card-text">{{ c?.usuario_nombre }} </p>
+          <p class="card-text">
+            El usuario {{ c?.usuario_nombre }} le ha invitado al curso
+          </p>
           <div class="d-flex flex-row-reverse">
             <button
               class="btn btn-danger"

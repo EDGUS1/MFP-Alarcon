@@ -1,3 +1,6 @@
 /*
 *   Ingresar estilos 
 */
+.dropdown-toggle::after{
+    vertical-align: 0.17rem;
+}
