@@ -94,6 +94,15 @@
                     *ngIf="cambio"
                     type="sumbit"
                     form="perfil-form"
+                    class="btn btn-outline-danger ml-2"
+                    (click)="cancelar()"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    *ngIf="cambio"
+                    type="sumbit"
+                    form="perfil-form"
                     class="btn btn-outline-dark"
                   >
                     Aceptar
@@ -103,11 +112,11 @@
               <!--Se coloca un separador en forma de linea horizontal para separar hileras-->
               <hr class="bg-primary" />
               <!--Se crea una hilera dentro de la carta-->
-              <form 
-                class="row" 
-                id="perfil-form" 
-                [formGroup]="perfilForm" 
-                autocomplete="off" 
+              <form
+                class="row"
+                id="perfil-form"
+                [formGroup]="perfilForm"
+                autocomplete="off"
                 (ngSubmit)="enviarDatos($event)"
               >
                 <!--Se crea una columna dentro de la hilera del mismo tamaño que la carta-->
@@ -115,9 +124,7 @@
                   <h4>Datos personales</h4>
                 </div>
                 <!--Se coloca otra columna debajo de un tercio del tamaño de la carta-->
-                <div class="col-4 my-2">
-                  Nombre
-                </div>
+                <div class="col-4 my-2">Nombre</div>
                 <!--Se coloca otra columna debajo de dos tercios del tamaño de la carta-->
                 <div class="col-8 my-2">
                   <!--Se coloca el nombre del usuario dentro de un label, en caso de editar el perfil-->
@@ -133,16 +140,17 @@
                     [class.is-invalid]="nombreNoValido"
                   />
                   <!--Etiqueta que contiene un pequeño mensaje al ingresar un nombre invalido-->
-                  <small class="text-danger mt-3 mt-lg-0" *ngIf="nombreNoValido">
+                  <small
+                    class="text-danger mt-3 mt-lg-0"
+                    *ngIf="nombreNoValido"
+                  >
                     Ingrese un Nombre Valido
                   </small>
                   <!--Se coloca el nombre del usuario-->
                   <p *ngIf="!cambio">{{ usuario_nombre }}</p>
                 </div>
                 <!--Se aplican los mismos parametros anteriores con respecto a las columnas-->
-                <div class="col-4 my-2">
-                  Apellido
-                </div>
+                <div class="col-4 my-2">Apellido</div>
                 <div class="col-8 my-2">
                   <!--Se coloca el apellido del usuario en un label en caso de editar el perfil-->
                   <input
@@ -156,16 +164,17 @@
                     [class.is-invalid]="apellidoNoValido"
                   />
                   <!--Etiqueta que contiene un pequeño mensaje al ingresar un apellido invalido-->
-                  <small class="text-danger mt-3 mt-lg-0" *ngIf="apellidoNoValido">
+                  <small
+                    class="text-danger mt-3 mt-lg-0"
+                    *ngIf="apellidoNoValido"
+                  >
                     Ingrese un Apellido Valido
                   </small>
                   <!--Se muestra el apellido del usuario-->
                   <p *ngIf="!cambio">{{ usuario_apellidos }}</p>
                 </div>
                 <!--Se aplican los mismos parametros anteriores de columnas-->
-                <div class="col-4 my-2">
-                  Correo
-                </div>
+                <div class="col-4 my-2">Correo</div>
                 <div class="col-8 my-2">
                   <!--Se coloca el correo del usuario en un label en caso de editar el perfil-->
                   <input
@@ -178,16 +187,17 @@
                     [class.is-invalid]="correoNoValido"
                   />
                   <!--Etiqueta que contiene un pequeño mensaje al ingresar un correo invalido-->
-                  <small class="text-danger mt-3 mt-lg-0" *ngIf="correoNoValido">
+                  <small
+                    class="text-danger mt-3 mt-lg-0"
+                    *ngIf="correoNoValido"
+                  >
                     Ingrese un Correo Valido
                   </small>
                   <!--Se muestra el correo del usuario-->
                   <p *ngIf="!cambio">{{ correo }}</p>
                 </div>
                 <!--Se aplican los mismos parametros de columna anteriores-->
-                <div *ngIf="cambio" class="col-4 my-2">
-                  Imagen
-                </div>
+                <div *ngIf="cambio" class="col-4 my-2">Imagen</div>
                 <div *ngIf="cambio" class="col-8 my-2">
                   <!--Se determina un label especial para poder modificar la imagen en caso se edite el perfil-->
                   <div class="input-group">
@@ -209,7 +219,11 @@
                 <div class="col-4 my-2">Descripcion</div>
                 <div class="col-8 my-2">
                   <!--Se muestra una pequeña descripcion del usuario-->
-                  <p *ngIf="!cambio">{{ descripcion }}</p>
+                  <p *ngIf="!cambio">
+                    {{
+                      descripcion == "null" ? "Sin descripcion" : descripcion
+                    }}
+                  </p>
                   <!--Se muestra un label para modificar la descripcion en caso de editar el perfil-->
                   <textarea
                     *ngIf="cambio"
@@ -223,7 +237,10 @@
                     rows="3"
                   ></textarea>
                   <!--Etiqueta que contiene un pequeño mensaje al ingresar una descripcion invalida-->
-                  <small class="text-danger mt-3 mt-lg-0" *ngIf="descripcionNoValido">
+                  <small
+                    class="text-danger mt-3 mt-lg-0"
+                    *ngIf="descripcionNoValido"
+                  >
                     Ingrese una Descripcion Valida
                   </small>
                 </div>

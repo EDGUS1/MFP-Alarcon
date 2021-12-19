@@ -190,6 +190,12 @@ export class ProfileComponent implements OnInit {
   modificarDatos() {
     /*Cambia el atributo hacia true*/
     this.cambio = true;
+    this.perfilForm.get('usuario_nombre').setValue(this.usuario_nombre);
+    this.perfilForm.get('usuario_apellidos').setValue(this.usuario_apellidos);
+    this.perfilForm.get('correo').setValue(this.correo);
+    this.perfilForm
+      .get('descripcion')
+      .setValue(this.descripcion == 'null' ? '' : this.descripcion);
   }
 
   /* Metodo para cambiar la imagen, donde se hace uso del CloudBinary */
@@ -243,5 +249,9 @@ export class ProfileComponent implements OnInit {
         this.validateAllFormFields(control);
       }
     });
+  }
+
+  cancelar() {
+    this.cambio = false;
   }
 }
