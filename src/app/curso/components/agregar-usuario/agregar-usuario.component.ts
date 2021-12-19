@@ -101,7 +101,7 @@ export class AgregarUsuarioComponent implements OnInit {
   get correoNoValido() {
     return (
       this.agregarForm.get('correoUsuario').invalid &&
-      this.agregarForm.get('correoUsuario').touched
+      this.agregarForm.get('correoUsuario').value
     );
   }
 
