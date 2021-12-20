@@ -11,6 +11,8 @@ import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.
 import { CursoProfesorComponent } from './components/curso-profesor/curso-profesor.component';
 import { CursoRecomendadosComponent } from './components/curso-recomendados/curso-recomendados.component';
 import { VerCursoComponent } from './pages/ver-curso/ver-curso.component';
+import { CursoPopularesComponent } from './components/curso-populares/curso-populares.component';
+import { SugerenciaPopularesComponent } from './components/sugerencia-populares/sugerencia-populares.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { VerCursoComponent } from './pages/ver-curso/ver-curso.component';
     CursoDetalleComponent,
     CursoProfesorComponent,
     CursoRecomendadosComponent,
+    CursoPopularesComponent,
+    SugerenciaPopularesComponent,
   ],
   imports: [
     CommonModule,

@@ -130,19 +130,6 @@ export class HomeComponent implements OnInit {
       this.listarCursos();
     });
   }
-  /**
-   * Función para obtener la informacion de una categoria por su id
-   * @param id Identificador de la categoria
-   */
-  obtenerCategoria(id) {
-    if (id !== undefined) {
-      /**
-       * Se realiza la busqueda de la categoria
-       */
-      const nombre = this.categorias.find((c) => c?.categoria_id === id);
-      return nombre?.categoria_nombre ? nombre?.categoria_nombre : '';
-    }
-  }
 
   /**
    * Función para listar los votos de las sugerencias

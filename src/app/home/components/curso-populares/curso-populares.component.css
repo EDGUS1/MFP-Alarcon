@@ -1,0 +1,14 @@
+/* Estilos para la imagen */
+.img {
+  height: 250px;
+}
+
+/* estilos para el id imagen */
+#imagen {
+  z-index: 1;
+}
+
+/* estilos para el contenido */
+#contenido {
+  z-index: 10;
+}

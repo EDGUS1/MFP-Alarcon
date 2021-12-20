@@ -1,0 +1,57 @@
+<div
+  class="
+    row
+    no-gutters
+    border
+    rounded
+    overflow-hidden
+    flex-md-row
+    mb-4
+    shadow-sm
+    h-md-250
+  "
+>
+  <!-- Se crea la columna de seis espacios -->
+  <div class="col-6 p-4 d-flex flex-column bg-white" id="contenido">
+    <!-- Se crea etiqueta para el nombre del curso -->
+    <h4 class="mb-0">{{ curso?.curso_nombre }}</h4>
+    <!-- Se cierra la etiqueta del nombre del curso -->
+    <!-- Se crea la etiqueta para mostrar la cateogria del curso -->
+    <div class="mb-1 text-muted">
+      {{ obtenerCategoria(curso?.categoria_id) }}
+    </div>
+    <!-- Se cierra la etiqueta de la cateogria -->
+    <!-- Se muestra la descripcion del curso -->
+    <p class="card-text mb-auto">
+      {{ curso?.descripcion }}
+    </p>
+    <!-- Se cierra la etiqueta de la descripcion -->
+    <!-- Se crea un link a la información del curso -->
+    <a routerLink="/home/curso/{{ curso?.curso_id }}">Ver curso</a>
+    <!-- Se cierra la etiqueta del link -->
+  </div>
+  <!-- Se cierra la primera columna -->
+  <!-- Se crea la segunda columna -->
+  <div class="col-6 d-flex justify-content-center" id="imagen">
+    <!-- Se crea la etiqueta de la imagen -->
+    <img
+      src="{{ curso?.imagen }}"
+      alt=""
+      class="img"
+      *ngIf="curso?.imagen != null; else noimagen"
+    />
+    <!-- Se cierra la etiqueta de la imagen -->
+    <!-- Se crea una alternativa para la imagen -->
+    <ng-template #noimagen>
+      <!-- se muestra la imagen alternativa -->
+      <img
+        class="img"
+        src="https://revistapym.com.co/wp-content/uploads/2018/10/Digital.jpg"
+        alt=""
+      />
+      <!-- Se cierra la etiqueta de la imagen por defecto -->
+    </ng-template>
+    <!-- Se cierra el template auxiliar -->
+  </div>
+  <!-- Se cierra la segunda columna -->
+</div>

@@ -4,11 +4,11 @@
 /*Importacion de las principales modulos de angular*/
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListaSugerenciaComponent } from './components/lista-sugerencia/lista-sugerencia.component';
+import { SugerenciaComponent } from './pages/sugerencia/sugerencia.component';
 
 //variable array contastante para agregar cada ruta y el componente que correnponda
 //ruta por defecto
-const routes: Routes = [{ path: '', component: ListaSugerenciaComponent }];
+const routes: Routes = [{ path: '', component: SugerenciaComponent }];
 
 /* es una función que toma un solo objeto de metadatos, cuyas propiedades describen el módulo */
 @NgModule({

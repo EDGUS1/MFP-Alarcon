@@ -1,0 +1,21 @@
+<div class="card border-info mb-3 bg-light">
+  <!-- Se crea el cuerpo de la tarjeta -->
+  <div class="card-body my-3 d-flex flex-column justify-content-between">
+    <!-- Se crea el titulo de la sugerencia -->
+    <h4 class="card-title text-center">
+      {{ sugerencia?.sugerencia_nombre_curso }}
+    </h4>
+    <!-- Se cierra la etiqueta de la sugerencia -->
+    <!-- Se crea el contenedor de la descripcion -->
+    <p class="card-text text-center">"{{ sugerencia?.descripcion }}"</p>
+    <!-- Se cierra el contenedor de la descripcion -->
+    <!-- Se crea fila para mostrar la valoración -->
+    <div class="row justify-content-center">
+      <!-- Etiqueta para mostrar la puntuacion -->
+      <em class="uil uil-star h2" *ngFor="let c of [1, 2, 3, 4, 5]"></em>
+      <!-- Se cierra la etiqueta de puntuacion -->
+    </div>
+    <!-- Se cierra la fila para la valoración -->
+  </div>
+  <!-- Se cierra la etiqueta del cuerpo de la tarjeta -->
+</div>

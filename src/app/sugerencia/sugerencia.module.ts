@@ -8,11 +8,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SugerenciaComponent } from './pages/sugerencia/sugerencia.component';
 
 /* es una función que toma un solo objeto de metadatos, cuyas propiedades describen el módulo */
 @NgModule({
   /* Los componentes, directivas y canalizaciones que pertenecen a este NgModule. */
-  declarations: [ListaSugerenciaComponent, NuevaSugerenciaComponent],
+  declarations: [ListaSugerenciaComponent, NuevaSugerenciaComponent, SugerenciaComponent],
   /* Otros módulos cuyas clases exportadas son necesarias para las plantillas de componentes declaradas en este NgModule. */
   imports: [
     CommonModule,

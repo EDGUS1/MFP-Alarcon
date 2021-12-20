@@ -74,63 +74,10 @@
       <!-- Se crea el contenedor de un curso -->
       <div class="col-md-6" *ngFor="let c of cursos">
         <!-- Se crea la tarjeta para mostrar el contenido del curso -->
-        <div
-          class="
-            row
-            no-gutters
-            border
-            rounded
-            overflow-hidden
-            flex-md-row
-            mb-4
-            shadow-sm
-            h-md-250
-          "
-        >
-          <!-- Se crea la columna de seis espacios -->
-          <div class="col-6 p-4 d-flex flex-column bg-white" id="contenido">
-            <!-- Se crea etiqueta para el nombre del curso -->
-            <h4 class="mb-0">{{ c?.curso_nombre }}</h4>
-            <!-- Se cierra la etiqueta del nombre del curso -->
-            <!-- Se crea la etiqueta para mostrar la cateogria del curso -->
-            <div class="mb-1 text-muted">
-              {{ obtenerCategoria(c?.categoria_id) }}
-            </div>
-            <!-- Se cierra la etiqueta de la cateogria -->
-            <!-- Se muestra la descripcion del curso -->
-            <p class="card-text mb-auto">
-              {{ c?.descripcion }}
-            </p>
-            <!-- Se cierra la etiqueta de la descripcion -->
-            <!-- Se crea un link a la información del curso -->
-            <a routerLink="/cursos/curso/vista/{{ c?.curso_id }}">Ver curso</a>
-            <!-- Se cierra la etiqueta del link -->
-          </div>
-          <!-- Se cierra la primera columna -->
-          <!-- Se crea la segunda columna -->
-          <div class="col-6 d-flex justify-content-center" id="imagen">
-            <!-- Se crea la etiqueta de la imagen -->
-            <img
-              src="{{ c?.imagen }}"
-              alt=""
-              class="img"
-              *ngIf="c?.imagen != null; else noimagen"
-            />
-            <!-- Se cierra la etiqueta de la imagen -->
-            <!-- Se crea una alternativa para la imagen -->
-            <ng-template #noimagen>
-              <!-- se muestra la imagen alternativa -->
-              <img
-                class="img"
-                src="https://revistapym.com.co/wp-content/uploads/2018/10/Digital.jpg"
-                alt=""
-              />
-              <!-- Se cierra la etiqueta de la imagen por defecto -->
-            </ng-template>
-            <!-- Se cierra el template auxiliar -->
-          </div>
-          <!-- Se cierra la segunda columna -->
-        </div>
+        <app-curso-populares
+          [curso]="c"
+          [categorias]="categorias"
+        ></app-curso-populares>
         <!-- se cierra la tarjeta de los cursos -->
       </div>
       <!-- Se cierra el contenedor de los cursos -->
@@ -158,27 +105,7 @@
     <!-- Se crea una colunma de doce para mostrar la información -->
     <div class="col-12 col-md-4" *ngFor="let s of sugerencias">
       <!-- Se crea una tarjeta -->
-      <div class="card border-info mb-3 bg-light">
-        <!-- Se crea el cuerpo de la tarjeta -->
-        <div class="card-body my-3 d-flex flex-column justify-content-between">
-          <!-- Se crea el titulo de la sugerencia -->
-          <h4 class="card-title text-center">
-            {{ s?.sugerencia_nombre_curso }}
-          </h4>
-          <!-- Se cierra la etiqueta de la sugerencia -->
-          <!-- Se crea el contenedor de la descripcion -->
-          <p class="card-text text-center">"{{ s?.descripcion }}"</p>
-          <!-- Se cierra el contenedor de la descripcion -->
-          <!-- Se crea fila para mostrar la valoración -->
-          <div class="row justify-content-center">
-            <!-- Etiqueta para mostrar la puntuacion -->
-            <em class="uil uil-star h2" *ngFor="let c of [1, 2, 3, 4, 5]"></em>
-            <!-- Se cierra la etiqueta de puntuacion -->
-          </div>
-          <!-- Se cierra la fila para la valoración -->
-        </div>
-        <!-- Se cierra la etiqueta del cuerpo de la tarjeta -->
-      </div>
+      <app-sugerencia-populares [sugerencia]="s"></app-sugerencia-populares>
       <!-- Se cierra el contenedor de la tarjeta -->
     </div>
     <!-- Se cierra la etiqueta de la columna -->
