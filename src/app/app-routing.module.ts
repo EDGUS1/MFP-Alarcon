@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 /*Importacion del modulo Router y sus respectivas variaciones*/
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 /*Importacion del componente hogar desde su respectiva ubicacion*/
-import { HomeComponent } from './home/components/home/home.component';
+import { HomeComponent } from './home/pages/home/home.component';
 
 /**Constante que simula las rutas de la aplicacion dentro del proyecto**/
 /*Para esto, se usan datos tipo json especificos en la composicion*/

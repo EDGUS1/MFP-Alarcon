@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 /* import { CursoPublicoComponent } from '../home/components/curso-publico/curso-publico.component'; */
 import { CursoComponent } from './pages/curso/curso.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { VerCursoComponent } from '../home/components/ver-curso/ver-curso.component';
+import { VerCursoComponent } from '../home/pages/ver-curso/ver-curso.component';
 
 //variable array contastante para agregar cada ruta y el componente que correnponda
 const routes: Routes = [
@@ -17,11 +17,6 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-  },
-  //visualizacion para visulaizar un curso en especifico
-  {
-    path: 'curso/vista/:id',
-    component: VerCursoComponent,
   },
   //visualizacion para ver los cursos
   {

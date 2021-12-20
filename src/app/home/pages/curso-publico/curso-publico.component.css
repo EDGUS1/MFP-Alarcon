@@ -1,6 +1,6 @@
-img {
+/* img {
   height: 180px;
-}
+} */
 
 .my-pagination /deep/ .ngx-pagination.responsive {
   padding: 0;

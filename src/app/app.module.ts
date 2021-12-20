@@ -19,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 /*Importacion del componente AppComponent de su respectiva ruta*/
 import { AppComponent } from './app.component';
 /*Importacion del componente Homecomponent de su respectiva ruta*/
-import { HomeComponent } from './home/components/home/home.component';
+import { HomeComponent } from './home/pages/home/home.component';
 /*Importacion del componente Footercomponent de su respectiva ruta*/
 import { FooterComponent } from './layout/components/footer/footer.component';
 /*Importacion del componente HeaderComponent de su respectiva ruta*/

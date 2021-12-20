@@ -1,0 +1,69 @@
+<div class="card mb-3 mt-5 border-primary">
+  <!-- se muestra el nombre del usuario -->
+  <h4 class="card-header">
+    {{ usuario?.usuario_nombre + " " + usuario?.usuario_apellidos }}
+  </h4>
+  <!-- Se cierra la etiqueta de la cabecera -->
+  <!-- Se crea la imagen de perfil del usuario -->
+  <img
+    src="{{ usuario?.url }}"
+    alt="mdo"
+    width="80"
+    height="80"
+    class="rounded-circle mx-auto my-3"
+    *ngIf="usuario?.url !== null && usuario?.url !== 'null'; else noimagenuser"
+  />
+  <!-- Se cierra la etiqueta del template -->
+  <ng-template #noimagenuser>
+    <!-- Se crea la imagen alternativa para la foto de perfil -->
+    <img
+      src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png"
+      alt="mdo"
+      width="80"
+      height="80"
+      class="rounded-circle mx-auto my-3"
+    />
+    <!-- Se cierra la etiqueta de la imagen -->
+  </ng-template>
+  <!-- Se cierra la etiqueta del template -->
+  <!-- Se crea una lista para mostrar la información del usuario -->
+  <ul class="list-group">
+    <!-- Se crea el primer elemento de la lista -->
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      Descripcion:
+      {{
+        usuario?.descripcion === null || usuario?.descripcion === "null"
+          ? "Sin descripción"
+          : usuario?.descripcion
+      }}
+    </li>
+    <!-- Se cierra la primera etiqueta de la lista -->
+    <!-- Segundo elemento de la lista -->
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      Numero de cursos
+      <!-- Se muestra la cantidad de cursos -->
+      <span class="badge p-2 bg-primary text-white">
+        {{ cantidadCursosPublicos }}
+      </span>
+      <!-- Se cierra la etiqueta del numero de cursos -->
+    </li>
+    <!-- Se cierra la etiqueta del segundo elemento -->
+    <!-- Se crea el tercer elemento de la lista -->
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      Numero de alumnos
+      <!-- Se muestra la cantidad de alumnos -->
+      <span class="badge p-2 bg-primary text-white">
+        {{ cantidadEstudiantes }}
+      </span>
+      <!-- Se cierra la etiqueta de la cantidad de alumnos -->
+    </li>
+    <!-- Se cierra la etiqueta del tercer elemento -->
+  </ul>
+  <!-- Se cierra la etiqueta de la lista -->
+</div>

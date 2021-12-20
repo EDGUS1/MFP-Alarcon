@@ -1,0 +1,41 @@
+<!-- Se crea un margin hacia la parte superior -->
+<div class="mt-5"></div>
+<!-- Se cierra la etiqueta de la parte superior -->
+<!-- Se crea el contenedor general del componente -->
+<div class="container mt-5">
+  <!-- Se crea la primera fila del contendor -->
+  <div class="row">
+    <!-- Se crea una columna de siete espacios -->
+    <div class="col-md-7 col-lg-8">
+      <app-curso-detalle
+        [curso]="curso"
+        [categoria]="categoria"
+        [alumnosMatriculados]="alumnosMatriculados"
+        [esProfesorCurso]="esProfesorCurso"
+        [esAlumnoCurso]="esAlumnoCurso"
+        [usuarioNoRegistrado]="usuarioNoRegistrado"
+      ></app-curso-detalle>
+    </div>
+    <!-- se cierra la etiqueta de la columna -->
+    <!-- Se crea la columna de cinco espacios -->
+    <div class="col-md-5 col-lg-4">
+      <!-- Se crea la tarjeta para mostrar la información del profesor -->
+      <app-curso-profesor
+        [usuario]="usuario"
+        [cantidadCursosPublicos]="cantidadCursosPublicos"
+        [cantidadEstudiantes]="cantidadEstudiantes"
+      ></app-curso-profesor>
+      <!-- Se cierra el contenedor de la tarjeta -->
+    </div>
+    <!-- se cierra la etiqueta de la columna -->
+    <!-- Se crea la etiqueta de una columna de doce espacios -->
+    <div class="col-12" *ngIf="cursos?.length > 0">
+      <!-- Se crea el contenedor de cursos alternativos -->
+      <app-curso-recomendados [cursos]="cursos"></app-curso-recomendados>
+      <!-- Se cierra la etiqueta del contenedor -->
+    </div>
+    <!-- Se cierra la etiqueta de la columna  de los cursos -->
+  </div>
+  <!-- Se cierra la etiqueta de la fila -->
+</div>
+<!-- Se cierra la etiqueta del contenedor general -->

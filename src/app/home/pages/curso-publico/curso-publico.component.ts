@@ -38,6 +38,7 @@ export class CursoPublicoComponent implements OnInit {
     this.cursoService.listarCursosPublicosTotal().subscribe((x) => {
       this.cursos = x['cursos'];
       this.cursosCompletos = x['cursos'];
+      console.log(this.cursos);
     });
   }
   borrarBusqueda() {
@@ -50,16 +51,16 @@ export class CursoPublicoComponent implements OnInit {
     });
   }
 
-  getNombre(id: number) {
+  /* getNombre(id: number) {
     if (id === undefined) return 'No definido';
     const nombreCategoria = this.buscarNombre(id);
     return nombreCategoria === undefined ? 'No encontrado' : nombreCategoria;
-  }
+  } */
 
-  buscarNombre(id: number) {
+  /*  buscarNombre(id: number) {
     const resultado = this.categorias.find((c) => c?.categoria_id === id);
     return resultado?.categoria_nombre;
-  }
+  } */
 
   cambiarPagina() {
     this.pageActual = 1;
