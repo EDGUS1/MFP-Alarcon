@@ -24,7 +24,7 @@ export class CursoPopularesComponent implements OnInit {
       /**
        * Se realiza la busqueda de la categoria
        */
-      const nombre = this.categorias.find((c) => c?.categoria_id === id);
+      const nombre = this.categorias?.find((c) => c?.categoria_id === id);
       return nombre?.categoria_nombre ? nombre?.categoria_nombre : '';
     }
   }

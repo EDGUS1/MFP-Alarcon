@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { CursoRecomendadosComponent } from './curso-recomendados.component';
 
@@ -8,9 +9,28 @@ describe('CursoRecomendadosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CursoRecomendadosComponent ]
-    })
-    .compileComponents();
+      declarations: [CursoRecomendadosComponent],
+      providers: [
+        {
+          provide: Router,
+          /* useClass: class {
+          navigate = jasmine.createSpy('navigate');
+        }, */
+          useClass: class {
+            navigate = jasmine.createSpy('navigate');
+            getCurrentNavigation() {
+              return {
+                extras: {
+                  state: {
+                    value: 4,
+                  },
+                },
+              };
+            }
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

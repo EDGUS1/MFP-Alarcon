@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { CursoService } from 'src/app/curso/services/curso.service';
 import { CloudBinaryService } from 'src/app/services/cloud-binary.service';
@@ -63,7 +63,7 @@ describe('ProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [],
+      imports: [ReactiveFormsModule],
       declarations: [ProfileComponent],
       providers: [
         { provide: NewUsuarioService, useClass: NewUsuarioServiceTesting },

@@ -86,7 +86,7 @@ export class ListaSugerenciaComponent implements OnInit {
     /**
      * Se filtra la búsqueda de las categorias por el identificador de la cateogoria
      */
-    const resultado = this.categorias.find((c) => c.categoria_id === id);
+    const resultado = this.categorias?.find((c) => c.categoria_id === id);
     /**
      * Se devuleve el nombre de la categoria
      */

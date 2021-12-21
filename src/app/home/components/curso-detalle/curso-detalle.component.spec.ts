@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { CursoDetalleComponent } from './curso-detalle.component';
 
@@ -8,9 +10,29 @@ describe('CursoDetalleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CursoDetalleComponent ]
-    })
-    .compileComponents();
+      declarations: [CursoDetalleComponent],
+      imports: [HttpClientModule],
+      providers: [
+        {
+          provide: Router,
+          /* useClass: class {
+          navigate = jasmine.createSpy('navigate');
+        }, */
+          useClass: class {
+            navigate = jasmine.createSpy('navigate');
+            getCurrentNavigation() {
+              return {
+                extras: {
+                  state: {
+                    value: 4,
+                  },
+                },
+              };
+            }
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

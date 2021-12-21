@@ -1,4 +1,6 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { SugerenciaComponent } from './sugerencia.component';
 
@@ -8,9 +10,9 @@ describe('SugerenciaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SugerenciaComponent ]
-    })
-    .compileComponents();
+      declarations: [SugerenciaComponent],
+      imports: [HttpClientModule, FormsModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

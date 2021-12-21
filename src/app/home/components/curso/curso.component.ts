@@ -31,7 +31,7 @@ export class CursoComponent implements OnInit {
   }
 
   buscarNombre(id: number) {
-    const resultado = this.categorias.find((c) => c?.categoria_id === id);
+    const resultado = this.categorias?.find((c) => c?.categoria_id === id);
     return resultado?.categoria_nombre;
   }
 

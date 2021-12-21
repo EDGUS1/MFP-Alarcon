@@ -6,7 +6,7 @@
  * Se importa dos modulos para poder realizar las pruebas
  */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /**
  * Se importa el modulo de rutas estaticas

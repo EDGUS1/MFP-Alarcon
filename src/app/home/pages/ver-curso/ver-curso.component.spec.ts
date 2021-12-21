@@ -149,8 +149,20 @@ describe('VerCursoComponent', () => {
         { provide: ActivatedRoute, useValue: fakeActivatedRoute },
         {
           provide: Router,
+          /* useClass: class {
+            navigate = jasmine.createSpy('navigate');
+          }, */
           useClass: class {
             navigate = jasmine.createSpy('navigate');
+            getCurrentNavigation() {
+              return {
+                extras: {
+                  state: {
+                    value: 4,
+                  },
+                },
+              };
+            }
           },
         },
         { provide: CursoService, useClass: CursoServiceTesting },
