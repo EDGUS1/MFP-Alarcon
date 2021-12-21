@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'curso/:id',
     component: VerCursoComponent,
   },
+  {
+    path: 'ver-curso',
+    component: VerCursoComponent,
+  },
 ];
 
 /* es una función que toma un solo objeto de metadatos, cuyas propiedades describen el módulo */

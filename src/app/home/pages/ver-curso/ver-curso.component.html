@@ -31,7 +31,10 @@
     <!-- Se crea la etiqueta de una columna de doce espacios -->
     <div class="col-12" *ngIf="cursos?.length > 0">
       <!-- Se crea el contenedor de cursos alternativos -->
-      <app-curso-recomendados [cursos]="cursos"></app-curso-recomendados>
+      <app-curso-recomendados
+        [cursos]="cursos"
+        (idCursoEvent)="listarCurso($event)"
+      ></app-curso-recomendados>
       <!-- Se cierra la etiqueta del contenedor -->
     </div>
     <!-- Se cierra la etiqueta de la columna  de los cursos -->

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { Categoria } from 'src/app/curso/models/categoria';
 import { Curso } from 'src/app/curso/models/curso';
 
@@ -10,10 +11,17 @@ import { Curso } from 'src/app/curso/models/curso';
 export class CursoComponent implements OnInit {
   @Input() curso: Curso;
   @Input() categorias: any[];
-  constructor() {}
+
+  navigationExtras: NavigationExtras = {
+    state: {
+      value: null,
+    },
+  };
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.categorias);
+    // console.log(this.categorias);
   }
 
   getNombre(id: number) {
@@ -25,5 +33,10 @@ export class CursoComponent implements OnInit {
   buscarNombre(id: number) {
     const resultado = this.categorias.find((c) => c?.categoria_id === id);
     return resultado?.categoria_nombre;
+  }
+
+  abrirCurso() {
+    this.navigationExtras.state.value = this.curso.curso_id;
+    this.router.navigate(['/home/ver-curso'], this.navigationExtras);
   }
 }

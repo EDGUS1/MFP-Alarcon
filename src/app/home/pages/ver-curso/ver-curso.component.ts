@@ -89,6 +89,7 @@ export class VerCursoComponent implements OnInit {
    * variable para los alumnos de un curso
    */
   alumnosMatriculados: number;
+  id_Curso: number;
 
   /**
    * Contructor del componente ver curso
@@ -104,7 +105,24 @@ export class VerCursoComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private categoriaService: CategoriaService
-  ) {}
+  ) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation.extras.state) {
+      this.id_Curso = navigation.extras.state.value;
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
+  obtenerIdCurso() {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation.extras.state) {
+      if (this.id_Curso != navigation.extras.state.value) {
+        this.id_Curso = navigation.extras.state.value;
+      }
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
 
   /**
    * Función que se incializa al crear el componente
@@ -113,10 +131,11 @@ export class VerCursoComponent implements OnInit {
     /**
      * identificador del curso
      */
-    let id = +this.route?.snapshot?.paramMap?.get('id');
+    //let id = +this.route?.snapshot?.paramMap?.get('id');
     /**
      * se inicia un array con cero elementos
      */
+
     this.cursos = [];
     /**
      * Se incia la variable profesor como false
@@ -125,7 +144,7 @@ export class VerCursoComponent implements OnInit {
     /**
      * Se llama a la funcion para obtener la información del curso
      */
-    this.listarCurso(id);
+    this.listarCurso(this.id_Curso);
     /**
      * Se valida que el usuario este registrado
      */

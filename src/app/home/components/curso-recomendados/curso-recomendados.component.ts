@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { Curso } from 'src/app/curso/models/curso';
 
 @Component({
@@ -10,6 +10,13 @@ import { Curso } from 'src/app/curso/models/curso';
 export class CursoRecomendadosComponent implements OnInit {
   @Input() cursos: Curso[];
 
+  @Output() idCursoEvent = new EventEmitter<number>();
+
+  /* navigationExtras: NavigationExtras = {
+    state: {
+      value: null,
+    },
+  }; */
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
@@ -19,8 +26,8 @@ export class CursoRecomendadosComponent implements OnInit {
    * @param id Identificador del curso
    */
   verCurso(id: number) {
-    console.log(id);
-
-    this.router.navigate([`/home/curso/${id}`]);
+    /* this.navigationExtras.state.value = id;
+    this.router.navigate([`/home/ver-curso`], this.navigationExtras); */
+    this.idCursoEvent.emit(id);
   }
 }
