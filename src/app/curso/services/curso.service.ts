@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -39,9 +39,7 @@ export class CursoService {
    * @returns Datos del curso
    */
   obtenerCurso(id: number): Observable<any> {
-    return this.http
-      .get(`${this.urlApi}courses/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get(`${this.urlApi}courses/${id}`);
   }
 
   /**
@@ -50,9 +48,7 @@ export class CursoService {
    * @returns Listado de usarios que pertenecen al curso
    */
   listarUsuariosPorCurso(id: number): Observable<any> {
-    return this.http
-      .get(`${this.urlApi}course-user/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get(`${this.urlApi}course-user/${id}`);
   }
 
   /**
@@ -61,9 +57,7 @@ export class CursoService {
    * @returns Listado de cursos por usuario
    */
   listarCursosPorUsuario(id: number): Observable<any> {
-    return this.http
-      .get(`${this.urlApi}cursos/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get(`${this.urlApi}cursos/${id}`);
   }
 
   /**
@@ -72,9 +66,7 @@ export class CursoService {
    * @returns Listado de cursos por usuario
    */
   listarCursosPorUsuario2(id: number): Observable<any> {
-    return this.http
-      .get(`${this.urlApi}coursesofuser/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get(`${this.urlApi}coursesofuser/${id}`);
   }
 
   /**
@@ -84,9 +76,10 @@ export class CursoService {
    * @returns Mensaje de confirmación
    */
   agrearUsuarioCurso(idCurso: number, correo: string): Observable<any> {
-    return this.http
-      .post(`${this.urlApi}coursesUsers`, { curso_id: idCurso, correo })
-      .pipe(catchError(this.handleError));
+    return this.http.post(`${this.urlApi}coursesUsers`, {
+      curso_id: idCurso,
+      correo,
+    });
   }
 
   /**
@@ -95,9 +88,7 @@ export class CursoService {
    * @returns Listado de cursos publicos de un usuario
    */
   listarCursosPublicosPorUsuario(id: number): Observable<any> {
-    return this.http
-      .get(`${this.urlApi}coursespublic/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get(`${this.urlApi}coursespublic/${id}`);
   }
 
   /**
@@ -107,9 +98,10 @@ export class CursoService {
    * @returns Mensaje de confirmación
    */
   solicitarAcceso(curso_id, usuario_id): Observable<any> {
-    return this.http
-      .post(`${this.urlApi}solicitarCursoPrivado`, { curso_id, usuario_id })
-      .pipe(catchError(this.handleError));
+    return this.http.post(`${this.urlApi}solicitarCursoPrivado`, {
+      curso_id,
+      usuario_id,
+    });
   }
 
   /**
@@ -119,15 +111,13 @@ export class CursoService {
    * @returns Mensajde de confirmación
    */
   editarCurso(idCurso: number, curso: Curso) {
-    return this.http
-      .post(`${this.urlApi}coursesEdit/${idCurso}`, curso)
-      .pipe(catchError(this.handleError));
+    return this.http.post(`${this.urlApi}coursesEdit/${idCurso}`, curso);
   }
 
   unirCursoPublico(idCurso: number, idUser: number) {
-    return this.http
-      .post(`${this.urlApi}join-public-course/${idCurso}`, { idUser })
-      .pipe(catchError(this.handleError));
+    return this.http.post(`${this.urlApi}join-public-course/${idCurso}`, {
+      idUser,
+    });
   }
 
   /**
@@ -136,26 +126,13 @@ export class CursoService {
    * @returns Mensaje de de confirmación
    */
   unirPorCodigo(codigo: Codigo) {
-    return this.http
-      .post(`${this.urlApi}unirPorCodigo`, codigo)
-      .pipe(catchError(this.handleError));
+    return this.http.post(`${this.urlApi}unirPorCodigo`, codigo);
   }
 
   eliminarUsuarioCurso(curso_id: number, usuario_id: number) {
-    return this.http
-      .post(`${this.urlApi}deletecoursesUsers`, { curso_id, usuario_id })
-      .pipe(catchError(this.handleError));
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.log('Client error', error.error.message);
-    } else {
-      // Error en el lado del servidor
-      console.log('Error Status:', error.status);
-      console.log('Error:', error.error);
-    }
-    //catch and rethrow
-    return throwError('Cannot perform the request, please try again later');
+    return this.http.post(`${this.urlApi}deletecoursesUsers`, {
+      curso_id,
+      usuario_id,
+    });
   }
 }

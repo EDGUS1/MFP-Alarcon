@@ -5,7 +5,7 @@
 /*Importacion de modulos comunes de la biblioteca comun de angular*/
 import { CommonModule } from '@angular/common';
 /*Importacion de modulos http de la biblioteca comun de angular*/
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 /*Importacion de el modulo principal de angular de la biblioteca de modulos de angular*/
 import { NgModule } from '@angular/core';
 /*Importacion del modulo de buscador de la biblioteca de plataforma de buscadores de angular*/
@@ -28,6 +28,7 @@ import { HeaderComponent } from './layout/components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 /*Importacion del componente de formularios de la biblioteca de formularios de angular*/
 import { FormsModule } from '@angular/forms';
+import { ErrorService } from './core/interceptors/error.service';
 
 /*Modulo principal del componente basado en angular*/
 @NgModule({
@@ -44,7 +45,13 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
   /*Array de proovedores vacio*/
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorService,
+      multi: true,
+    },
+  ],
   /*Elemento del bootstrap definido en una funcion correspondiente a su importacion*/
   bootstrap: [AppComponent],
 })
