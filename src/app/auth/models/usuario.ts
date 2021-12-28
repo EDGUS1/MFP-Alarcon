@@ -1,30 +1,29 @@
 /**
-     * Modelo usuario
-     */
+ * Modelo usuario
+ */
 export class Usuario {
-   
   /**
-     * Se exporto usuario_nombre
-     */
+   * Se exporto usuario_nombre
+   */
   usuario_nombre: string;
 
-   /**
-     * Se exporto usuario_apellidos
-     */
+  /**
+   * Se exporto usuario_apellidos
+   */
   usuario_apellidos: string;
 
-   /**
-     * Se exporto correo
-     */
+  /**
+   * Se exporto correo
+   */
   correo: string;
 
-   /**
-     * Se exporto password
-     */
+  /**
+   * Se exporto password
+   */
   password: string;
 
-   /**
-     * Se exporto url
-     */
+  /**
+   * Se exporto url
+   */
   url: string;
 }

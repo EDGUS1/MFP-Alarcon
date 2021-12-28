@@ -1,31 +1,31 @@
- /**
-     * se importo NgModule
-     */
+/**
+ * se importo NgModule
+ */
 import { NgModule } from '@angular/core';
 
 /**
-     * se importo RouterModule y Routes
-     */
+ * se importo RouterModule y Routes
+ */
 import { RouterModule, Routes } from '@angular/router';
 
 /**
-     * se importo LoginComponent
-     */
+ * se importo LoginComponent
+ */
 import { LoginComponent } from './components/login/login.component';
 
 /**
-     * se importo ProfileComponent
-     */
+ * se importo ProfileComponent
+ */
 import { ProfileComponent } from './components/profile/profile.component';
 
 /**
-     * se importo RegisterComponent
-     */
+ * se importo RegisterComponent
+ */
 import { RegisterComponent } from './components/register/register.component';
 
- /**
-     * se establecio las rutas
-     */
+/**
+ * se establecio las rutas
+ */
 const routes: Routes = [
   { path: '', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
@@ -34,14 +34,14 @@ const routes: Routes = [
 ];
 
 /**
-     * se importo y exporto
-     */
+ * se importo y exporto
+ */
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 
 /**
-     * Exportando
-     */
+ * Exportando
+ */
 export class AuthRoutingModule {}

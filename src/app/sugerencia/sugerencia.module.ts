@@ -13,7 +13,11 @@ import { SugerenciaComponent } from './pages/sugerencia/sugerencia.component';
 /* es una función que toma un solo objeto de metadatos, cuyas propiedades describen el módulo */
 @NgModule({
   /* Los componentes, directivas y canalizaciones que pertenecen a este NgModule. */
-  declarations: [ListaSugerenciaComponent, NuevaSugerenciaComponent, SugerenciaComponent],
+  declarations: [
+    ListaSugerenciaComponent,
+    NuevaSugerenciaComponent,
+    SugerenciaComponent,
+  ],
   /* Otros módulos cuyas clases exportadas son necesarias para las plantillas de componentes declaradas en este NgModule. */
   imports: [
     CommonModule,

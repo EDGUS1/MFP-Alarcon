@@ -8,7 +8,7 @@ describe('CloudBinaryService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientModule]
+      imports: [HttpClientModule],
     });
     service = TestBed.inject(CloudBinaryService);
   });

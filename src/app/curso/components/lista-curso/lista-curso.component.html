@@ -41,11 +41,18 @@
           class="card-header d-flex justify-content-between align-items-center"
         >
           <!-- Titulo de la carta -->
-          <h5 class="align-items-center">{{ c?.curso_nombre }} 
-            <br>
-            <small *ngIf="c?.privacidad_id==1" class="align-items-center">Privacidad: Publico </small>
-            <small *ngIf="c?.privacidad_id==2" class="align-items-center">Privacidad: Privado </small>
-            <small *ngIf="c?.privacidad_id==5" class="align-items-center">Privacidad: Invitacion </small>
+          <h5 class="align-items-center">
+            {{ c?.curso_nombre }}
+            <br />
+            <small *ngIf="c?.privacidad_id == 1" class="align-items-center"
+              >Privacidad: Publico
+            </small>
+            <small *ngIf="c?.privacidad_id == 2" class="align-items-center"
+              >Privacidad: Privado
+            </small>
+            <small *ngIf="c?.privacidad_id == 5" class="align-items-center"
+              >Privacidad: Invitacion
+            </small>
           </h5>
           <!-- Menu de la carta -->
           <ul class="navbar-nav ml-auto">

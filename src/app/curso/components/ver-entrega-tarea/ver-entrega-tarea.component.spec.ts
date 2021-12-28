@@ -1,7 +1,6 @@
 /**
  * Se importa las librerias para realizar las pruebas
  */
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 /**

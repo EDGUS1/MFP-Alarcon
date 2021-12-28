@@ -5,7 +5,6 @@ import { CursoRoutingModule } from './curso-routing.module';
 import { AgregarUsuarioComponent } from './components/agregar-usuario/agregar-usuario.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VerCursoComponent } from '../home/pages/ver-curso/ver-curso.component';
 import { CursoComponent } from './pages/curso/curso.component';
 import { TareaCursoComponent } from './components/tarea-curso/tarea-curso.component';
 import { NgxPaginationModule } from 'ngx-pagination';

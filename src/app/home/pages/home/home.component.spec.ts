@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Categoria } from 'src/app/curso/models/categoria';
 import { Sugerencia } from 'src/app/sugerencia/models/sugerencia';
 
 import { HomeComponent } from './home.component';

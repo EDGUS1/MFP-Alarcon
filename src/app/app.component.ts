@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
   /* Direccion del modelo HTML del componente */
   templateUrl: './app.component.html',
   /* Direccion de los estilos CSS del componente */
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 /* Se exporta la clase como AppComponent */
 export class AppComponent {
