@@ -234,7 +234,6 @@ export class ProfileComponent implements OnInit {
         sessionStorage.setItem('correo', rep['user1'][0]['correo']);
         sessionStorage.setItem('url', rep['user1'][0]['url']);
         sessionStorage.setItem('descripcion', rep['user1'][0]['descripcion']);
-        /* console.log(rep); */
       });
       this.cambio = false;
     }

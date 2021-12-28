@@ -57,9 +57,7 @@ export class ListaCursoComponent implements OnInit {
       confirmButtonColor: '#18bc9c',
       preConfirm: (login) => {
         this.codigo.codigo = login;
-        this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {
-          /* console.log('M'); */
-        });
+        this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {});
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
@@ -82,7 +80,6 @@ export class ListaCursoComponent implements OnInit {
   listarCursos(id: number) {
     this.cursoService.listarCursosPorUsuario(id).subscribe((x) => {
       this.cursos = x['list'];
-      /* console.log(this.cursos); */
 
       this.listarCursos2(id);
     });

@@ -101,7 +101,6 @@ describe('SugerenciaService', () => {
       };
 
       service.listarSugerencias().subscribe((x) => {
-        /* console.log(x['cursos'].length); */
         expect(x['list'].length).toBe(4);
         expect(x).toEqual(dummyCourses);
       });

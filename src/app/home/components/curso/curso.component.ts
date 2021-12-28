@@ -20,9 +20,7 @@ export class CursoComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    // console.log(this.categorias);
-  }
+  ngOnInit(): void {}
 
   getNombre(id: number) {
     if (id === undefined) return 'No definido';

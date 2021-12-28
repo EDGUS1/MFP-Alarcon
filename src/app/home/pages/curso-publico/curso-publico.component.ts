@@ -38,7 +38,6 @@ export class CursoPublicoComponent implements OnInit {
     this.cursoService.listarCursosPublicosTotal().subscribe((x) => {
       this.cursos = x['cursos'];
       this.cursosCompletos = x['cursos'];
-      // console.log(this.cursos);
     });
   }
   borrarBusqueda() {
