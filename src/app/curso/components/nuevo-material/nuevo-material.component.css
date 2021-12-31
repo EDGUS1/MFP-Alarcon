@@ -1,9 +1,4 @@
 /*
 *   Ingresar estilos 
 */
-.modal-body::-webkit-scrollbar {
-  width: 7px;
-}
-.modal-body::-webkit-scrollbar-thumb {
-  background: #2c3e50;
-}
+
