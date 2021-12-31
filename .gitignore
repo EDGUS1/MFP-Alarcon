@@ -51,3 +51,7 @@ sonar-project.properties
 
 server.js
 filter.pipe.ts
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

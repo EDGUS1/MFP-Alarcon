@@ -29,7 +29,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 /*Importacion del componente de formularios de la biblioteca de formularios de angular*/
 import { FormsModule } from '@angular/forms';
 import { ErrorService } from './core/interceptors/error.service';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 
+import firebase from 'firebase/compat/app';
+
+firebase.initializeApp(environment.firebase);
 /*Modulo principal del componente basado en angular*/
 @NgModule({
   /*Declaraciones del componente que coloca en un array a los componentes importados*/
@@ -43,6 +49,8 @@ import { ErrorService } from './core/interceptors/error.service';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
   ],
   /*Array de proovedores vacio*/
   providers: [

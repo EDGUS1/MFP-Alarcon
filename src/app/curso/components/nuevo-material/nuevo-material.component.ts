@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FileStoreService } from 'src/app/services/file-store.service';
 import Swal from 'sweetalert2';
 import { Tarea } from '../../models/tarea';
 import { NuevoMaterialService } from '../../services/nuevo-material.service';
@@ -23,7 +24,8 @@ export class NuevoMaterialComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     public materialService: NuevoMaterialService,
-    private tareaService: TareaService
+    private tareaService: TareaService,
+    private fileService: FileStoreService
   ) {}
 
   ngOnInit(): void {
@@ -66,11 +68,21 @@ export class NuevoMaterialComponent implements OnInit {
    * @param event Evento que se emite al subir un archivo
    */
   subirArvhivos(event) {
-    if (this.archivos.length >= 5) {
-      this.maxFiles = true;
-    } else {
-      this.archivos.push(event.target.files[0]);
-    }
+    // if (this.archivos.length >= 5) {
+    //   this.maxFiles = true;
+    // } else {
+    //   this.archivos.push(event.target.files[0]);
+    // }
+    let archivos = event.target.files;
+    let reader = new FileReader();
+
+    reader.readAsDataURL(archivos[0]);
+    reader.onloadend = () => {
+      this.archivos.push(reader.result);
+      this.fileService
+        .subirImagen(archivos[0].name, reader.result)
+        .then((url) => console.log(url));
+    };
   }
 
   /**
