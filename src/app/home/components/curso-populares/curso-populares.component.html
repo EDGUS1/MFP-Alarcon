@@ -18,7 +18,7 @@
     <!-- Se cierra la etiqueta del nombre del curso -->
     <!-- Se crea la etiqueta para mostrar la cateogria del curso -->
     <div class="mb-1 text-muted">
-      {{ obtenerCategoria(curso?.categoria_id) }}
+      {{ curso | obtenerCategoria: categorias }}
     </div>
     <!-- Se cierra la etiqueta de la cateogria -->
     <!-- Se muestra la descripcion del curso -->
