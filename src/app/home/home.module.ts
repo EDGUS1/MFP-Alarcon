@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CursoPublicoComponent } from './pages/curso-publico/curso-publico.component';
-import { HomeComponent } from './pages/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -17,14 +16,11 @@ import { SugerenciaPopularesComponent } from './components/sugerencia-populares/
 @NgModule({
   declarations: [
     CursoPublicoComponent,
-    HomeComponent,
     CursoComponent,
     VerCursoComponent,
     CursoDetalleComponent,
     CursoProfesorComponent,
     CursoRecomendadosComponent,
-    CursoPopularesComponent,
-    SugerenciaPopularesComponent,
   ],
   imports: [
     CommonModule,
