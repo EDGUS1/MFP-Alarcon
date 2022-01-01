@@ -75,7 +75,7 @@
               width="32"
               height="32"
               class="rounded-circle"
-              *ngIf="imagen !== 'null'; else noimagen"
+              *ngIf="imagen != 'undefined'; else noimagen"
             />
             <!-- Se cierra la etiqueta de la imagen -->
             <!-- alternativa para la imagen del usuario -->

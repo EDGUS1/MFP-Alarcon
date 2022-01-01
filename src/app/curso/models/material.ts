@@ -4,7 +4,7 @@ export class Material {
   //clave primaria unica por curso
   curso_id: number;
   //nombre del curso
-  nombre: string;
+  material_nombre: string;
   //descripcion del curso
-  descripcion: string;
+  material_descripcion: string;
 }

@@ -1,17 +1,22 @@
 <div class="card mb-3 mt-5 border-primary">
   <!-- se muestra el nombre del usuario -->
   <h4 class="card-header">
-    {{ usuario?.usuario_nombre + " " + usuario?.usuario_apellidos }}
+    {{ usuario?.usuario_nombre + " " + usuario?.usuario_apellido_paterno }}
   </h4>
   <!-- Se cierra la etiqueta de la cabecera -->
   <!-- Se crea la imagen de perfil del usuario -->
   <img
-    src="{{ usuario?.url }}"
+    src="{{ usuario?.usuario_imagen }}"
     alt="mdo"
     width="80"
     height="80"
     class="rounded-circle mx-auto my-3"
-    *ngIf="usuario?.url !== null && usuario?.url !== 'null'; else noimagenuser"
+    *ngIf="
+      usuario != undefined &&
+        usuario?.usuario_imagen !== null &&
+        usuario?.usuario_imagen !== 'null';
+      else noimagenuser
+    "
   />
   <!-- Se cierra la etiqueta del template -->
   <ng-template #noimagenuser>
@@ -34,9 +39,10 @@
     >
       Descripcion:
       {{
-        usuario?.descripcion === null || usuario?.descripcion === "null"
+        usuario?.usuario_descripcion === null ||
+        usuario?.usuario_descripcion === "null"
           ? "Sin descripción"
-          : usuario?.descripcion
+          : usuario?.usuario_descripcion
       }}
     </li>
     <!-- Se cierra la primera etiqueta de la lista -->

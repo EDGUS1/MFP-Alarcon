@@ -28,7 +28,7 @@
       <div class="col-12 col-md-8 d-flex flex-column justify-content-between">
         <!-- Se crea la descripción del curso -->
         <p class="card-text">
-          {{ curso?.descripcion }}
+          {{ curso?.curso_descripcion }}
         </p>
         <!-- Se cierra la etiqueta de la descripción -->
         <!-- Se muestra la cantidad de alumnos -->
@@ -75,7 +75,7 @@
           src="{{ curso?.imagen }}"
           alt=""
           class="w-100"
-          *ngIf="curso?.imagen != null; else noimagen"
+          *ngIf="curso?.curso_imagen != null; else noimagen"
         />
         <!-- Se cierra la etiqueta de la imagen -->
         <!-- Se crea el template de la imagen -->

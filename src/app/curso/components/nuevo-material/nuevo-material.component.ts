@@ -106,8 +106,8 @@ export class NuevoMaterialComponent implements OnInit {
   cargarDatosTarea(tarea: Tarea) {
     this.objeto.tarea_id = tarea?.tarea_id;
     this.objeto.curso_id = tarea?.curso_id;
-    this.objeto.nombre = tarea?.nombre;
-    this.objeto.descripcion = tarea?.descripcion;
+    this.objeto.tarea_nombre = tarea?.tarea_nombre;
+    this.objeto.tarea_descripcion = tarea?.tarea_descripcion;
     this.objeto.tarea_fecha_entrega = tarea?.tarea_fecha_entrega;
   }
 

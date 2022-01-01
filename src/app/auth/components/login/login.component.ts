@@ -9,10 +9,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/curso/models/usuario';
 import { AuthenticationService } from '../../services/authentication.service';
 import Swal from 'sweetalert2';
 import { NavbarService } from 'src/app/services/navbar.service';
+import { Usuario } from '../../models/usuario';
 
 /* Elementos del coponente para definir sus rutas especificas de valores */
 @Component({
@@ -106,8 +106,8 @@ export class LoginComponent implements OnInit {
   validarValores() {
     if (this.signForm.valid) {
       const usuario: Usuario = new Usuario();
-      usuario.correo = this.signForm.get('correo').value;
-      usuario.password = this.signForm.get('password').value;
+      usuario.usuario_correo = this.signForm.get('correo').value;
+      usuario.usuario_contrasenia = this.signForm.get('password').value;
       this.login(usuario);
     } else {
       this.validateAllFormFields(this.signForm);

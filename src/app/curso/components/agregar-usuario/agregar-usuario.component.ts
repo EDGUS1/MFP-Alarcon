@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
 /**
  * Se importa la clase de Usuario
  */
-import { Usuario } from '../../models/usuario';
 
 /**
  * Se importa el modulo de las alertas
@@ -27,6 +26,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  * Se importa el servicio de generación de excel
  */
 import { ExcelService } from '../../services/excel.service';
+import { Usuario } from 'src/app/auth/models/usuario';
 
 /**
  * Se colocan las referencias de los archivos del modulo
@@ -113,17 +113,16 @@ export class AgregarUsuarioComponent implements OnInit {
     /**
      * Se llama al servicio la obtener los usuarios
      */
-    this.cursoService.listarUsuariosPorCurso(id).subscribe((x) => {
-      /**
-       * Se almacena la respuesta en los usuarios
-       */
-      this.usuarios = x['data'][0];
-
-      /**
-       * Se almacena la información del total de alumnos del curso
-       */
-      this.totalAlumnos = x['data'][0].length;
-    });
+    // this.cursoService.listarUsuariosPorCurso(id).subscribe((x) => {
+    //   /**
+    //    * Se almacena la respuesta en los usuarios
+    //    */
+    //   this.usuarios = x['data'][0];
+    //   /**
+    //    * Se almacena la información del total de alumnos del curso
+    //    */
+    //   this.totalAlumnos = x['data'][0].length;
+    // });
   }
 
   /**
@@ -212,7 +211,8 @@ export class AgregarUsuarioComponent implements OnInit {
    */
   validarUsuarioAgregado(correoIngresado: string) {
     return (
-      this.usuarios.find((u) => u?.correo === correoIngresado) !== undefined
+      this.usuarios.find((u) => u?.usuario_correo === correoIngresado) !==
+      undefined
     );
   }
 
@@ -222,28 +222,27 @@ export class AgregarUsuarioComponent implements OnInit {
    * @param correoIngresado correo del usuario que se desea agregar
    */
   agregarUsuario(id_curso: number, correoIngresado: string) {
-    this.cursoService
-      .agrearUsuarioCurso(id_curso, correoIngresado)
-      .subscribe((x) => {
-        /**
-         * Se muestra mensaje de exito al agregar un usuario
-         */
-        Swal.fire({
-          icon: 'success',
-          title: 'Se ha enviado la invitación',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        /**
-         * Se llama a la función para listar a los usuarios del curso
-         */
-        this.listarUsuarios(this.cursoId);
-
-        /**
-         * Se reinicia el formulario
-         */
-        this.agregarForm.reset();
-      });
+    // this.cursoService
+    //   .agrearUsuarioCurso(id_curso, correoIngresado)
+    //   .subscribe((x) => {
+    //     /**
+    //      * Se muestra mensaje de exito al agregar un usuario
+    //      */
+    //     Swal.fire({
+    //       icon: 'success',
+    //       title: 'Se ha enviado la invitación',
+    //       showConfirmButton: false,
+    //       timer: 1500,
+    //     });
+    //     /**
+    //      * Se llama a la función para listar a los usuarios del curso
+    //      */
+    //     this.listarUsuarios(this.cursoId);
+    //     /**
+    //      * Se reinicia el formulario
+    //      */
+    //     this.agregarForm.reset();
+    //   });
   }
 
   /**
@@ -297,40 +296,38 @@ export class AgregarUsuarioComponent implements OnInit {
    * Función para descargar la lista de alumnos inscritos en un archivo excel
    */
   descargarUsuarios(id: number) {
-    this.cursoService.listarUsuariosPorCurso(id).subscribe((x) => {
-      /**
-       * Se valida que la lista de usuarios no este vacia
-       */
-      if (x['data'][0]?.length > 0) {
-        /**
-         * Se llama al servicio para generar el excel
-         */
-        this.excelService.exportAsExcelFile(x.data[0], 'ListaCurso');
-
-        /**
-         * Se crea el objeto para mostrar la alerta
-         */
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer);
-            toast.addEventListener('mouseleave', Swal.resumeTimer);
-          },
-        });
-
-        /**
-         * Se muestra mensaje de éxito al descargar
-         */
-        Toast.fire({
-          icon: 'success',
-          title: 'Descargando...',
-        });
-      }
-    });
+    // this.cursoService.listarUsuariosPorCurso(id).subscribe((x) => {
+    //   /**
+    //    * Se valida que la lista de usuarios no este vacia
+    //    */
+    //   if (x['data'][0]?.length > 0) {
+    //     /**
+    //      * Se llama al servicio para generar el excel
+    //      */
+    //     this.excelService.exportAsExcelFile(x.data[0], 'ListaCurso');
+    //     /**
+    //      * Se crea el objeto para mostrar la alerta
+    //      */
+    //     const Toast = Swal.mixin({
+    //       toast: true,
+    //       position: 'top-end',
+    //       showConfirmButton: false,
+    //       timer: 1000,
+    //       timerProgressBar: true,
+    //       didOpen: (toast) => {
+    //         toast.addEventListener('mouseenter', Swal.stopTimer);
+    //         toast.addEventListener('mouseleave', Swal.resumeTimer);
+    //       },
+    //     });
+    //     /**
+    //      * Se muestra mensaje de éxito al descargar
+    //      */
+    //     Toast.fire({
+    //       icon: 'success',
+    //       title: 'Descargando...',
+    //     });
+    //   }
+    // });
   }
 
   /**

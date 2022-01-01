@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/curso/models/usuario';
+import { Usuario } from 'src/app/auth/models/usuario';
 
 @Component({
   selector: 'app-curso-profesor',

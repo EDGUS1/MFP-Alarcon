@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
  * Se importa las librerias para las rutas
  */
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from 'src/app/auth/models/usuario';
 /**
  * Se importa las constantes del curso
  */
@@ -23,7 +24,7 @@ import { Curso } from '../../../curso/models/curso';
 /**
  * Se importa le modelo del usuario
  */
-import { Usuario } from '../../../curso/models/usuario';
+// import { Usuario } from '../../../curso/models/usuario';
 /**
  * Se importa el servicio para las categorias
  */
@@ -203,6 +204,8 @@ export class VerCursoComponent implements OnInit {
       /**
        * Se almacena la información del usuario
        */
+      console.log(x);
+
       this.usuario = x['user'][0];
       /**
        * Se almacena la cantidad de cursos

@@ -4,7 +4,7 @@ export class Categoria {
   //nombre de la categoria
   categoria_nombre: string;
   //estado de la categoria
-  categoria_estado: string;
-  //fecha de la creacion de la categoria
-  categoria_fecha_creacion: Date;
+  // categoria_estado: string;
+  // //fecha de la creacion de la categoria
+  // categoria_fecha_creacion: Date;
 }

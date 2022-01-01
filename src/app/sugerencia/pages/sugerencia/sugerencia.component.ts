@@ -83,8 +83,8 @@ export class SugerenciaComponent implements OnInit {
       {
         categoria_id: 0,
         categoria_nombre: 'Todas las categorias',
-        categoria_estado: null,
-        categoria_fecha_creacion: null,
+        // categoria_fecha_creacion: null,
+        // categoria_estado: null,
       },
     ];
     this.previousLabel = 'Anterior';

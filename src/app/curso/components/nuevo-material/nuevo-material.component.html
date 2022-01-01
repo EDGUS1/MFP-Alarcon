@@ -25,7 +25,7 @@ datos de una tarea-->
           Nombre {{ tarea ? "de la tarea" : "del material" }}
         </label>
         <input
-          [(ngModel)]="objeto.nombre"
+          [(ngModel)]="objeto.tarea_nombre"
           type="text"
           class="form-control"
           name=""
@@ -36,7 +36,7 @@ datos de una tarea-->
       <div class="col-12 my-2">
         <label for="">Descripcion</label>
         <textarea
-          [(ngModel)]="objeto.descripcion"
+          [(ngModel)]="objeto.tarea_descripcion"
           class="form-control"
           id=""
           rows="4"

@@ -48,9 +48,9 @@ export class NuevaSugerenciaComponent implements OnInit {
     if (this.sugerenciaForm.valid) {
       const sugerencia: Sugerencia = new Sugerencia();
       sugerencia.categoria_id = this.sugerenciaForm.get('categoria').value;
-      sugerencia.sugerencia_nombre_curso =
-        this.sugerenciaForm.get('nombre').value;
-      sugerencia.descripcion = this.sugerenciaForm.get('descripcion').value;
+      sugerencia.sugerencia_nombre = this.sugerenciaForm.get('nombre').value;
+      sugerencia.sugerencia_descripcion =
+        this.sugerenciaForm.get('descripcion').value;
 
       this.sugerenciasService.crearSugerencia(sugerencia).subscribe((resp) => {
         Swal.fire({

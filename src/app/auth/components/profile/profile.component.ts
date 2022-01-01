@@ -69,7 +69,7 @@ export class ProfileComponent implements OnInit {
   necesarias en fin de obtener los datos */
   constructor(
     /*Parametro publico sobre el servicio de la nube importado*/
-    public cloudBinaryService: CloudBinaryService,
+    // public cloudBinaryService: CloudBinaryService,
     /*Parametro publico sobre el servicio del nuevo usuario importado*/
     public newUsuarioService: NewUsuarioService,
     /*Parametro publico sobre el servicio del curso importado*/
@@ -202,11 +202,11 @@ export class ProfileComponent implements OnInit {
   modificarImagen(event) {
     /*Se obtiene la url de la imagen en cuestion al cambiar la imagen y se guarda en la base de datos
     usando el servicio importado de la nube*/
-    this.cloudBinaryService
-      .sendPhoto(event.target.files[0])
-      .subscribe((rep) => {
-        this.objeto.url = rep['url'];
-      });
+    // this.cloudBinaryService
+    //   .sendPhoto(event.target.files[0])
+    //   .subscribe((rep) => {
+    //     this.objeto.url = rep['url'];
+    //   });
   }
   /* Metodo para enviar los datos y cambiar los datos de perfil */
   enviarDatos(evento) {

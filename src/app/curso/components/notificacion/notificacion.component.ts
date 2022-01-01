@@ -33,19 +33,19 @@ export class NotificacionComponent implements OnInit {
    * Función para listar las solicitud de acceso
    */
   listarNotificacionesAcceso() {
-    this.notificacionService
-      .listarCursosSolicitudAcceso(this.idUsuario)
-      .subscribe((x) => {
-        this.solicutdAcceso = x[0];
-      });
+    // this.notificacionService
+    //   .listarCursosSolicitudAcceso(this.idUsuario)
+    //   .subscribe((x) => {
+    //     this.solicutdAcceso = x[0];
+    //   });
   }
 
   listarNotificacionesAccesoAlumnos() {
-    this.notificacionService
-      .listarCursosSolicitudAccesoAlumnos(this.idUsuario)
-      .subscribe((x) => {
-        this.solicutdAcceso2 = x[0];
-      });
+    // this.notificacionService
+    //   .listarCursosSolicitudAccesoAlumnos(this.idUsuario)
+    //   .subscribe((x) => {
+    //     this.solicutdAcceso2 = x[0];
+    //   });
   }
 
   /**
@@ -60,19 +60,19 @@ export class NotificacionComponent implements OnInit {
     this.notificacion.usuario_id = usuario_id;
     this.notificacion.situacion_id = situacion_id;
 
-    this.notificacionService
-      .aceptarInvitacion(this.notificacion)
-      .subscribe((x) => {
-        Swal.fire({
-          title: 'Solicitud respondidas',
-          text: `Se respondio correctamente la solicitud`,
-          icon: 'success',
-          confirmButtonColor: '#2F6DF2',
-          timer: 1500,
-        }).then((res) => {
-          this.listarNotificacionesAccesoAlumnos();
-        });
-      });
+    // this.notificacionService
+    //   .aceptarInvitacion(this.notificacion)
+    //   .subscribe((x) => {
+    //     Swal.fire({
+    //       title: 'Solicitud respondidas',
+    //       text: `Se respondio correctamente la solicitud`,
+    //       icon: 'success',
+    //       confirmButtonColor: '#2F6DF2',
+    //       timer: 1500,
+    //     }).then((res) => {
+    //       this.listarNotificacionesAccesoAlumnos();
+    //     });
+    //   });
   }
   darBloquearAcceso(
     situacion_id: number,
@@ -83,18 +83,18 @@ export class NotificacionComponent implements OnInit {
     this.notificacion.usuario_id = usuario_id;
     this.notificacion.situacion_id = situacion_id;
 
-    this.notificacionService
-      .darBloquearAccesoCurso(this.notificacion)
-      .subscribe((x) => {
-        Swal.fire({
-          title: 'Solicitud respondidas',
-          text: `Se respondio correctamente la solicitud`,
-          icon: 'success',
-          confirmButtonColor: '#2F6DF2',
-          timer: 1500,
-        }).then((res) => {
-          this.listarNotificacionesAcceso();
-        });
-      });
+    // this.notificacionService
+    //   .darBloquearAccesoCurso(this.notificacion)
+    //   .subscribe((x) => {
+    //     Swal.fire({
+    //       title: 'Solicitud respondidas',
+    //       text: `Se respondio correctamente la solicitud`,
+    //       icon: 'success',
+    //       confirmButtonColor: '#2F6DF2',
+    //       timer: 1500,
+    //     }).then((res) => {
+    //       this.listarNotificacionesAcceso();
+    //     });
+    //   });
   }
 }

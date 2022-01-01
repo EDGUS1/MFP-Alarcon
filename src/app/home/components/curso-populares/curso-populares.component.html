@@ -23,7 +23,7 @@
     <!-- Se cierra la etiqueta de la cateogria -->
     <!-- Se muestra la descripcion del curso -->
     <p class="card-text mb-auto">
-      {{ curso?.descripcion }}
+      {{ curso?.curso_descripcion }}
     </p>
     <!-- Se cierra la etiqueta de la descripcion -->
     <!-- Se crea un link a la información del curso -->
@@ -38,7 +38,7 @@
       src="{{ curso?.imagen }}"
       alt=""
       class="img"
-      *ngIf="curso?.imagen != null; else noimagen"
+      *ngIf="curso?.curso_imagen != null; else noimagen"
     />
     <!-- Se cierra la etiqueta de la imagen -->
     <!-- Se crea una alternativa para la imagen -->

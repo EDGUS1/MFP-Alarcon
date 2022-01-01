@@ -47,7 +47,7 @@ export class CrearCursoComponent implements OnInit {
     /* Servicio de curso */
     private cursoService: CursoService,
     /* Servicio de cloudinary */
-    private cloudBinaryService: CloudBinaryService,
+    // private cloudBinaryService: CloudBinaryService,
     /* Router, para la navegacion entre ventanas*/
     private router: Router,
     /* Construir las validacione del formulario */
@@ -112,29 +112,35 @@ export class CrearCursoComponent implements OnInit {
         this.curso.curso_nombre = this.cursoForm.get('curso_nombre').value;
         //se le esta asignando el valor del descripcion del curso del formulario al objeto curso
         //en su variable descripcion
-        this.curso.descripcion = this.cursoForm.get('descripcion').value;
+        this.curso.curso_descripcion = this.cursoForm.get('descripcion').value;
         //se le esta asignando el valor del categoria_id del curso del formulario al objeto curso
         //en su variable categoria_id
         this.curso.categoria_id = this.cursoForm.get('categoria_id').value;
         //se le esta asignando el valor del conocimiento previo del curso del formulario al objeto curso
         //en su variable conoco_previo
-        this.curso.conoci_previo = this.cursoForm.get('conoci_previo').value;
+        this.curso.curso_conoci_prev =
+          this.cursoForm.get('conoci_previo').value;
 
         this.curso.privacidad_id = this.cursoForm.get('privacidad_id').value;
         this.actualizarCurso(this.curso);
       } else {
         if (this.image != null || this.image != undefined) {
-          this.cloudBinaryService
-            .sendPhoto(this.image[0])
-            .subscribe((response: Data) => {
-              //Asignacion de los datos del formulario al obejeto curso
-              cursoNuevo = this.cursoForm.value;
-              cursoNuevo.imagen = response['secure_url'];
-              //Asignacion del usuario_id al campo del formulario usuario_id
-              cursoNuevo.usuario_id = this.usuario_id;
-              //Llamada al metodo guardar() para la creacion de un nuevo curso
-              this.guardar(cursoNuevo);
-            });
+          // this.cloudBinaryService
+          //   .sendPhoto(this.image[0])
+          //   .subscribe((response: Data) => {
+          //     //Asignacion de los datos del formulario al obejeto curso
+          //     cursoNuevo = this.cursoForm.value;
+          //     cursoNuevo.imagen = response['secure_url'];
+          //     //Asignacion del usuario_id al campo del formulario usuario_id
+          //     cursoNuevo.usuario_id = this.usuario_id;
+          //     //Llamada al metodo guardar() para la creacion de un nuevo curso
+          //     this.guardar(cursoNuevo);
+          //   });
+          cursoNuevo = this.cursoForm.value;
+          //Asignacion del usuario_id al campo del formulario usuario_id
+          cursoNuevo.usuario_id = this.usuario_id;
+          //Llamada al metodo guardar() para la creacion de un nuevo curso
+          this.guardar(cursoNuevo);
         } else {
           //Asignacion de los datos del formulario al obejeto curso
           cursoNuevo = this.cursoForm.value;
@@ -224,13 +230,13 @@ export class CrearCursoComponent implements OnInit {
     //Se asigna datos del curso_nombre con la propiedad setValue
     this.cursoForm.get('curso_nombre').setValue(curso?.curso_nombre);
     //Se asigna datos del descripcion con la propiedad setValue
-    this.cursoForm.get('descripcion').setValue(curso?.descripcion);
+    this.cursoForm.get('descripcion').setValue(curso?.curso_descripcion);
     //Se asigna datos del privacidad_id con la propiedad setValue
     this.cursoForm.get('privacidad_id').setValue(curso?.privacidad_id);
     //Se asigna datos del categoria_id con la propiedad setValue
     this.cursoForm.get('categoria_id').setValue(curso?.categoria_id);
     //Se asigna datos del conoci_previo con la propiedad setValue
-    this.cursoForm.get('conoci_previo').setValue(curso?.conoci_previo);
+    this.cursoForm.get('conoci_previo').setValue(curso?.curso_conoci_prev);
   }
 
   /**

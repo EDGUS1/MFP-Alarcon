@@ -9,8 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/curso/models/usuario';
 import Swal from 'sweetalert2';
+import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../services/usuario.service';
 
 /* Elementos del coponente para definir sus rutas especificas de valores */
@@ -130,9 +130,11 @@ export class RegisterComponent implements OnInit {
     ) {
       const usuario = new Usuario();
       usuario.usuario_nombre = this.registroForm.value['usuario_nombre'];
-      usuario.usuario_apellidos = this.registroForm.value['usuario_apellidos'];
-      usuario.correo = this.registroForm.value['correo'];
-      usuario.password = this.registroForm.value['password'];
+      usuario.usuario_apellido_paterno =
+        this.registroForm.value['usuario_apellidos'];
+      usuario.usuario_correo = this.registroForm.value['correo'];
+      usuario.usuario_contrasenia = this.registroForm.value['password'];
+      usuario.usuario_imagen = null;
 
       this.crearUsuario(usuario);
     } else {

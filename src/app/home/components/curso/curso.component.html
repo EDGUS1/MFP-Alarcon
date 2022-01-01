@@ -3,9 +3,9 @@
     <h5 class="text-primary text-center">{{ curso?.curso_nombre }}</h5>
   </div>
   <img
-    src="{{ curso?.imagen }}"
+    src="{{ curso?.curso_imagen }}"
     alt=""
-    *ngIf="curso?.imagen != null; else noimagen"
+    *ngIf="curso?.curso_imagen != null; else noimagen"
   />
   <ng-template #noimagen>
     <img src="assets/nocoursepublic.png" alt="" />

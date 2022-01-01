@@ -2,11 +2,12 @@
   <!-- Se coloca un contenedor para el nombre de la sugerencia -->
   <div class="card-title d-flex justify-content-between align-items-center">
     <!-- Se crea el contenedor del nombre de la sugerencia -->
-    <h4 class="">{{ sugerencia?.sugerencia_nombre_curso }}</h4>
+    <h4 class="">{{ sugerencia?.sugerencia_nombre }}</h4>
     <!-- Se cierra la etiqueta del nombre de la sugerencia -->
     <!-- Se crea la etiqueta para mostrar la categoria del curso -->
     <h6 class="card-subtitle text-muted">
-      {{ getNombreCategoria(sugerencia?.categoria_id) }}
+      <!-- {{ getNombreCategoria(sugerencia?.categoria_id) }} -->
+      {{ sugerencia | obtenerCategoria: sugerencia?.categoria_id:categorias }}
     </h6>
     <!-- Se cierra la etiqueta de la categoria -->
   </div>
@@ -17,7 +18,7 @@
 
   <!-- Se crea una etiqueta 'p' para mostrar la descripción -->
   <p class="card-text">
-    {{ sugerencia?.descripcion }}
+    {{ sugerencia?.sugerencia_descripcion }}
   </p>
   <!-- Se cierra la etiqueta de la descripción -->
   <!-- Se crea el contenedor para el cuerpo de la sugerencia -->

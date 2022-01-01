@@ -2,9 +2,9 @@ export class Tarea {
   //clave primaria unica por tarea
   tarea_id: number;
   //nombre de la tarea
-  nombre: string;
+  tarea_nombre: string;
   //descripcion de la tarea
-  descripcion: string;
+  tarea_descripcion: string;
   //fecha de creacion de la tarea
   fecha_creacion: Date;
   //clave priamria unica por curso

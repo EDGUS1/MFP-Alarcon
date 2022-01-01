@@ -3,11 +3,13 @@
   <div class="card-body my-3 d-flex flex-column justify-content-between">
     <!-- Se crea el titulo de la sugerencia -->
     <h4 class="card-title text-center">
-      {{ sugerencia?.sugerencia_nombre_curso }}
+      {{ sugerencia?.sugerencia_nombre }}
     </h4>
     <!-- Se cierra la etiqueta de la sugerencia -->
     <!-- Se crea el contenedor de la descripcion -->
-    <p class="card-text text-center">"{{ sugerencia?.descripcion }}"</p>
+    <p class="card-text text-center">
+      "{{ sugerencia?.sugerencia_descripcion }}"
+    </p>
     <!-- Se cierra el contenedor de la descripcion -->
     <!-- Se crea fila para mostrar la valoración -->
     <div class="row justify-content-center">

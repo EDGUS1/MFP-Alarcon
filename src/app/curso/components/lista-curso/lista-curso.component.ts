@@ -57,7 +57,7 @@ export class ListaCursoComponent implements OnInit {
       confirmButtonColor: '#18bc9c',
       preConfirm: (login) => {
         this.codigo.codigo = login;
-        this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {});
+        // this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {});
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
@@ -107,18 +107,18 @@ export class ListaCursoComponent implements OnInit {
    * @param id {Number} - Identificador del curso
    */
   descargarlista(id: number) {
-    this.cursoService.listarUsuariosPorCurso(id).subscribe((x) => {
-      if (x['data'][0]?.length > 0) {
-        this.excelServices.exportAsExcelFile(x.data[0], 'ListaCurso');
-      } else {
-        Swal.fire({
-          title: 'Lista de alumnos vacia',
-          text: `No se puede descargar un excel sin alumnos en el curso`,
-          icon: 'error',
-          confirmButtonColor: '#2F6DF2',
-        });
-      }
-    });
+    // this.cursoService.listarUsuariosPorCurso(id).subscribe((x) => {
+    //   if (x['data'][0]?.length > 0) {
+    //     this.excelServices.exportAsExcelFile(x.data[0], 'ListaCurso');
+    //   } else {
+    //     Swal.fire({
+    //       title: 'Lista de alumnos vacia',
+    //       text: `No se puede descargar un excel sin alumnos en el curso`,
+    //       icon: 'error',
+    //       confirmButtonColor: '#2F6DF2',
+    //     });
+    //   }
+    // });
   }
 
   /**
@@ -142,6 +142,6 @@ export class ListaCursoComponent implements OnInit {
    * @param curso Objeto con la informacion de un curso
    */
   mostrarCodigo(curso: Curso) {
-    Swal.fire(`El código del curso es: ${curso?.codigo}`);
+    Swal.fire(`El código del curso es: ${curso?.curso_codigo}`);
   }
 }

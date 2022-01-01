@@ -1,7 +1,7 @@
 /**
  * Se importa los modulos de angular
  */
-import { AfterViewInit, Component, HostBinding, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 /**
  * Se importa el modulo de manejo de rutas
  */
@@ -62,6 +62,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       if (this.usuarioRegistrado) {
         this.usuario = sessionStorage.getItem('usuario_nombre');
         this.imagen = sessionStorage.getItem('url');
+        console.log(this.imagen);
       }
     });
   }
@@ -71,6 +72,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     if (this.usuarioRegistrado) {
       this.usuario = sessionStorage.getItem('usuario_nombre');
       this.imagen = sessionStorage.getItem('url');
+      console.log(this.imagen);
     }
   }
 
