@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as FileSaver from 'file-saver';
-import * as XLSX from 'xlsx';
+import { utils, WorkBook, WorkSheet, write } from 'xlsx';
 
 const EXCEL_TYPE =
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
@@ -20,12 +20,12 @@ export class ExcelService {
    * @param excelFileName {String} - Nombre del excel
    */
   public exportAsExcelFile(json: any[], excelFileName: string): void {
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
-    const worbook: XLSX.WorkBook = {
+    const worksheet: WorkSheet = utils.json_to_sheet(json);
+    const worbook: WorkBook = {
       Sheets: { data: worksheet },
       SheetNames: ['data'],
     };
-    const excelBuffer: any = XLSX.write(worbook, {
+    const excelBuffer: any = write(worbook, {
       bookType: 'xlsx',
       type: 'array',
     });
