@@ -4,7 +4,6 @@
 /*Importacion de las herramientas principales de cada componente desde la biblioteca de angular*/
 import { Component, OnInit } from '@angular/core';
 /*Importacion de un servicio ofrecido en la nube para apoyar el guardado de imagenes*/
-import { CloudBinaryService } from '../../../services/cloud-binary.service';
 /*Importacion de un servicio sobre nuevos usuarios para apoyar el cambio de datos*/
 import { NewUsuarioService } from '../../services/editarperfil.service';
 /*Importacion de un servicio sobre los cursos para apoyar el cambio de datos*/
@@ -16,6 +15,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { FileStoreService } from 'src/app/services/file-store.service';
+import { Usuario } from '../../models/usuario';
 
 /* Elementos del coponente para definir sus rutas especificas de valores */
 @Component({
@@ -46,6 +47,7 @@ export class ProfileComponent implements OnInit {
   descripcion: any;
   /*Numero de cursos en los que esta matriculado el usuario*/
   cursosm: any;
+  file: any;
 
   /* Objeto para editar los valores del perfil, se iguala a los valores del usuario para evitar problemas 
   a la hora de editarlos */
@@ -75,7 +77,8 @@ export class ProfileComponent implements OnInit {
     /*Parametro publico sobre el servicio del curso importado*/
     public cursoService: CursoService,
     /*Parametro publico sobre el servicio de los formularios importado*/
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private fileService: FileStoreService
   ) {
     /*Especifica como falso el estado del cambio del boton*/
     this.cambio = false;
@@ -83,10 +86,11 @@ export class ProfileComponent implements OnInit {
     this.correo = sessionStorage.getItem('correo');
     /*Especifica como la url de la imagen del perfil obtenido de los datos actuales del usuario*/
     this.url = sessionStorage.getItem('url');
+
     /*Especifica como el apellido obtenido de los datos actuales del usuario*/
     this.usuario_apellidos = sessionStorage.getItem('usuario_apellidos');
     /*Especifica como el ID de los datos actuales del usuario*/
-    this.usuario_id = sessionStorage.getItem('usuario_id');
+    this.usuario_id = +sessionStorage.getItem('usuario_id');
     /*Especifica como el nombre obtenido de los datos actuales del usuario*/
     this.usuario_nombre = sessionStorage.getItem('usuario_nombre');
     /*Especifica como la descripcion obtenida de los datos actuales del usuario*/
@@ -146,7 +150,7 @@ export class ProfileComponent implements OnInit {
         [
           Validators.required,
           /*El input debe tener un minimo de 10 caracteres*/
-          Validators.minLength(10),
+          Validators.minLength(1),
           /*El input debe tener un maximo de 200 caracteres*/
           Validators.maxLength(200),
         ],
@@ -202,41 +206,38 @@ export class ProfileComponent implements OnInit {
   modificarImagen(event) {
     /*Se obtiene la url de la imagen en cuestion al cambiar la imagen y se guarda en la base de datos
     usando el servicio importado de la nube*/
-    // this.cloudBinaryService
-    //   .sendPhoto(event.target.files[0])
-    //   .subscribe((rep) => {
-    //     this.objeto.url = rep['url'];
-    //   });
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (e) => {
+      this.url = e.target.result;
+    };
+    this.file = event.target.files[0];
   }
   /* Metodo para enviar los datos y cambiar los datos de perfil */
-  enviarDatos(evento) {
-    if (this.perfilForm.valid) {
-      let formData = new FormData(evento.target);
-      formData.set('url', this.objeto.url);
-      /* Se retorna dicho valor al usuario en cuestion */
-      this.newUsuarioService.editarUsuario(formData).subscribe((rep) => {
-        this.correo = rep['user1'][0]['correo'];
-        this.url = rep['user1'][0]['url'];
-        this.usuario_apellidos = rep['user1'][0]['usuario_apellidos'];
+  enviarDatos(user: Usuario) {
+    /* Se retorna dicho valor al usuario en cuestion */
+    this.newUsuarioService
+      .editarUsuario(user, +sessionStorage.getItem('usuario_id'))
+      .subscribe((rep) => {
+        console.log(rep);
+
+        this.correo = rep['user1'][0]['usuario_correo'];
+        this.url = rep['user1'][0]['usuario_imagen'];
+        this.usuario_apellidos = rep['user1'][0]['usuario_apellido_paterno'];
         this.usuario_id = rep['user1'][0]['usuario_id'];
         this.usuario_nombre = rep['user1'][0]['usuario_nombre'];
-        this.descripcion = rep['user1'][0]['descripcion'];
+        this.descripcion = rep['user1'][0]['usuario_descripcion'];
 
-        sessionStorage.setItem('usuario_id', rep['user1'][0]['usuario_id']);
-        sessionStorage.setItem(
-          'usuario_apellidos',
-          rep['user1'][0]['usuario_apellidos']
-        );
-        sessionStorage.setItem(
-          'usuario_nombre',
-          rep['user1'][0]['usuario_nombre']
-        );
-        sessionStorage.setItem('correo', rep['user1'][0]['correo']);
-        sessionStorage.setItem('url', rep['user1'][0]['url']);
-        sessionStorage.setItem('descripcion', rep['user1'][0]['descripcion']);
+        sessionStorage.setItem('usuario_id', this.usuario_id);
+        sessionStorage.setItem('usuario_apellidos', this.usuario_apellidos);
+        sessionStorage.setItem('usuario_nombre', this.usuario_nombre);
+        sessionStorage.setItem('correo', this.correo);
+        sessionStorage.setItem('url', this.url);
+        sessionStorage.setItem('descripcion', this.descripcion);
       });
-      this.cambio = false;
-    }
+    this.cambio = false;
   }
 
   validateAllFormFields(formGroup: FormGroup) {
@@ -252,5 +253,58 @@ export class ProfileComponent implements OnInit {
 
   cancelar() {
     this.cambio = false;
+  }
+
+  private cargarImagen(file: any, width: number, user: Usuario) {
+    let reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onloadend = (e) => {
+      const imgElement: any = document.createElement('img');
+      imgElement.src = e.target.result;
+      imgElement.onload = (event2) => {
+        const canvas = document.createElement('canvas');
+
+        if (event2.target.width > width) {
+          const scaleSize = width / event2.target.width;
+          canvas.width = width;
+          canvas.height = event2.target.height * scaleSize;
+        } else {
+          canvas.width = event2.target.width;
+          canvas.height = event2.target.height;
+        }
+
+        const ctx = canvas.getContext('2d');
+
+        ctx.drawImage(event2.target, 0, 0, canvas.width, canvas.height);
+
+        const source = ctx.canvas.toDataURL('image/webp');
+
+        this.fileService
+          .subirImagen(file.name, source, +sessionStorage.getItem('usuario_id'))
+          .then((url) => {
+            user.usuario_imagen = url;
+            this.enviarDatos(user);
+          });
+      };
+    };
+  }
+
+  guardarCambios() {
+    if (this.perfilForm.valid) {
+      let user = new Usuario();
+      user.usuario_nombre = this.perfilForm.get('usuario_nombre').value;
+      user.usuario_apellido_paterno =
+        this.perfilForm.get('usuario_apellidos').value;
+      user.usuario_correo = this.perfilForm.get('correo').value;
+      user.usuario_descripcion = this.perfilForm.get('descripcion').value;
+      if (this.url == 'null') {
+        // comprobar q hubo cambios
+        this.enviarDatos(user);
+      } else {
+        this.cargarImagen(this.file, 300, user);
+      }
+    }
   }
 }

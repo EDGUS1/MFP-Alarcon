@@ -68,21 +68,12 @@ export class NuevoMaterialComponent implements OnInit {
    * @param event Evento que se emite al subir un archivo
    */
   subirArvhivos(event) {
-    // if (this.archivos.length >= 5) {
-    //   this.maxFiles = true;
-    // } else {
-    //   this.archivos.push(event.target.files[0]);
-    // }
-    let archivos = event.target.files;
-    let reader = new FileReader();
-
-    reader.readAsDataURL(archivos[0]);
-    reader.onloadend = () => {
-      this.archivos.push(reader.result);
-      this.fileService
-        .subirImagen(archivos[0].name, reader.result)
-        .then((url) => console.log(url));
-    };
+    if (this.archivos.length >= 5) {
+      this.maxFiles = true;
+    } else {
+      this.archivos.push(event.target.files[0]);
+    }
+    // let archivos = event.target.files;
   }
 
   /**

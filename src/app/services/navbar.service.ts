@@ -6,7 +6,9 @@ import { Router } from '@angular/router';
 })
 export class NavbarService {
   changeLogin = new EventEmitter<boolean>();
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.changeLogin.emit(false);
+  }
 
   getIsAuthenticated(): boolean {
     return sessionStorage.getItem('usuario_id') != null;

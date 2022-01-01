@@ -30,15 +30,18 @@ export class AuthenticationService {
           sessionStorage.setItem('usuario_id', userData.user.usuario_id);
           sessionStorage.setItem(
             'usuario_apellidos',
-            userData.user.usuario_apellidos
+            userData.user.usuario_apellido_paterno
           );
           sessionStorage.setItem(
             'usuario_nombre',
             userData.user.usuario_nombre
           );
-          sessionStorage.setItem('correo', userData.user.correo);
-          sessionStorage.setItem('url', userData.user.url);
-          sessionStorage.setItem('descripcion', userData.user.descripcion);
+          sessionStorage.setItem('correo', userData.user.usuario_correo);
+          sessionStorage.setItem('url', userData.user.usuario_imagen);
+          sessionStorage.setItem(
+            'descripcion',
+            userData.user.usuario_descripcion
+          );
 
           return userData;
         })
@@ -65,5 +68,9 @@ export class AuthenticationService {
       this.isAuthenticated = true;
     }
     return this.isAuthenticated;
+  }
+
+  getUserId(): number {
+    return +sessionStorage.getItem('usuario_id');
   }
 }

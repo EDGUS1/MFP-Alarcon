@@ -40,8 +40,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
    * Constructor para el componente header
    */
   constructor(private navService: NavbarService) {}
+
   ngAfterViewInit(): void {
-    // this.navService.changeLogin.emit(this.navService.getIsAuthenticated());
+    this.navService.changeLogin.emit(this.navService.getIsAuthenticated());
   }
 
   /**
