@@ -18,7 +18,7 @@
     <!-- Se cierra la etiqueta del nombre del curso -->
     <!-- Se crea la etiqueta para mostrar la cateogria del curso -->
     <div class="mb-1 text-muted">
-      {{ curso | obtenerCategoria: categorias }}
+      {{ curso | obtenerCategoria: curso?.categoria_id:categorias }}
     </div>
     <!-- Se cierra la etiqueta de la cateogria -->
     <!-- Se muestra la descripcion del curso -->
@@ -27,7 +27,7 @@
     </p>
     <!-- Se cierra la etiqueta de la descripcion -->
     <!-- Se crea un link a la información del curso -->
-    <a routerLink="/home/curso/{{ curso?.curso_id }}">Ver curso</a>
+    <a routerLink="/curso">Ver curso</a>
     <!-- Se cierra la etiqueta del link -->
   </div>
   <!-- Se cierra la primera columna -->
@@ -44,11 +44,7 @@
     <!-- Se crea una alternativa para la imagen -->
     <ng-template #noimagen>
       <!-- se muestra la imagen alternativa -->
-      <img
-        class="img"
-        src="https://revistapym.com.co/wp-content/uploads/2018/10/Digital.jpg"
-        alt=""
-      />
+      <img class="img" src="assets/noimage.webp" alt="" />
       <!-- Se cierra la etiqueta de la imagen por defecto -->
     </ng-template>
     <!-- Se cierra el template auxiliar -->

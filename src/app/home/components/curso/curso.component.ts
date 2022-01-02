@@ -24,6 +24,6 @@ export class CursoComponent implements OnInit {
 
   abrirCurso() {
     this.navigationExtras.state.value = this.curso.curso_id;
-    this.router.navigate(['/home/ver-curso'], this.navigationExtras);
+    this.router.navigate(['/curso/ver-curso'], this.navigationExtras);
   }
 }
