@@ -35,60 +35,59 @@
     >
   </div>
   <!-- Fin de la etiquea que agrupa la descripcion -->
-  <div class="form-group" *ngIf="!editar">
-    <div class="row m-0">
-      <!-- Check de la privacidad del curso -->
-      <p>Privacidad:</p>
-      <div class="form-check ml-5">
-        <input
-          class="form-check-input"
-          type="radio"
-          id="Privacidad1"
-          formControlName="privacidad_id"
-          [class.is-invalid]="privacidadNoValido"
-          value="1"
-        />
-        <label class="form-check-label" for="Privacidad1"> Publico </label>
-      </div>
-      <div class="form-check ml-5">
-        <input
-          class="form-check-input"
-          type="radio"
-          id="Privacidad2"
-          formControlName="privacidad_id"
-          [class.is-invalid]="privacidadNoValido"
-          value="2"
-        />
-        <label class="form-check-label" for="Privacidad2"> Privado </label>
-      </div>
-      <div class="form-check ml-5">
-        <input
-          class="form-check-input"
-          type="radio"
-          id="Privacidad3"
-          formControlName="privacidad_id"
-          [class.is-invalid]="privacidadNoValido"
-          value="5"
-        />
-        <label class="form-check-label" for="Privacidad3">
-          Con Invitación
-        </label>
-      </div>
-    </div>
-    <!-- Validacion de la privacidad -->
-    <small class="text-danger mt-3 mt-lg-0" *ngIf="privacidadNoValido"
-      >Ingrese la privacidad del curso</small
-    >
+  <!-- <div class="form-group" *ngIf="!editar"> -->
+  <!-- <div class="row m-0"> -->
+  <!-- Check de la privacidad del curso -->
+  <p>Privacidad:</p>
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="radio"
+      id="Privacidad1"
+      formControlName="privacidad_id"
+      [class.is-invalid]="privacidadNoValido"
+      value="1"
+    />
+    <label class="form-check-label" for="Privacidad1"> Publico </label>
   </div>
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="radio"
+      id="Privacidad2"
+      formControlName="privacidad_id"
+      [class.is-invalid]="privacidadNoValido"
+      value="2"
+    />
+    <label class="form-check-label" for="Privacidad2"> Privado </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="radio"
+      id="Privacidad3"
+      formControlName="privacidad_id"
+      [class.is-invalid]="privacidadNoValido"
+      value="5"
+    />
+    <label class="form-check-label" for="Privacidad3"> Con Invitación </label>
+  </div>
+  <!-- </div> -->
+  <!-- Validacion de la privacidad -->
+  <br />
+  <small class="text-danger mt-3 mt-lg-0" *ngIf="privacidadNoValido"
+    >Ingrese la privacidad del curso</small
+  >
+  <!-- </div> -->
   <!-- Fin de la etiquea que agrupa la privacidad -->
   <div class="form-group" *ngIf="editar">
     <div class="row m-0">
       <label for="categoriaCurso">Privacidad:</label>
       <select
         name="categoria_id"
-        formControlName="privacidad_id"
-        class="custom-select"
         id="categoria_id"
+        class="form-select"
+        formControlName="privacidad_id"
       >
         <option value="" hidden>seleccione</option>
         <option [ngValue]="1">Publico</option>
@@ -108,7 +107,7 @@
     <select
       name="categoria_id"
       formControlName="categoria_id"
-      class="custom-select"
+      class="form-select"
       id="categoria_id"
     >
       <option value="" hidden>seleccione</option>
@@ -127,7 +126,12 @@
         <div id="div_file">
           <!-- Input de la seleccion de la imagen -->
           <p id="texto">Seleccionar imagen</p>
-          <input type="file" id="btn_enviar" (change)="onFileChange($event)" />
+          <input
+            type="file"
+            id="btn_enviar"
+            (change)="onFileChange($event)"
+            accept=".jpg, .png"
+          />
         </div>
         <p>&nbsp; &nbsp; {{ nombreImagen }}</p>
       </div>
@@ -148,8 +152,8 @@
     ></textarea>
   </div>
   <!-- Boton para crear o actualizar -->
-  <div class="form-group d-flex justify-content-center">
-    <button class="btn btn-info mr-2 btn-lg" (click)="crearCurso()">
+  <div class="form-group d-flex justify-content-center mt-3">
+    <button class="btn btn-info me-2 btn-lg" (click)="crearCurso()">
       {{ editar ? "Actualizar" : "Guardar" }} Curso
     </button>
   </div>

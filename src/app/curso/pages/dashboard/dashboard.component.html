@@ -1,93 +1,62 @@
-<!-- Contenedor padre que contiene a todas las funcionalidades que puede realizar un usuario al entrar a su dashboard -->
 <div class="container-lg py-5">
-  <!-- Se comienza la distribución como filas  -->
   <div class="row mt-5">
-    <!-- La primera columana de la fila ocupara tres espacios -->
     <div class="col-md-3">
-      <!-- Se distribuye las secciones en cuatro opciones en la parte lateral -->
       <div class="list-group" id="list-tab" role="tablist">
-        <!-- Link hacia la lista de cursos del usuario actual -->
         <a
           class="list-group-item list-group-item-action active"
           id="list-home-list"
-          data-toggle="list"
+          data-bs-toggle="list"
           href="#list-home"
           role="tab"
-          aria-controls="home"
+          aria-controls="list-home"
+          >Cursos</a
         >
-          Cursos
-        </a>
-        <!-- Finaliza el primer link hacia los cursos -->
-
-        <!-- Link hacia el formulario para crear un curso -->
         <a
           class="list-group-item list-group-item-action"
           id="list-profile-list"
-          data-toggle="list"
+          data-bs-toggle="list"
           href="#list-profile"
           role="tab"
-          aria-controls="profile"
+          aria-controls="list-profile"
+          >Crear curso</a
         >
-          Crear curso
-        </a>
-        <!-- Cierre de la navegación hacia la creación de cursos -->
-
-        <!-- Link hacia el tercer elemento donde se muestran las notificaciones -->
         <a
           class="list-group-item list-group-item-action"
           id="list-messages-list"
-          data-toggle="list"
+          data-bs-toggle="list"
           href="#list-messages"
           role="tab"
-          aria-controls="messages"
+          aria-controls="list-messages"
+          >Notificaciones</a
         >
-          Notificaciones
-        </a>
-        <!-- Cierre del link hacia las notificaciones -->
-
-        <!-- Funcionalidad para cerrar la sesión actual -->
         <a
           class="list-group-item list-group-item-action"
           id="list-settings-list"
-          data-toggle="list"
+          data-bs-toggle="list"
           href="#list-settings"
           role="tab"
-          aria-controls="settings"
+          aria-controls="list-settings"
           (click)="logout()"
+          >Salir</a
         >
-          Salir
-        </a>
-        <!-- Fin de la etiqueta para cerrar sesión -->
       </div>
-      <!-- Se cierra la lista de los cuatro elementos -->
     </div>
-    <!-- Finaliza la primera columna de tres espacios -->
-
-    <!-- Comienza la segunda columna con un espacio de nueve  -->
-    <div class="col-md-9">
-      <!-- Contenedor de la distribución del contenido de los elementos seleccionados -->
+    <div class="col-md-8">
       <div class="tab-content" id="nav-tabContent">
-        <!-- Contenedor del primer elemento -->
         <div
           class="tab-pane fade show active"
           id="list-home"
           role="tabpanel"
           aria-labelledby="list-home-list"
         >
-          <!-- Se llama al componente para listar cursos -->
           <app-lista-curso></app-lista-curso>
-          <!-- Finaliza el componente de listar cursos -->
         </div>
-        <!-- Finaliza el contenido del primer elemento seleccionado -->
-
-        <!-- Se muestra el contenido del segundo elemento -->
         <div
           class="tab-pane fade"
           id="list-profile"
           role="tabpanel"
           aria-labelledby="list-profile-list"
         >
-          <!-- Contenedor del contenido para informar de la sección -->
           <div class="container">
             <!-- Se crea una tarjeta para mostrar el nombre de la sección -->
             <div class="card">
@@ -109,36 +78,22 @@
             </div>
             <!-- Finaliza la etiqueta que contiene a la tarjeta -->
           </div>
-          <!-- Se cierra el contenedor de la tarjeta -->
         </div>
-        <!-- Se cierra la seccion para crear un nuevo curso -->
-
-        <!-- Se inicia la penultima seccion para mostrar la notificación -->
         <div
           class="tab-pane fade"
           id="list-messages"
           role="tabpanel"
           aria-labelledby="list-messages-list"
         >
-          <!-- Se llama al componente de notificaiones -->
           <app-notificacion></app-notificacion>
-          <!-- Finaliza el componente de notificaciones -->
         </div>
-        <!-- Finaliza la etiqueta de la tercera sección -->
-
-        <!-- Contenedor de la ultima seccion -->
         <div
           class="tab-pane fade"
           id="list-settings"
           role="tabpanel"
           aria-labelledby="list-settings-list"
         ></div>
-        <!-- Finaliza el ultimo contenedor -->
       </div>
-      <!-- Finaliza el contenido de la sección -->
     </div>
-    <!-- Se cierra la etiqueta de la segunda columna -->
   </div>
-  <!-- Se cierra la etiqeuta de la fila -->
 </div>
-<!-- Se finaliza la etiqueta del contenedor  -->

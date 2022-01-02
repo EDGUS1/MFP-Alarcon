@@ -1,9 +1,9 @@
 <!-- Se declara un contenedor -->
-<div class="container-md">
+<div class="container">
   <!-- Se declaran las filas  -->
   <div class="row mt-3 mt-md-0">
     <!-- Se declaran las columnas -->
-    <div class="col-10">
+    <div class="col-sm-10">
       <!-- Este input sera par ingresar el nombre del curso a buscar -->
       <input
         type="text"
@@ -16,7 +16,7 @@
       />
     </div>
     <!-- Se declara una columna flexible -->
-    <div class="col-2 d-flex flex-row-reverse">
+    <div class="col-sm-2 d-flex flex-row-reverse">
       <!-- Boton para unirse a un curso -->
       <button class="btn btn-outline-info" (click)="unirseCurso()">
         Unirse
@@ -55,15 +55,16 @@
             </small>
           </h5>
           <!-- Menu de la carta -->
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ms-auto">
             <!-- Item del menu de la carta -->
             <li class="nav-item dropdown" *ngIf="c?.usuario_id === usuarioId">
               <!-- Hipervinculo del item del menu de la carta -->
               <a
                 class="nav-link align-items-center"
-                href="/profiel"
+                data-bs-toggle="dropdown"
+                href="#"
                 id="dropdown01"
-                data-toggle="dropdown"
+                role="button"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
@@ -85,11 +86,11 @@
         <!-- Cuerpo de la carta -->
         <div class="card-body d-flex flex-column justify-content-between">
           <img
-            src="{{ c?.imagen }}"
+            src="{{ c?.curso_imagen }}"
             alt=""
             id="imagen"
             class="w-100 mb-3 imagen-borde"
-            *ngIf="c?.imagen != null; else noimagen"
+            *ngIf="c?.curso_imagen != null; else noimagen"
           />
           <!-- Imagen de la carta -->
           <ng-template #noimagen>
@@ -101,7 +102,7 @@
           </ng-template>
           <!-- Descripcion  -->
           <p class="card-text">
-            {{ c?.descripcion }}
+            {{ c?.curso_descripcion }}
           </p>
           <!-- Enlace a mas informacion del curso -->
           <div class="d-flex flex-column">

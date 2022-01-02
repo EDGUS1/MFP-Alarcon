@@ -83,7 +83,20 @@ export class LoginComponent implements OnInit {
   login(usuario: Usuario) {
     this.authenticationService.authUser(usuario).subscribe((response) => {
       if (response['user']?.usuario_id != null) {
-        /* this.nav.toggle(); */
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully',
+        });
         this.navbarService.changeLogin.emit(
           this.navbarService.getIsAuthenticated()
         );

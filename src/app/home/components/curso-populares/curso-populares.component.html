@@ -14,7 +14,7 @@
   "
 >
   <!-- Se crea la columna de seis espacios -->
-  <div class="col-6 p-4 d-flex flex-column bg-white" id="contenido">
+  <div class="col-md-6 p-4 d-flex flex-column bg-white" id="contenido">
     <!-- Se crea etiqueta para el nombre del curso -->
     <h4 class="mb-0">{{ curso?.curso_nombre }}</h4>
     <!-- Se cierra la etiqueta del nombre del curso -->
@@ -36,12 +36,12 @@
   </div>
   <!-- Se cierra la primera columna -->
   <!-- Se crea la segunda columna -->
-  <div class="col-6 d-flex justify-content-center" id="imagen">
+  <div class="col-md-6 d-flex justify-content-center" id="imagen">
     <!-- Se crea la etiqueta de la imagen -->
     <img
       src="{{ curso?.imagen }}"
       alt=""
-      class="img"
+      class="img w-100"
       width="375"
       height="250"
       *ngIf="curso?.curso_imagen != null; else noimagen"
@@ -51,7 +51,7 @@
     <ng-template #noimagen>
       <!-- se muestra la imagen alternativa -->
       <img
-        class="img"
+        class="img w-100"
         src="assets/noimage.webp"
         width="375"
         height="250"

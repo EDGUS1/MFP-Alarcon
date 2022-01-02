@@ -6,13 +6,11 @@ y enviarla-->
   <h5 class="modal-title">{{ tarea ? "Nueva Tarea" : "Nuevo Material" }}</h5>
   <button
     type="button"
-    class="close"
+    class="btn-close"
     data-dismiss="modal"
     aria-label="Close"
     (click)="closeModal('dismiss')"
-  >
-    <span aria-hidden="true">&times;</span>
-  </button>
+  ></button>
 </div>
 
 <!--La etiqueta siguiente corresponde al cuerpo del formato para realizar las tareas, con los respectivos
@@ -62,11 +60,11 @@ datos de una tarea-->
               (change)="subirArvhivos($event)"
               type="file"
               lang="es"
-              class="custom-file-input"
+              class="form-control"
               id="file"
               aria-describedby="inputGroupFileAddon04"
             />
-            <label class="custom-file-label" for="file">Archivos</label>
+            <!-- <label class="custom-file-label" for="file">Archivos</label> -->
           </div>
         </div>
       </div>

@@ -7,12 +7,12 @@
   <!--Se coloca un boton que corresponde al despliegue de las categorias de las sugerencias-->
   <button
     type="button"
-    class="close"
+    class="btn-close"
     data-dismiss="modal"
     aria-label="Close"
     (click)="closeModal('dismiss')"
   >
-    <span aria-hidden="true">&times;</span>
+    <!-- <span aria-hidden="true">&times;</span> -->
   </button>
 </div>
 
@@ -32,6 +32,7 @@
           placeholder="Ingrese un titulo para la sugerencia"
           formControlName="nombre"
           [class.is-invalid]="nombreNoValido"
+          ngbAutofocus
         />
         <!--Mensaje de alerta en caso de fallar al ingresar el Titulo de la sugerencia-->
         <small class="text-danger mt-3 mt-lg-0" *ngIf="nombreNoValido"
@@ -45,7 +46,7 @@
         <!--Menu de opciones donde se podra escoger entre las diferentes categorias -->
         <select
           name="categoria_id"
-          class="custom-select"
+          class="form-select"
           id="categoria_id"
           formControlName="categoria"
           [class.is-invalid]="categoriaNoValida"

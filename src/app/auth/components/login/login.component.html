@@ -51,15 +51,17 @@
     >
   </div>
   <!--Boton para proceder al inicio de sesion-->
-  <button
-    class="btn btn-lg btn-primary btn-block my-4"
-    (click)="validarValores()"
-  >
-    Iniciar Sesión
-  </button>
-  <!--Mensaje con ruta hacia el registro en caso el usuario no posea una cuenta-->
-  <p class="my-3">
-    ¿Aún no tienes una cuenta?
-    <a class="link" routerLink="/user/register">Registrate ahora</a>
-  </p>
+  <div class="text-center">
+    <button
+      class="btn btn-lg btn-primary btn-block my-4"
+      (click)="validarValores()"
+    >
+      Iniciar Sesión
+    </button>
+    <!--Mensaje con ruta hacia el registro en caso el usuario no posea una cuenta-->
+    <p class="my-3">
+      ¿Aún no tienes una cuenta?
+      <a class="link" routerLink="/user/register">Registrate ahora</a>
+    </p>
+  </div>
 </form>
