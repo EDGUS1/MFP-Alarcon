@@ -9,6 +9,8 @@
     mb-4
     shadow-sm
     h-md-250
+    px-2
+    mx-1
   "
 >
   <!-- Se crea la columna de seis espacios -->
@@ -18,7 +20,9 @@
     <!-- Se cierra la etiqueta del nombre del curso -->
     <!-- Se crea la etiqueta para mostrar la cateogria del curso -->
     <div class="mb-1 text-muted">
-      {{ curso | obtenerCategoria: curso?.categoria_id:categorias }}
+      <small>
+        {{ curso | obtenerCategoria: curso?.categoria_id:categorias }}
+      </small>
     </div>
     <!-- Se cierra la etiqueta de la cateogria -->
     <!-- Se muestra la descripcion del curso -->
@@ -27,7 +31,7 @@
     </p>
     <!-- Se cierra la etiqueta de la descripcion -->
     <!-- Se crea un link a la información del curso -->
-    <a routerLink="/curso">Ver curso</a>
+    <a class="link" routerLink="/curso">Ver curso</a>
     <!-- Se cierra la etiqueta del link -->
   </div>
   <!-- Se cierra la primera columna -->

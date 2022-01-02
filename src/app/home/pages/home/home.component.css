@@ -2,3 +2,9 @@
 .card {
   height: 300px;
 }
+.link{
+  text-decoration: none;
+}
+.link:hover{
+  text-decoration: underline;
+}

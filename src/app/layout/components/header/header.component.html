@@ -1,72 +1,76 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-2 px-4">
-  <a class="navbar-brand" routerLink="/">Aprende en linea</a>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Aprende en linea</a>
 
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarColor02"
-    aria-controls="navbarColor02"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarColor02"
+      aria-controls="navbarColor02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div
-    class="collapse navbar-collapse d-flex justify-content-end"
-    id="navbarColor02"
-  >
-    <ul class="navbar-nav me-0 align-items-center">
-      <li class="nav-item align-middle">
-        <a class="nav-link" routerLink="/home">Home </a>
-      </li>
-      <li class="nav-item align-middle">
-        <a class="nav-link" routerLink="/curso">Cursos</a>
-      </li>
-      <li class="nav-item align-middle">
-        <a class="nav-link" routerLink="/sugerencias">Sugerencias</a>
-      </li>
-      <li class="nav-item align-middle ms-3" *ngIf="!usuarioRegistrado">
-        <a class="btn btn-success my-2 my-sm-0" routerLink="/user/login">
-          Iniciar sesión
-        </a>
-      </li>
-      <li class="nav-item dropdown align-middle ms-3" *ngIf="usuarioRegistrado">
-        <a
-          class="nav-link dropdown-toggle align-items-center"
-          data-bs-toggle="dropdown"
-          href="#"
-          role="button"
-          aria-haspopup="true"
-          aria-expanded="false"
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item align-middle">
+          <a class="nav-link" routerLink="/home">Home </a>
+        </li>
+        <li class="nav-item align-middle">
+          <a class="nav-link" routerLink="/curso">Cursos</a>
+        </li>
+        <li class="nav-item align-middle">
+          <a class="nav-link" routerLink="/sugerencias">Sugerencias</a>
+        </li>
+        <li class="nav-item align-middle ms-3" *ngIf="!usuarioRegistrado">
+          <a class="btn btn-success my-2 my-sm-0" routerLink="/user/login">
+            Iniciar sesión
+          </a>
+        </li>
+        <li
+          class="nav-item dropdown align-middle ms-3"
+          *ngIf="usuarioRegistrado"
         >
-          <img
-            src="{{ imagen }}"
-            alt="mdo"
-            width="32"
-            height="32"
-            class="rounded-circle"
-            *ngIf="imagen != 'null'; else noimagen"
-          />
-          <ng-template #noimagen>
+          <a
+            class="nav-link dropdown-toggle align-items-center"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
             <img
-              src="assets/profile.png"
+              src="{{ imagen }}"
               alt="mdo"
               width="32"
               height="32"
               class="rounded-circle"
+              *ngIf="imagen != 'null'; else noimagen"
             />
-            <span class="ml-2">{{ usuario }}</span>
-          </ng-template>
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="/user/profile">Perfil</a>
-          <a class="dropdown-item" routerLink="/cursos/dashboard">Mis Cursos</a>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item" (click)="logout()">Salir</button>
-        </div>
-      </li>
-    </ul>
+            <ng-template #noimagen>
+              <img
+                src="assets/profile.png"
+                alt="mdo"
+                width="32"
+                height="32"
+                class="rounded-circle"
+              />
+              <span class="ml-2">{{ usuario }}</span>
+            </ng-template>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/user/profile">Perfil</a>
+            <a class="dropdown-item" routerLink="/cursos/dashboard"
+              >Mis Cursos</a
+            >
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="logout()">Salir</button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

@@ -70,25 +70,34 @@
     </div>
     <!-- Se cierra la primera fila -->
     <!-- Se crea la fila de los cursos -->
-    <div class="row">
+    <div class="row" *ngIf="cursos.length > 0; else loadcard">
       <!-- Se crea el contenedor de un curso -->
-      <div class="col-md-6" *ngFor="let c of cursos">
-        <!-- Se crea la tarjeta para mostrar el contenido del curso -->
-        <app-curso-populares
-          [curso]="c"
-          [categorias]="categorias"
-        ></app-curso-populares>
-        <!-- se cierra la tarjeta de los cursos -->
-      </div>
-      <!-- Se cierra el contenedor de los cursos -->
+      <!-- Se crea la tarjeta para mostrar el contenido del curso -->
+      <app-curso-populares
+        class="col-md-6"
+        *ngFor="let c of cursos"
+        [curso]="c"
+        [categorias]="categorias"
+      ></app-curso-populares>
+      <!-- se cierra la tarjeta de los cursos -->
     </div>
+    <ng-template #loadcard>
+      <div class="row">
+        <app-card-curso-preload
+          class="col-md-6"
+          *ngFor="let c of [1, 2, 3]"
+        ></app-card-curso-preload>
+      </div>
+    </ng-template>
+
+    <!-- Se cierra el contenedor de los cursos -->
     <!-- Se cierra la etiqueta de la fila -->
   </div>
   <!-- Se cierra la etiqueta del contenedor -->
 </div>
 <!-- Se cierra la etiqueta del album -->
 <!-- Se crea un contenedor para las sugerencias -->
-<div class="container py-5 mb-5">
+<div class="container py-5">
   <!-- Se crea una fila para las sugerencias -->
   <div class="row">
     <!-- Se crea una columna para información -->
@@ -101,13 +110,16 @@
   </div>
   <!-- Se cierra la etiqueta de la fila -->
   <!-- Se crea una segunda fila para mostrar las sugerencias -->
-  <div class="row" *ngIf="sugerencias?.length > 0">
+  <!-- <div class="row" *ngIf="sugerencias?.length > 0"> -->
+  <div class="row">
     <!-- Se crea una colunma de doce para mostrar la información -->
-    <div class="col-12 col-md-4" *ngFor="let s of sugerencias">
-      <!-- Se crea una tarjeta -->
-      <app-sugerencia-populares [sugerencia]="s"></app-sugerencia-populares>
-      <!-- Se cierra el contenedor de la tarjeta -->
-    </div>
+    <!-- Se crea una tarjeta -->
+    <!-- <app-sugerencia-populares class="col-12 col-md-4" [sugerencia]="s" *ngFor="let s of sugerencias"></app-sugerencia-populares> -->
+    <app-card-sugerencia-preload
+      class="col-12 col-md-4"
+      *ngFor="let s of [1, 2, 3]"
+    ></app-card-sugerencia-preload>
+    <!-- Se cierra el contenedor de la tarjeta -->
     <!-- Se cierra la etiqueta de la columna -->
   </div>
   <!-- Se cierra la segunda fila -->
@@ -125,5 +137,4 @@
 </div>
 <!-- Se cierra el contenedor de las sugerencias -->
 <!-- Se crea una margen inferior -->
-<div class="my-5"></div>
 <!-- Se cierra la etiqueta del margen inferior -->
