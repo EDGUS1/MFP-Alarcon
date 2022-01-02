@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppServiceBase } from 'src/app/core/appServiceBase';
+import { Material } from '../models/material';
 import { Tarea } from '../models/tarea';
 
 @Injectable({
@@ -15,7 +16,7 @@ export class NuevoMaterialService extends AppServiceBase {
     return this.get(`listMaterials/${idcurso}`);
   }
 
-  crearMaterialCurso(idCurso: number, material: Tarea) {
+  crearMaterialCurso(idCurso: number, material: Material) {
     return this.post(`course-material/${idCurso}`, material);
   }
 

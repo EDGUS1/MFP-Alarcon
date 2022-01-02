@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FileStoreService } from 'src/app/core/services/file-store.service';
 import Swal from 'sweetalert2';
+import { Material } from '../../models/material';
 import { Tarea } from '../../models/tarea';
 import { NuevoMaterialService } from '../../services/nuevo-material.service';
 import { TareaService } from '../../services/tarea.service';
@@ -122,8 +123,13 @@ export class NuevoMaterialComponent implements OnInit {
   }
 
   guardarMaterialCurso() {
+    let newMaterial = new Material();
+    newMaterial.curso_id = this.objeto.curso_id;
+    newMaterial.material_descripcion = this.objeto.tarea_descripcion;
+    newMaterial.material_nombre = this.objeto.tarea_nombre;
+
     this.materialService
-      .crearMaterialCurso(this.objeto.curso_id, this.objeto)
+      .crearMaterialCurso(this.objeto.curso_id, newMaterial)
       .subscribe((x) => {
         Swal.fire({
           icon: 'success',

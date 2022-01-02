@@ -8,7 +8,7 @@ import { Curso } from 'src/app/curso/models/curso';
   templateUrl: './curso.component.html',
   styleUrls: ['./curso.component.css'],
 })
-export class CursoComponent implements OnInit {
+export class CursoComponent {
   @Input() curso: Curso;
   @Input() categorias: any[];
 
@@ -19,8 +19,6 @@ export class CursoComponent implements OnInit {
   };
 
   constructor(private router: Router) {}
-
-  ngOnInit(): void {}
 
   abrirCurso() {
     this.navigationExtras.state.value = this.curso.curso_id;

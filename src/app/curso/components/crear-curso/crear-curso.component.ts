@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriaService } from '../../services/categoria.service';
 import { Categoria } from '../../models/categoria';
+import { FileStoreService } from 'src/app/core/services/file-store.service';
 
 @Component({
   selector: 'app-crear-curso',
@@ -22,7 +23,7 @@ import { Categoria } from '../../models/categoria';
 })
 export class CrearCursoComponent implements OnInit {
   /* Imagen de seleccion en el html */
-  image: any[];
+  image: any;
   /* usuario_id que se guarda y se usa del la sessionstorage */
   usuario_id: number;
   /* nombre del curso que utiliza ReactiveFormModule */
@@ -51,7 +52,8 @@ export class CrearCursoComponent implements OnInit {
     /* Construir las validacione del formulario */
     private formBuilder: FormBuilder,
     /* Servicio de categoria */
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private fileService: FileStoreService
   ) {}
 
   //metodo para inicializar los metodos del componenete
@@ -87,9 +89,9 @@ export class CrearCursoComponent implements OnInit {
    */
   onFileChange(event) {
     //asignacion de la data seleccionada de la imagen
-    this.image = event.target.files;
+    this.image = event.target.files[0];
     //asignacion del campo imagen del nombre de la imagen seleccionada
-    this.nombreImagen = this.image[0].name;
+    this.nombreImagen = event.target.files[0].name;
   }
 
   /**
@@ -102,47 +104,34 @@ export class CrearCursoComponent implements OnInit {
      */
     if (this.cursoForm.valid) {
       //Creacion de un objeto curso
-      let cursoNuevo = new Curso();
+
       // Otra validacion para saber si se quiere editar el curso
       if (this.editar) {
-        //se le esta asignando el valor del nombre del curso del formulario al objeto curso
-        //en su variable curso_nombre
+        //se le esta asignando el valor del nombre del curso del formulario al objeto curso en su variable curso_nombre
         this.curso.curso_nombre = this.cursoForm.get('curso_nombre').value;
-        //se le esta asignando el valor del descripcion del curso del formulario al objeto curso
-        //en su variable descripcion
+        //se le esta asignando el valor del descripcion del curso del formulario al objeto curso en su variable descripcion
         this.curso.curso_descripcion = this.cursoForm.get('descripcion').value;
-        //se le esta asignando el valor del categoria_id del curso del formulario al objeto curso
-        //en su variable categoria_id
+        //se le esta asignando el valor del categoria_id del curso del formulario al objeto curso en su variable categoria_id
         this.curso.categoria_id = this.cursoForm.get('categoria_id').value;
-        //se le esta asignando el valor del conocimiento previo del curso del formulario al objeto curso
-        //en su variable conoco_previo
+        //se le esta asignando el valor del conocimiento previo del curso del formulario al objeto curso en su variable conoco_previo
         this.curso.curso_conoci_prev =
           this.cursoForm.get('conoci_previo').value;
-
         this.curso.privacidad_id = this.cursoForm.get('privacidad_id').value;
         this.actualizarCurso(this.curso);
       } else {
+        let cursoNuevo = new Curso();
+
+        cursoNuevo.curso_nombre = this.cursoForm.get('curso_nombre').value;
+        cursoNuevo.curso_descripcion = this.cursoForm.get('descripcion').value;
+        cursoNuevo.categoria_id = this.cursoForm.get('categoria_id').value;
+        cursoNuevo.privacidad_id = this.cursoForm.get('privacidad_id').value;
+        cursoNuevo.curso_conoci_prev =
+          this.cursoForm.get('conoci_previo').value;
+        cursoNuevo.usuario_id = this.usuario_id;
+
         if (this.image != null || this.image != undefined) {
-          // this.cloudBinaryService
-          //   .sendPhoto(this.image[0])
-          //   .subscribe((response: Data) => {
-          //     //Asignacion de los datos del formulario al obejeto curso
-          //     cursoNuevo = this.cursoForm.value;
-          //     cursoNuevo.imagen = response['secure_url'];
-          //     //Asignacion del usuario_id al campo del formulario usuario_id
-          //     cursoNuevo.usuario_id = this.usuario_id;
-          //     //Llamada al metodo guardar() para la creacion de un nuevo curso
-          //     this.guardar(cursoNuevo);
-          //   });
-          cursoNuevo = this.cursoForm.value;
-          //Asignacion del usuario_id al campo del formulario usuario_id
-          cursoNuevo.usuario_id = this.usuario_id;
-          //Llamada al metodo guardar() para la creacion de un nuevo curso
-          this.guardar(cursoNuevo);
+          this.cargarImagen(this.image, 300, cursoNuevo);
         } else {
-          //Asignacion de los datos del formulario al obejeto curso
-          cursoNuevo = this.cursoForm.value;
-          cursoNuevo.usuario_id = this.usuario_id;
           this.guardar(cursoNuevo);
         }
       }
@@ -254,5 +243,41 @@ export class CrearCursoComponent implements OnInit {
         this.cerrarModal.emit('close');
       });
     });
+  }
+
+  private cargarImagen(file: any, width: number, curso: Curso) {
+    let reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onloadend = (e) => {
+      const imgElement: any = document.createElement('img');
+      imgElement.src = e.target.result;
+      imgElement.onload = (event2) => {
+        const canvas = document.createElement('canvas');
+
+        if (event2.target.width > width) {
+          const scaleSize = width / event2.target.width;
+          canvas.width = width;
+          canvas.height = event2.target.height * scaleSize;
+        } else {
+          canvas.width = event2.target.width;
+          canvas.height = event2.target.height;
+        }
+
+        const ctx = canvas.getContext('2d');
+
+        ctx.drawImage(event2.target, 0, 0, canvas.width, canvas.height);
+
+        const source = ctx.canvas.toDataURL('image/webp');
+
+        this.fileService
+          .subirImagen(file.name, source, +sessionStorage.getItem('usuario_id'))
+          .then((url) => {
+            curso.curso_imagen = url;
+            this.guardar(curso);
+          });
+      };
+    };
   }
 }

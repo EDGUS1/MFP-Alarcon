@@ -107,18 +107,18 @@ export class ListaCursoComponent implements OnInit {
    * @param id {Number} - Identificador del curso
    */
   descargarlista(id: number) {
-    // this.cursoService.listarUsuariosPorCurso(id).subscribe((x) => {
-    //   if (x['data'][0]?.length > 0) {
-    //     this.excelServices.exportAsExcelFile(x.data[0], 'ListaCurso');
-    //   } else {
-    //     Swal.fire({
-    //       title: 'Lista de alumnos vacia',
-    //       text: `No se puede descargar un excel sin alumnos en el curso`,
-    //       icon: 'error',
-    //       confirmButtonColor: '#2F6DF2',
-    //     });
-    //   }
-    // });
+    this.cursoService.listarUsuariosPorCurso(id).subscribe((x) => {
+      if (x['data']?.length > 0) {
+        this.excelServices.exportAsExcelFile(x.data, 'ListaCurso');
+      } else {
+        Swal.fire({
+          title: 'Lista de alumnos vacia',
+          text: `No se puede descargar un excel sin alumnos en el curso`,
+          icon: 'error',
+          confirmButtonColor: '#2F6DF2',
+        });
+      }
+    });
   }
 
   /**

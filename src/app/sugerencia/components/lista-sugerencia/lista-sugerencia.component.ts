@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Categoria } from 'src/app/curso/models/categoria';
 import { Sugerencia } from '../../models/sugerencia';
+import { Voto } from '../../models/voto';
+import { SugerenciaService } from '../../services/sugerencia.service';
 
 /**
  * Se añade las relaciones que tiene el componente
@@ -14,7 +16,7 @@ import { Sugerencia } from '../../models/sugerencia';
 /**
  * Se crea la clase para el componente listar sugerencias
  */
-export class ListaSugerenciaComponent implements OnInit {
+export class ListaSugerenciaComponent {
   @Input() sugerencia: Sugerencia;
   @Input() sugerenciasVotos: any[];
   @Input() usuarioRegistrado: boolean;
@@ -22,8 +24,7 @@ export class ListaSugerenciaComponent implements OnInit {
   @Input() usuariosVotos: Sugerencia[];
   @Input() i: number;
 
-  constructor() {}
-  ngOnInit(): void {}
+  constructor(private readonly sugerenciaService: SugerenciaService) {}
 
   /**
    * Función para mostrar los votos de una sugerencia
@@ -49,56 +50,39 @@ export class ListaSugerenciaComponent implements OnInit {
      */
     return '0';
   }
-
-  /**
-   * Función para devolver el nombre de la categoria
-   * @param idCategoria {Number} - Identificado de la vategoria
-   * @returns Nombre de la categoria
-   */
-  getNombreCategoria(idCategoria: number) {
-    /**
-     * Se comprueba que el identificador de la categoria no se undefined
-     */
-    if (idCategoria === undefined) {
-      /**
-       * Se devuelve un mensaje para la categoria
-       */
-      return 'Categoria no definida';
-    }
-    /**
-     * Se llama a la funcion para filtrar el nombre de la categoria
-     */
-    const nombreCategoria = this.buscarNombreCategoria(idCategoria);
-    /**
-     * Se devuelve el nombre de la categoria
-     */
-    return nombreCategoria === undefined
-      ? 'Nombre no encontrado'
-      : nombreCategoria;
-  }
-
-  /**
-   * Función para buscar el nombre de la categoria
-   * @param id {Number} - Identificador de la categoria
-   * @returns Nombre de la categoria
-   */
-  buscarNombreCategoria(id: number) {
-    /**
-     * Se filtra la búsqueda de las categorias por el identificador de la cateogoria
-     */
-    const resultado = this.categorias?.find((c) => c.categoria_id === id);
-    /**
-     * Se devuleve el nombre de la categoria
-     */
-    return resultado?.categoria_nombre;
-  }
-
   /**
    * Función para obtner el estado del voto del usuario
    * @param id identificador de la sugerencia
    * @returns retorna verdadero o false
    */
   obtenerVotoUsuario(id: number) {
-    return this.usuariosVotos.find((v) => v.sugerencia_id === id) !== undefined;
+    // TODO: transformar a pipe o utilziar zone.js
+    return (
+      this.usuariosVotos?.find((v) => v.sugerencia_id === id) !== undefined
+    );
+  }
+
+  cambiarEstado(id: number) {
+    let newVoto = new Voto();
+    newVoto.sugerencia_id = id;
+    newVoto.usuario_id = +sessionStorage.getItem('usuario_id');
+    this.sugerenciaService.votarSugerencia(newVoto).subscribe((x) => {
+      console.log(x);
+
+      /**
+       * Se llama a la función para listar votos
+       */
+      // TODO: LLamar componente padre para actualizar
+      // this.listarSugerenciasVotos();
+      /**
+       * Se valida que el usuario haya iniciado sesión
+       */
+      // if (this.usuarioRegistrado) {
+      //   /**
+      //    * Se llama a la funcion de votos
+      //    */
+      //   this.listarVotosUsuarios(+sessionStorage.getItem('usuario_id'));
+      // }
+    });
   }
 }

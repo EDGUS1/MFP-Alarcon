@@ -300,7 +300,7 @@ export class ProfileComponent implements OnInit {
       user.usuario_correo = this.perfilForm.get('correo').value;
       user.usuario_descripcion = this.perfilForm.get('descripcion').value;
       if (this.url == 'null') {
-        // comprobar q hubo cambios
+        // TODO: comprobar q hubo cambios
         this.enviarDatos(user);
       } else {
         this.cargarImagen(this.file, 300, user);

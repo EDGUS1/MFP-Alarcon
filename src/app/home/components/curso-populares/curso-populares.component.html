@@ -31,7 +31,7 @@
     </p>
     <!-- Se cierra la etiqueta de la descripcion -->
     <!-- Se crea un link a la información del curso -->
-    <a class="link" routerLink="/curso">Ver curso</a>
+    <a class="link" (click)="abrirCurso()">Ver curso</a>
     <!-- Se cierra la etiqueta del link -->
   </div>
   <!-- Se cierra la primera columna -->
@@ -39,7 +39,7 @@
   <div class="col-md-6 d-flex justify-content-center" id="imagen">
     <!-- Se crea la etiqueta de la imagen -->
     <img
-      src="{{ curso?.imagen }}"
+      src="{{ curso?.curso_imagen }}"
       alt=""
       class="img w-100"
       width="375"

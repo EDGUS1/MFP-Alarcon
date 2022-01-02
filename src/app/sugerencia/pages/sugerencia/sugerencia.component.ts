@@ -154,24 +154,6 @@ export class SugerenciaComponent implements OnInit {
    * Función para cambiar la votación
    * @param id Identificador de la sugerencia
    */
-  cambiarEstado(id: number) {
-    this.sugerencia.sugerencia_id = id;
-    this.sugerenciaService.votarSugerencia(this.sugerencia).subscribe((x) => {
-      /**
-       * Se llama a la función para listar votos
-       */
-      this.listarSugerenciasVotos();
-      /**
-       * Se valida que el usuario haya iniciado sesión
-       */
-      if (this.usuarioRegistrado) {
-        /**
-         * Se llama a la funcion de votos
-         */
-        this.listarVotosUsuarios(+sessionStorage.getItem('usuario_id'));
-      }
-    });
-  }
 
   /**
    * Función para filtrar la busqueda por la categoria seleccionada
@@ -224,6 +206,8 @@ export class SugerenciaComponent implements OnInit {
       /**
        * Se alamcena la respueta del servicio
        */
+      console.log(x);
+
       this.sugerenciasVotos = x['list'];
     });
   }

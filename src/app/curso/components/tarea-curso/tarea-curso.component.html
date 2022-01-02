@@ -21,7 +21,7 @@
       <div
         id="accordion"
         class="card-expansion mt-3"
-        *ngFor="let t of tareas | filter: { nombre: tareaFiltro }"
+        *ngFor="let t of tareas | filter: { tarea_nombre: tareaFiltro }"
       >
         <div class="card card-expansion-item">
           <div
@@ -34,7 +34,7 @@
             "
             id="{{ 'heading' + t }}"
           >
-            <span>{{ t.nombre }}</span>
+            <span>{{ t.tarea_nombre }}</span>
             <div>
               <button
                 *ngIf="usuarioProfesor"
@@ -71,7 +71,7 @@
             <div class="container m-3">
               <div class="row">
                 <div class="col-12">
-                  {{ t.descripcion }}
+                  {{ t.tarea_descripcion }}
                 </div>
                 <div
                   class="col-12 col-md-6 ml-auto m-4"

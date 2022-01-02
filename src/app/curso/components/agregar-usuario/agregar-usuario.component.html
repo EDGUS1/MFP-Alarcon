@@ -100,12 +100,12 @@
               <td class="align-middle">
                 <!-- etiqueta de la imagen del usuario si la tuviese -->
                 <img
-                  src="{{ usuario?.url }}"
+                  src="{{ usuario?.usuario_imagen }}"
                   alt="mdo"
                   width="32"
                   height="32"
                   class="rounded-circle"
-                  *ngIf="usuario?.url != null; else noimagen"
+                  *ngIf="usuario?.usuario_imagen != null; else noimagen"
                 />
                 <!-- Cierre de la etiqueta de la imagen -->
 
@@ -127,12 +127,13 @@
 
               <!-- Segunda columna para el nombre del usuairo -->
               <td class="align-middle">
-                {{ usuario?.usuario_nombre }} {{ usuario?.usuario_apellidos }}
+                {{ usuario?.usuario_nombre }}
+                {{ usuario?.usuario_apellido_paterno }}
               </td>
               <!-- Se cierra la etiqueta del nombre del usuario -->
 
               <!-- Tercera etiqueta para el correo del usuario -->
-              <td class="align-middle">{{ usuario?.correo }}</td>
+              <td class="align-middle">{{ usuario?.usuario_correo }}</td>
               <!-- Se cierra la etiqueta del correo del usuario -->
 
               <!-- Cuarta etiqueta para mostrar el estado de un usuario -->
