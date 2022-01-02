@@ -19,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 /*Importacion del componente Homecomponent de su respectiva ruta*/
 /*Importacion del componente Footercomponent de su respectiva ruta*/
-import { FooterComponent } from './layout/components/footer/footer.component';
 /*Importacion del componente HeaderComponent de su respectiva ruta*/
 import { HeaderComponent } from './layout/components/header/header.component';
 /*Importacion del modulo de angular de la biblioteca de estilos del framework bootstrap*/
@@ -33,7 +32,7 @@ firebase.initializeApp(environment.firebase);
 /*Modulo principal del componente basado en angular*/
 @NgModule({
   /*Declaraciones del componente que coloca en un array a los componentes importados*/
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent],
   /*Importaciones de las funciones de las funciones obtenidas de la biblioteca angular*/
   imports: [BrowserModule, HttpClientModule, RouterModule, AppRoutingModule],
   /*Array de proovedores vacio*/

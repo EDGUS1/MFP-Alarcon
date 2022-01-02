@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Sugerencia } from 'src/app/sugerencia/models/sugerencia';
 
 @Component({
@@ -6,9 +6,6 @@ import { Sugerencia } from 'src/app/sugerencia/models/sugerencia';
   templateUrl: './sugerencia-populares.component.html',
   styleUrls: ['./sugerencia-populares.component.css'],
 })
-export class SugerenciaPopularesComponent implements OnInit {
+export class SugerenciaPopularesComponent {
   @Input() sugerencia: Sugerencia;
-  constructor() {}
-
-  ngOnInit(): void {}
 }

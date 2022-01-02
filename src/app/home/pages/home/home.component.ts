@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   /**
    * se crea array para las sugerencias
    */
-  sugerencias: Sugerencia[];
+  sugerencias: Sugerencia[] = [];
   /**
    * se crea array para las categorias
    */
