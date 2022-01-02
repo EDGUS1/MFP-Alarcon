@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Categoria } from 'src/app/curso/models/categoria';
 import { Curso } from 'src/app/curso/models/curso';
 
@@ -7,11 +7,7 @@ import { Curso } from 'src/app/curso/models/curso';
   templateUrl: './curso-populares.component.html',
   styleUrls: ['./curso-populares.component.css'],
 })
-export class CursoPopularesComponent implements OnInit {
+export class CursoPopularesComponent {
   @Input() curso: Curso;
   @Input() categorias: Categoria[];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

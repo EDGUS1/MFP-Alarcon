@@ -9,8 +9,6 @@ import {
 } from '@angular/core';
 import { Curso } from '../../models/curso';
 import { CursoService } from '../../services/curso.service';
-import { CloudBinaryService } from '../../../services/cloud-binary.service';
-import { Data } from '../../../services/dataModel';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

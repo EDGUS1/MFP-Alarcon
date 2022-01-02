@@ -3,7 +3,6 @@
 /***Importaciones generales correspondiente a los modulos del componente App***/
 /**Importacion general del componente principal de modulos de angular**/
 /*Importacion de modulos comunes de la biblioteca comun de angular*/
-import { CommonModule } from '@angular/common';
 /*Importacion de modulos http de la biblioteca comun de angular*/
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 /*Importacion de el modulo principal de angular de la biblioteca de modulos de angular*/
@@ -19,19 +18,14 @@ import { AppRoutingModule } from './app-routing.module';
 /*Importacion del componente AppComponent de su respectiva ruta*/
 import { AppComponent } from './app.component';
 /*Importacion del componente Homecomponent de su respectiva ruta*/
-import { HomeComponent } from './home/pages/home/home.component';
 /*Importacion del componente Footercomponent de su respectiva ruta*/
 import { FooterComponent } from './layout/components/footer/footer.component';
 /*Importacion del componente HeaderComponent de su respectiva ruta*/
 import { HeaderComponent } from './layout/components/header/header.component';
 /*Importacion del modulo de angular de la biblioteca de estilos del framework bootstrap*/
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 /*Importacion del componente de formularios de la biblioteca de formularios de angular*/
-import { FormsModule } from '@angular/forms';
 import { ErrorService } from './core/interceptors/error.service';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideStorage, getStorage } from '@angular/fire/storage';
 
 import firebase from 'firebase/compat/app';
 
@@ -41,17 +35,7 @@ firebase.initializeApp(environment.firebase);
   /*Declaraciones del componente que coloca en un array a los componentes importados*/
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   /*Importaciones de las funciones de las funciones obtenidas de la biblioteca angular*/
-  imports: [
-    BrowserModule,
-    CommonModule,
-    HttpClientModule,
-    RouterModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),
-  ],
+  imports: [BrowserModule, HttpClientModule, RouterModule, AppRoutingModule],
   /*Array de proovedores vacio*/
   providers: [
     {

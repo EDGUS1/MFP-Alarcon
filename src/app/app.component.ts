@@ -16,5 +16,4 @@ import { Component } from '@angular/core';
 /* Se exporta la clase como AppComponent */
 export class AppComponent {
   /*El titulo de la exportacion principal se define en este apartado*/
-  title = 'aula-virtual';
 }
