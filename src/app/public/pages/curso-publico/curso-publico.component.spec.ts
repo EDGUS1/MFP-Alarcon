@@ -3,7 +3,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Observable, of } from 'rxjs';
 import { FilterPipe } from 'src/app/shared/pipes/filter.pipe';
 import { CategoriaService } from '../../../curso/services/categoria.service';
-import { CursoService } from '../../services/curso.service';
+import { CursoService } from '../../../home/services/curso.service';
 
 import { CursoPublicoComponent } from './curso-publico.component';
 class CursoServiceTesting {

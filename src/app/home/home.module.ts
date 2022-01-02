@@ -1,33 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CursoPublicoComponent } from './pages/curso-publico/curso-publico.component';
-import { FormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '../shared/shared.module';
-import { CursoComponent } from './components/curso/curso.component';
-import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
-import { CursoProfesorComponent } from './components/curso-profesor/curso-profesor.component';
-import { CursoRecomendadosComponent } from './components/curso-recomendados/curso-recomendados.component';
-import { VerCursoComponent } from './pages/ver-curso/ver-curso.component';
-import { CursoPopularesComponent } from './components/curso-populares/curso-populares.component';
 import { SugerenciaPopularesComponent } from './components/sugerencia-populares/sugerencia-populares.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CursoPopularesComponent } from './components/curso-populares/curso-populares.component';
 
 @NgModule({
   declarations: [
-    CursoPublicoComponent,
-    CursoComponent,
-    VerCursoComponent,
-    CursoDetalleComponent,
-    CursoProfesorComponent,
-    CursoRecomendadosComponent,
+    HomeComponent,
+    CursoPopularesComponent,
+    SugerenciaPopularesComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    HomeRoutingModule,
-    NgxPaginationModule,
-    SharedModule,
-  ],
+  imports: [CommonModule, HomeRoutingModule, SharedModule],
 })
 export class HomeModule {}

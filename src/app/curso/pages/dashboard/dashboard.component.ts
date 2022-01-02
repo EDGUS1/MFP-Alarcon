@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 /**
  * Se importa el modulo de rutas para poder realizar el manejo a otras secciones
  */
-import { NavbarService } from 'src/app/services/navbar.service';
+import { NavbarService } from 'src/app/core/services/navbar.service';
 
 /**
  * Se declara las variables que corresponden al componente

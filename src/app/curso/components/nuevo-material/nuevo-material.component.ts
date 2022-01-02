@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FileStoreService } from 'src/app/services/file-store.service';
+import { FileStoreService } from 'src/app/core/services/file-store.service';
 import Swal from 'sweetalert2';
 import { Tarea } from '../../models/tarea';
 import { NuevoMaterialService } from '../../services/nuevo-material.service';

@@ -11,7 +11,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import Swal from 'sweetalert2';
-import { NavbarService } from 'src/app/services/navbar.service';
+import { NavbarService } from 'src/app/core/services/navbar.service';
 import { Usuario } from '../../models/usuario';
 
 /* Elementos del coponente para definir sus rutas especificas de valores */

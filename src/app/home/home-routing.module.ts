@@ -4,16 +4,14 @@
 /*Importacion de las principales modulos de angular*/
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CursoPublicoComponent } from './pages/curso-publico/curso-publico.component';
-import { VerCursoComponent } from './pages/ver-curso/ver-curso.component';
+import { HomeComponent } from './pages/home/home.component';
 
 //variable array contastante para agregar cada ruta y el componente que correnponda
 //ruta por defecto
 const routes: Routes = [
-  { path: '', component: CursoPublicoComponent },
   {
-    path: 'ver-curso',
-    component: VerCursoComponent,
+    path: '',
+    component: HomeComponent,
   },
 ];
 

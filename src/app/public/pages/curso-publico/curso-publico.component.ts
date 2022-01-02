@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Categoria } from '../../../curso/models/categoria';
 import { Curso } from '../../../curso/models/curso';
 import { CategoriaService } from '../../../curso/services/categoria.service';
-import { CursoService } from '../../services/curso.service';
+import { CursoService } from '../../../home/services/curso.service';
 
 @Component({
   selector: 'app-curso-publico',

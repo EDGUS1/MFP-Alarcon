@@ -5,7 +5,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 /**
  * Se importa el modulo de manejo de rutas
  */
-import { NavbarService } from 'src/app/services/navbar.service';
+import { NavbarService } from 'src/app/core/services/navbar.service';
 
 /**
  * Se listan las referencias hacia las dependencias del componente
@@ -42,7 +42,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   constructor(private navService: NavbarService) {}
 
   ngAfterViewInit(): void {
-    this.navService.changeLogin.emit(this.navService.getIsAuthenticated());
+    setTimeout(() => {
+      this.navService.changeLogin.emit(this.navService.getIsAuthenticated());
+    }, 0);
   }
 
   /**

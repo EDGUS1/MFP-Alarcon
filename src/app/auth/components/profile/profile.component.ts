@@ -15,7 +15,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { FileStoreService } from 'src/app/services/file-store.service';
+import { FileStoreService } from 'src/app/core/services/file-store.service';
 import { Usuario } from '../../models/usuario';
 
 /* Elementos del coponente para definir sus rutas especificas de valores */

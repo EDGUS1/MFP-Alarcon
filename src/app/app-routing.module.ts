@@ -4,7 +4,7 @@
 /*Importacion de las principales modulos de angular*/
 import { NgModule } from '@angular/core';
 /*Importacion del modulo Router y sus respectivas variaciones*/
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 /*Importacion del componente hogar desde su respectiva ubicacion*/
 
 /**Constante que simula las rutas de la aplicacion dentro del proyecto**/
@@ -18,12 +18,12 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () =>
-      import('./home/pages/home/incio.module').then((m) => m.IncioModule),
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'curso',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    loadChildren: () =>
+      import('./public/public.module').then((m) => m.PublicModule),
   },
   /*Json que define la ruta del componente de modulo de cursos con la terminacion "cursos"*/
   {
