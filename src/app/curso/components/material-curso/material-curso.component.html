@@ -27,7 +27,7 @@
     <!-- Se finaliza la columna -->
   </div>
   <!-- Se cierra la fila -->
-
+  <!-- <p>{{ material | json }}</p> -->
   <!-- Se crear tarjeta para mostrar cada material -->
   <div class="card bg-light my-4" *ngFor="let c of material">
     <!-- Se crea la cabera del material con el titulo -->
@@ -38,6 +38,15 @@
       <p class="card-text">
         {{ c?.material_descripcion }}
       </p>
+      <div *ngFor="let f of c.archivos">
+        <small>{{ f.archivo_nombre }}</small>
+        <!-- <button class="btn btn-info" (click)="descargarArchivo(f.archivo_url)">
+          Descargar
+        </button> -->
+        <a class="btn btn-info" href="{{ f.archivo_url }}" target="_blank">
+          Descargar
+        </a>
+      </div>
       <!-- Se cierra la etiqueta del material -->
     </div>
     <!-- Se cierra el cuerpo de la tarjeta -->

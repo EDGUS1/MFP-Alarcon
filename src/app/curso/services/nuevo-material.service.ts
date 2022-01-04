@@ -23,4 +23,23 @@ export class NuevoMaterialService extends AppServiceBase {
   listarEntregaTareas(idTarea: number) {
     return this.get(`list-task-submissions/${idTarea}`);
   }
+
+  saveFileMaterial(
+    origen_id: number,
+    tipo_id: number,
+    archivo_url: string,
+    archivo_nombre: string
+  ) {
+    // Tipo => 1 Tarea ; 2 Material
+    return this.post(`materialfile`, {
+      origen_id,
+      tipo_id,
+      archivo_url,
+      archivo_nombre,
+    });
+  }
+
+  listFileByMaterial(id: number) {
+    return this.get(`listMaterialsFiles/${id}`);
+  }
 }

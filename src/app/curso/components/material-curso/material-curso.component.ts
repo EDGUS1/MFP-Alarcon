@@ -65,7 +65,17 @@ export class MaterialCursoComponent implements OnInit {
   listaMaterial() {
     this.materialService.listarMaterial(this.cursoId).subscribe((result) => {
       this.material = result;
+      console.log(result);
+      this.material.forEach((m) =>
+        this.listarArchivos(m.material_id).subscribe(
+          (x: any[]) => (m.archivos = x)
+        )
+      );
     });
+  }
+
+  listarArchivos(id) {
+    return this.materialService.listFileByMaterial(id);
   }
 
   /**
@@ -87,4 +97,14 @@ export class MaterialCursoComponent implements OnInit {
 
     modalRef.componentInstance.fromParent = data;
   }
+
+  /* descargarArchivo(source) {
+    const el = document.createElement('a');
+    el.setAttribute('href', source);
+    el.setAttribute('target', '_blank');
+    el.setAttribute('download', 'fileName');
+    document.body.appendChild(el);
+    el.click();
+    el.remove();
+  } */
 }

@@ -7,4 +7,6 @@ export class Material {
   material_nombre: string;
   //descripcion del curso
   material_descripcion: string;
+
+  archivos?: any[];
 }

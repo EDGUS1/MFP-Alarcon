@@ -59,6 +59,8 @@ export class VerEntregaTareaComponent implements OnInit {
     /**
      * Se llama a la función para listar las tareas entregadas
      */
+    console.log(this.fromParent?.tarea?.tarea_id);
+
     this.listarTareas(this.fromParent?.tarea?.tarea_id);
   }
 
@@ -85,6 +87,7 @@ export class VerEntregaTareaComponent implements OnInit {
          * Se almacena la lista de tareas recibidas
          */
         this.tareas = x;
+        console.log(x);
       });
   }
 }

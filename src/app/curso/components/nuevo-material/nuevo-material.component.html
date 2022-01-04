@@ -1,7 +1,6 @@
 <!--El presente archivo es el contenido HTML del componente de una nueva tarea-->
 
-<!--La presente etiqueta es el encabezado del formato para realizar una nueva tarea en determinado curso
-y enviarla-->
+<!--La presente etiqueta es el encabezado del formato para realizar una nueva tarea en determinado curso y enviarla-->
 <div class="modal-header">
   <h5 class="modal-title">{{ tarea ? "Nueva Tarea" : "Nuevo Material" }}</h5>
   <button
@@ -13,8 +12,7 @@ y enviarla-->
   ></button>
 </div>
 
-<!--La etiqueta siguiente corresponde al cuerpo del formato para realizar las tareas, con los respectivos
-datos de una tarea-->
+<!--La etiqueta siguiente corresponde al cuerpo del formato para realizar las tareas, con los respectivos datos de una tarea-->
 <div class="modal-body">
   <div class="container">
     <div class="row">
@@ -63,13 +61,23 @@ datos de una tarea-->
               class="form-control"
               id="file"
               aria-describedby="inputGroupFileAddon04"
+              multiple
             />
             <!-- <label class="custom-file-label" for="file">Archivos</label> -->
           </div>
         </div>
       </div>
+      <div class="fondo" *ngIf="!archivosGuardados && empezarGuardado">
+        <div class="lds-facebook">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
       <div class="col-12 my-2" *ngIf="archivos?.length > 0">
-        <h1 *ngIf="maxFiles">MAXIMO ALCANZADO</h1>
+        <small *ngIf="maxFiles" class="text-danger">
+          Máximo de archivos alcanzado
+        </small>
         <div class="card">
           <div class="card-body">
             <div class="table-responsive">
@@ -109,6 +117,7 @@ datos de una tarea-->
     type="button"
     class="btn btn-primary mr-2"
     *ngIf="!editarTarea"
+    [disabled]="empezarGuardado"
   >
     Guardar
   </button>

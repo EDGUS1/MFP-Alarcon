@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { EditarCursoComponent } from './components/editar-curso/editar-curso.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TareaCardComponent } from './components/tarea-card/tarea-card.component';
 
 /* es una función que toma un solo objeto de metadatos, cuyas propiedades describen el módulo */
 @NgModule({
@@ -49,6 +50,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     VerEntregaTareaComponent,
     //componente donde se edita el curso
     EditarCursoComponent,
+    TareaCardComponent,
   ],
   /* Otros módulos cuyas clases exportadas son necesarias para las plantillas de componentes declaradas en este NgModule. */
   imports: [

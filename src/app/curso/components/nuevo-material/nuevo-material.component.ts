@@ -22,6 +22,10 @@ export class NuevoMaterialComponent implements OnInit {
   objeto: Tarea;
   maxFiles: boolean = false;
 
+  archivosGuardados = false;
+  empezarGuardado = false;
+  archivosSubidos = 0;
+
   constructor(
     public activeModal: NgbActiveModal,
     public materialService: NuevoMaterialService,
@@ -69,12 +73,18 @@ export class NuevoMaterialComponent implements OnInit {
    * @param event Evento que se emite al subir un archivo
    */
   subirArvhivos(event) {
+    let maxNumber =
+      event.target.files.length > 5 ? 5 : event.target.files.length;
+
+    let contador = Math.abs(this.archivos.length - maxNumber);
+
     if (this.archivos.length >= 5) {
       this.maxFiles = true;
     } else {
-      this.archivos.push(event.target.files[0]);
+      for (let i = 0; i < contador; i++) {
+        this.archivos.push(event.target.files[i]);
+      }
     }
-    // let archivos = event.target.files;
   }
 
   /**
@@ -123,6 +133,7 @@ export class NuevoMaterialComponent implements OnInit {
   }
 
   guardarMaterialCurso() {
+    this.empezarGuardado = true;
     let newMaterial = new Material();
     newMaterial.curso_id = this.objeto.curso_id;
     newMaterial.material_descripcion = this.objeto.tarea_descripcion;
@@ -131,13 +142,50 @@ export class NuevoMaterialComponent implements OnInit {
     this.materialService
       .crearMaterialCurso(this.objeto.curso_id, newMaterial)
       .subscribe((x) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Material creado',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.closeModal('guardado');
+        if (this.archivos.length > 0) {
+          this.archivos.forEach((e) => {
+            this.saveFile(
+              e,
+              +sessionStorage.getItem('usuario_id'),
+              x['insertId']
+            );
+          });
+        } else {
+          Swal.fire({
+            icon: 'success',
+            title: 'Material creado',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.closeModal('guardado');
+        }
       });
+  }
+
+  saveFile(file: any, idUser: number, id: number) {
+    let reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.fileService
+        .subirImagen(file.name, reader.result, idUser)
+        .then((url) => {
+          this.archivosSubidos++;
+          this.materialService
+            .saveFileMaterial(id, 2, url, file.name)
+            .subscribe((x) => {});
+          if (this.archivosSubidos == this.archivos.length) {
+            this.archivosGuardados = true;
+            this.empezarGuardado = false;
+            Swal.fire({
+              icon: 'success',
+              title: 'Material creado',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            this.closeModal('guardado');
+          }
+        });
+    };
   }
 }

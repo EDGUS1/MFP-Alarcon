@@ -35,66 +35,66 @@
     >
   </div>
   <!-- Fin de la etiquea que agrupa la descripcion -->
-  <!-- <div class="form-group" *ngIf="!editar"> -->
-  <!-- <div class="row m-0"> -->
-  <!-- Check de la privacidad del curso -->
-  <p>Privacidad:</p>
-  <div class="form-check form-check-inline">
-    <input
-      class="form-check-input"
-      type="radio"
-      id="Privacidad1"
-      formControlName="privacidad_id"
-      [class.is-invalid]="privacidadNoValido"
-      value="1"
-    />
-    <label class="form-check-label" for="Privacidad1"> Publico </label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input
-      class="form-check-input"
-      type="radio"
-      id="Privacidad2"
-      formControlName="privacidad_id"
-      [class.is-invalid]="privacidadNoValido"
-      value="2"
-    />
-    <label class="form-check-label" for="Privacidad2"> Privado </label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input
-      class="form-check-input"
-      type="radio"
-      id="Privacidad3"
-      formControlName="privacidad_id"
-      [class.is-invalid]="privacidadNoValido"
-      value="5"
-    />
-    <label class="form-check-label" for="Privacidad3"> Con Invitación </label>
-  </div>
-  <!-- </div> -->
-  <!-- Validacion de la privacidad -->
-  <br />
-  <small class="text-danger mt-3 mt-lg-0" *ngIf="privacidadNoValido"
-    >Ingrese la privacidad del curso</small
-  >
+  <ng-container *ngIf="!editar">
+    <!-- <div class="row m-0"> -->
+    <!-- Check de la privacidad del curso -->
+    <p>Privacidad:</p>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="Privacidad1"
+        formControlName="privacidad_id"
+        [class.is-invalid]="privacidadNoValido"
+        value="1"
+      />
+      <label class="form-check-label" for="Privacidad1"> Publico </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="Privacidad2"
+        formControlName="privacidad_id"
+        [class.is-invalid]="privacidadNoValido"
+        value="2"
+      />
+      <label class="form-check-label" for="Privacidad2"> Privado </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="Privacidad3"
+        formControlName="privacidad_id"
+        [class.is-invalid]="privacidadNoValido"
+        value="5"
+      />
+      <label class="form-check-label" for="Privacidad3"> Con Invitación </label>
+    </div>
+    <!-- Validacion de la privacidad -->
+    <br />
+    <small class="text-danger mt-3 mt-lg-0" *ngIf="privacidadNoValido"
+      >Ingrese la privacidad del curso</small
+    >
+  </ng-container>
   <!-- </div> -->
   <!-- Fin de la etiquea que agrupa la privacidad -->
   <div class="form-group" *ngIf="editar">
-    <div class="row m-0">
-      <label for="categoriaCurso">Privacidad:</label>
-      <select
-        name="categoria_id"
-        id="categoria_id"
-        class="form-select"
-        formControlName="privacidad_id"
-      >
-        <option value="" hidden>seleccione</option>
-        <option [ngValue]="1">Publico</option>
-        <option [ngValue]="2">Privado</option>
-        <option [ngValue]="3">Invitacion</option>
-      </select>
-    </div>
+    <!-- <div class="row"> -->
+    <label for="categoriaCurso">Privacidad:</label>
+    <select
+      name="categoria_id"
+      id="categoria_id"
+      class="form-select"
+      formControlName="privacidad_id"
+    >
+      <option value="" hidden>seleccione</option>
+      <option [ngValue]="1">Publico</option>
+      <option [ngValue]="2">Privado</option>
+      <option [ngValue]="3">Invitacion</option>
+    </select>
+    <!-- </div> -->
     <!-- Validacion de la privacidad -->
     <small class="text-danger mt-3 mt-lg-0" *ngIf="privacidadNoValido"
       >Ingrese la privacidad del curso</small
