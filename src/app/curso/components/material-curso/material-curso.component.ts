@@ -65,17 +65,16 @@ export class MaterialCursoComponent implements OnInit {
   listaMaterial() {
     this.materialService.listarMaterial(this.cursoId).subscribe((result) => {
       this.material = result;
-      console.log(result);
       this.material.forEach((m) =>
-        this.listarArchivos(m.material_id).subscribe(
+        this.listarArchivos(m.material_id, 2).subscribe(
           (x: any[]) => (m.archivos = x)
         )
       );
     });
   }
 
-  listarArchivos(id) {
-    return this.materialService.listFileByMaterial(id);
+  listarArchivos(id: number, tipo: number) {
+    return this.materialService.listFileByMaterial(id, tipo);
   }
 
   /**

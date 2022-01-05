@@ -39,7 +39,7 @@ export class NuevoMaterialService extends AppServiceBase {
     });
   }
 
-  listFileByMaterial(id: number) {
-    return this.get(`listMaterialsFiles/${id}`);
+  listFileByMaterial(id: number, tipoId: number) {
+    return this.get(`listMaterialsFiles/${id}/${tipoId}`);
   }
 }

@@ -55,18 +55,15 @@
   <!-- Se cierra el contenedor de las funciones del profesor -->
 
   <!-- Se inicia el contenedor de la lista de usurios -->
-  <div class="row my-2">
+  <div class="row my-5">
     <!-- Se inicia la distribución con 12 columnas -->
     <div class="col-12">
       <!-- Se inicia como una tabla responsive -->
-      <div
-        class="table-responsive table-borderless"
-        *ngIf="usuarios?.length > 0"
-      >
+      <div class="table-responsive" *ngIf="usuarios?.length > 0">
         <!-- Se crea la tabla que contiene a los alumnos del curso -->
-        <table class="table">
+        <table class="table table-borderless">
           <!-- Etiqueta para mostrar el total de alumnos -->
-          <caption class="text-primary">
+          <caption class="text-primary pt-5">
             Total de alumnos:&nbsp;&nbsp;
             {{
               totalAlumnos

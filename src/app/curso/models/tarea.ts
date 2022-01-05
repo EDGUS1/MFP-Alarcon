@@ -11,4 +11,6 @@ export class Tarea {
   curso_id: number;
   //fecha maxima para la entrega de tarea
   tarea_fecha_entrega: Date;
+
+  archivos?: any[];
 }

@@ -31,14 +31,20 @@
   <!-- Se crear tarjeta para mostrar cada material -->
   <div class="card bg-light my-4" *ngFor="let c of material">
     <!-- Se crea la cabera del material con el titulo -->
-    <div class="card-header">{{ c?.material_nombre }}</div>
+    <div class="card-header">
+      {{ c?.material_nombre }}
+      {{ c?.material_fecha_modificaion | date: "short" }}
+    </div>
     <!-- Se cierra la etiqueta -->
     <div class="card-body">
       <!-- Se añade la descripcion del material -->
       <p class="card-text">
         {{ c?.material_descripcion }}
       </p>
-      <div *ngFor="let f of c.archivos">
+      <div
+        class="d-flex justify-content-between my-2"
+        *ngFor="let f of c.archivos"
+      >
         <small>{{ f.archivo_nombre }}</small>
         <!-- <button class="btn btn-info" (click)="descargarArchivo(f.archivo_url)">
           Descargar

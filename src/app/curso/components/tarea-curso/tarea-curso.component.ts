@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tarea } from '../../models/tarea';
+import { NuevoMaterialService } from '../../services/nuevo-material.service';
 import { TareaService } from '../../services/tarea.service';
 import { NuevoMaterialComponent } from '../nuevo-material/nuevo-material.component';
 
@@ -17,7 +18,8 @@ export class TareaCursoComponent implements OnInit {
   tareaFiltro: string;
   constructor(
     private modalService: NgbModal,
-    private tareaService: TareaService
+    private tareaService: TareaService,
+    private materialService: NuevoMaterialService
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +61,16 @@ export class TareaCursoComponent implements OnInit {
   listarTareas(id: number) {
     this.tareaService.listarTareaCurso(id).subscribe((x) => {
       this.tareas = x['tareas'];
+      this.tareas.forEach((t) =>
+        this.listarArchivos(t.tarea_id, 1).subscribe(
+          (x: any[]) => (t.archivos = x)
+        )
+      );
+      console.log(this.tareas);
     });
+  }
+
+  listarArchivos(id: number, tipo: number) {
+    return this.materialService.listFileByMaterial(id, tipo);
   }
 }

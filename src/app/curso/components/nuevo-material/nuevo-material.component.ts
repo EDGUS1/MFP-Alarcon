@@ -64,7 +64,20 @@ export class NuevoMaterialComponent implements OnInit {
    */
   guardarTarea() {
     this.materialService.crearTarea(this.objeto).subscribe((rep) => {
-      this.closeModal(rep['msg']);
+      console.log(rep);
+
+      if (this.archivos.length > 0) {
+        this.archivos.forEach((e) => {
+          this.saveFile(
+            e,
+            +sessionStorage.getItem('usuario_id'),
+            rep['tarea']['insertId'],
+            1
+          );
+        });
+      } else {
+        this.closeModal(rep['msg']);
+      }
     });
   }
 
@@ -110,7 +123,8 @@ export class NuevoMaterialComponent implements OnInit {
     this.objeto.curso_id = tarea?.curso_id;
     this.objeto.tarea_nombre = tarea?.tarea_nombre;
     this.objeto.tarea_descripcion = tarea?.tarea_descripcion;
-    this.objeto.tarea_fecha_entrega = tarea?.tarea_fecha_entrega;
+    this.objeto.tarea_fecha_entrega = new Date(tarea?.tarea_fecha_entrega);
+    console.log(this.objeto);
   }
 
   /**
@@ -147,7 +161,8 @@ export class NuevoMaterialComponent implements OnInit {
             this.saveFile(
               e,
               +sessionStorage.getItem('usuario_id'),
-              x['insertId']
+              x['insertId'],
+              2
             );
           });
         } else {
@@ -162,7 +177,7 @@ export class NuevoMaterialComponent implements OnInit {
       });
   }
 
-  saveFile(file: any, idUser: number, id: number) {
+  saveFile(file: any, idUser: number, id: number, tipo_id: number) {
     let reader = new FileReader();
 
     reader.readAsDataURL(file);
@@ -172,7 +187,7 @@ export class NuevoMaterialComponent implements OnInit {
         .then((url) => {
           this.archivosSubidos++;
           this.materialService
-            .saveFileMaterial(id, 2, url, file.name)
+            .saveFileMaterial(id, tipo_id, url, file.name)
             .subscribe((x) => {});
           if (this.archivosSubidos == this.archivos.length) {
             this.archivosGuardados = true;

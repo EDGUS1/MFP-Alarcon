@@ -6,36 +6,49 @@
     <div>
       <button
         *ngIf="usuarioProfesor"
-        class="btn btn-primary mr-2"
+        class="btn btn-primary me-2"
         (click)="openModalEntregas(tarea)"
       >
         <span>Ver entregas</span>
       </button>
-      <button
+      <!-- <button
         *ngIf="usuarioProfesor"
-        class="btn btn-primary mr-2"
+        class="btn btn-primary me-2"
         data-toggle="modal"
         data-target="#exampleModal"
       >
         <span>Notificar</span>
-      </button>
+      </button> -->
       <button
         class="btn btn-primary"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapseExample"
+        [attr.data-bs-target]="'#collapse' + tarea.tarea_id"
         aria-expanded="false"
-        aria-controls="collapseExample"
+        [attr.aria-controls]="'collapse' + tarea.tarea_id"
       >
         Mas infromación
       </button>
     </div>
   </div>
-  <div class="collapse" id="collapseExample">
+  <div class="collapse" id="{{ 'collapse' + tarea.tarea_id }}">
     <div class="container m-3">
       <div class="row">
         <div class="col-12">
           {{ tarea.tarea_descripcion }}
+        </div>
+        <p class="fw-bold" *ngIf="tarea?.archivos?.length > 0">
+          Archivos adjuntos
+        </p>
+        <div
+          class="d-flex justify-content-between my-2"
+          *ngFor="let f of tarea?.archivos"
+        >
+          <small>{{ f.archivo_nombre }}</small>
+
+          <a class="btn btn-info" href="{{ f.archivo_url }}" target="_blank">
+            Descargar
+          </a>
         </div>
         <div class="col-12 col-md-6 ms-auto" *ngIf="!usuarioProfesor">
           <div class="input-group">
@@ -62,6 +75,7 @@
             </div>
           </div>
         </div>
+
         <div
           class="col-12 d-flex flex-row-reverse my-4"
           *ngIf="usuarioProfesor"

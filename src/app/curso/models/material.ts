@@ -8,5 +8,7 @@ export class Material {
   //descripcion del curso
   material_descripcion: string;
 
+  material_fecha_modificaion: Date;
+
   archivos?: any[];
 }

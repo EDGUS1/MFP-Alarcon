@@ -114,6 +114,7 @@ export class VerCursoComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+
   obtenerIdCurso() {
     const navigation = this.router.getCurrentNavigation();
     if (navigation.extras.state) {
