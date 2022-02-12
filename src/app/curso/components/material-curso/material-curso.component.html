@@ -11,6 +11,7 @@
         id=""
         class="form-control me-3"
         placeholder="Buscar material"
+        [(ngModel)]="materialFiltro"
       />
       <!-- Se cierra la etiqueta del input -->
 
@@ -29,7 +30,10 @@
   <!-- Se cierra la fila -->
   <!-- <p>{{ material | json }}</p> -->
   <!-- Se crear tarjeta para mostrar cada material -->
-  <div class="card bg-light my-4" *ngFor="let c of material">
+  <div
+    class="card bg-light my-4"
+    *ngFor="let c of material | filter: { material_nombre: materialFiltro }"
+  >
     <!-- Se crea la cabera del material con el titulo -->
     <div class="card-header">
       {{ c?.material_nombre }}

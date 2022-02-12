@@ -41,6 +41,7 @@ export class MaterialCursoComponent implements OnInit {
    * Array con la lista de los materiales del curso
    */
   material: Material[];
+  materialFiltro: string;
 
   /**
    * Contructor para incializar el componente
