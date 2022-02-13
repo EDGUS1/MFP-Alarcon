@@ -14,7 +14,6 @@ export const environment = {
   },
   production: false,
   api: {
-    // baseUrl: 'https://aprendeenlinea.herokuapp.com/',
     baseUrl: 'https://apiclassroom.herokuapp.com/api/v2',
     // baseUrl: 'http://localhost:3001/api/v2',
   },

@@ -10,6 +10,6 @@ export const environment = {
   },
   production: true,
   api: {
-    baseUrl: 'https://apiclassroom.herokuapp.com/',
+    baseUrl: 'https://apiclassroom.herokuapp.com/api/v2',
   },
 };
