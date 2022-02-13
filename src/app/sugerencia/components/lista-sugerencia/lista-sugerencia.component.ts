@@ -35,7 +35,9 @@ export class ListaSugerenciaComponent {
     /**
      * se busca el numero de votos
      */
+    //TODO: MEJORAR SERVICIO O ARREGLAR CON UN PIPE
     const votos = this.sugerenciasVotos?.find((s) => s.sugerencia_id === id);
+
     /**
      * Se valida que la cantidad de votos exista
      */
@@ -43,7 +45,7 @@ export class ListaSugerenciaComponent {
       /**
        * Se devuelve la cantidad de votos
        */
-      return votos['COUNT(sugerencia_id)'];
+      return votos['votos'];
     }
     /**
      * Se devuelve valor por defecto
@@ -56,7 +58,7 @@ export class ListaSugerenciaComponent {
    * @returns retorna verdadero o false
    */
   obtenerVotoUsuario(id: number) {
-    // TODO: transformar a pipe o utilziar zone.js
+    // TODO: transformar a pipe o utilziar zone.js - Y CAMBIAR NGCLASS O ALGO ASI
     return (
       this.usuariosVotos?.find((v) => v.sugerencia_id === id) !== undefined
     );

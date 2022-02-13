@@ -15,6 +15,6 @@ export class UsuarioService extends AppServiceBase {
    * @returns Objeto creado
    */
   crearUsuario(usuario: Usuario) {
-    return this.post('register', usuario);
+    return this.post('/user', usuario);
   }
 }

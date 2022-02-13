@@ -60,7 +60,7 @@ export class SugerenciaComponent implements OnInit {
   /**
    * array con los votos de un usuario
    */
-  usuariosVotos: Sugerencia[];
+  usuariosVotos: any;
 
   /**
    * Constructor para el componente listar sugerencias
@@ -190,6 +190,7 @@ export class SugerenciaComponent implements OnInit {
       /**
        * Se almacena las sugerencias
        */
+
       this.sugerencias = x;
       /**
        * Se almacen las sugerencias iniciales
@@ -221,7 +222,7 @@ export class SugerenciaComponent implements OnInit {
        * Se almacena los votos del usuario
        */
 
-      this.usuariosVotos = x['list'];
+      this.usuariosVotos = x;
     });
   }
 

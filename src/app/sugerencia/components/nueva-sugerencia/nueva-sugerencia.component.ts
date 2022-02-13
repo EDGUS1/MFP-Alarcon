@@ -76,7 +76,7 @@ export class NuevaSugerenciaComponent implements OnInit {
   listarCategorias() {
     this.categoriaService
       .listarCategorias()
-      .subscribe((x) => (this.categorias = x['categories']));
+      .subscribe((x) => (this.categorias = x));
   }
 
   get nombreNoValido() {

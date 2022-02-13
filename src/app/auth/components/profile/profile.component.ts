@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 /*Importacion de un servicio sobre nuevos usuarios para apoyar el cambio de datos*/
 import { NewUsuarioService } from '../../services/editarperfil.service';
 /*Importacion de un servicio sobre los cursos para apoyar el cambio de datos*/
-import { CursoService } from '../../../curso/services/curso.service';
 /*Importaciones desde la biblioteca de angular para ayudar en la formalizacion de formularios*/
 import {
   FormBuilder,
@@ -46,7 +45,7 @@ export class ProfileComponent implements OnInit {
   /*Descripcion del usuario*/
   descripcion: any;
   /*Numero de cursos en los que esta matriculado el usuario*/
-  cursosm: any;
+  // cursosm: any;
   file: any;
 
   /* Objeto para editar los valores del perfil, se iguala a los valores del usuario para evitar problemas 
@@ -75,7 +74,6 @@ export class ProfileComponent implements OnInit {
     /*Parametro publico sobre el servicio del nuevo usuario importado*/
     public newUsuarioService: NewUsuarioService,
     /*Parametro publico sobre el servicio del curso importado*/
-    public cursoService: CursoService,
     /*Parametro publico sobre el servicio de los formularios importado*/
     private formBuilder: FormBuilder,
     private fileService: FileStoreService
@@ -100,14 +98,6 @@ export class ProfileComponent implements OnInit {
   /**En esta parte se obtienen los cursos matriculados de cada usuario**/
   /*Funcion principal de los componentes de angular*/
   ngOnInit(): void {
-    /*Funcion importada que obtiene el numero de cursos en los que el usuario esta matriculado con respecto
-    a su ID*/
-    // this.cursoService
-    //   .listarCursosPorUsuario2(this.usuario_id)
-    //   .subscribe((rep) => {
-    //     this.cursosm = rep['data'].length;
-    //   });
-
     /*Funcion importada que usa al atributo formado anteriormente para definir las restricciones y validaciones
     de los input que posean el mismo nombre que el formulario*/
     this.perfilForm = this.formBuilder.group({
@@ -298,7 +288,7 @@ export class ProfileComponent implements OnInit {
       user.usuario_correo = this.perfilForm.get('correo').value;
       user.usuario_descripcion = this.perfilForm.get('descripcion').value;
       if (this.url == 'null') {
-        // TODO: comprobar q hubo cambios
+        // TODO: comprobar que hubo cambios
         this.enviarDatos(user);
       } else {
         this.cargarImagen(this.file, 300, user);

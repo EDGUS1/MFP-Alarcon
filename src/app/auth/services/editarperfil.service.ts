@@ -22,6 +22,6 @@ export class NewUsuarioService extends AppServiceBase {
     /* Se iguala una constante al id del usuario logueado */
     // const usuario_id = sessionStorage.getItem('usuario_id');
     /* Se retorna dicho valor al usuario en cuestion */
-    return this.post(`useredit/${usuario_id}`, user);
+    return this.put(`/user/${usuario_id}`, user);
   }
 }
