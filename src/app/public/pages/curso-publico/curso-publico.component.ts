@@ -46,7 +46,7 @@ export class CursoPublicoComponent implements OnInit {
 
   listarCategorias() {
     this.categoriaService.listarCategorias().subscribe((x) => {
-      this.categorias = x['categories'];
+      this.categorias = x;
     });
   }
 

@@ -11,7 +11,7 @@ export class CategoriaService extends AppServiceBase {
    * @returns Listado de categorias
    */
   listarCategorias(): Observable<any> {
-    return this.get(`categories`);
+    return this.get(`/category`);
   }
 
   /**
@@ -20,6 +20,6 @@ export class CategoriaService extends AppServiceBase {
    * @returns Objeto con la informacion de una categoria
    */
   getCategoria(id: number): Observable<any> {
-    return this.get(`categories/${id}`);
+    return this.get(`/category/${id}`);
   }
 }

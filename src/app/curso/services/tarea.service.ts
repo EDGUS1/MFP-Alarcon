@@ -13,7 +13,7 @@ export class TareaService extends AppServiceBase {
    * @returns Listado con las tareas del curso
    */
   listarTareaCurso(id: number): Observable<any> {
-    return this.get(`listarTareasCurso/${id}`);
+    return this.get(`/task/${id}`);
   }
 
   /**
@@ -23,6 +23,6 @@ export class TareaService extends AppServiceBase {
    * @returns Mensaje de confirmación
    */
   actualizarTarea(id: number, tarea: Tarea) {
-    return this.put(`editarTarea/${id}`, tarea);
+    return this.put(`/task/${id}`, tarea);
   }
 }

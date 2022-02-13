@@ -11,7 +11,7 @@ export class SugerenciaService extends AppServiceBase {
    * @returns lista con los votos de las sugerencias
    */
   listarSugerenciasVotos(): Observable<any> {
-    return this.get('listarSugerenciasMasVotos');
+    return this.get('/suggestion/max');
   }
 
   /**
@@ -19,6 +19,6 @@ export class SugerenciaService extends AppServiceBase {
    * @returns Lista con las sugerencias con mas votos
    */
   listarSugerencias(): Observable<any> {
-    return this.get('suggestions');
+    return this.get('/suggestion');
   }
 }

@@ -14,11 +14,9 @@ export class FileStoreService {
       let res = await this.storageRef
         .child(`files/${iduser}/${nombre}`)
         .putString(imaBase64, 'data_url');
-      console.log({ res });
 
       return res.ref.getDownloadURL();
     } catch (error) {
-      console.log(error);
       return null;
     }
   }

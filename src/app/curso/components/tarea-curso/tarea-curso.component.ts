@@ -60,13 +60,12 @@ export class TareaCursoComponent implements OnInit {
    */
   listarTareas(id: number) {
     this.tareaService.listarTareaCurso(id).subscribe((x) => {
-      this.tareas = x['tareas'];
+      this.tareas = x;
       this.tareas.forEach((t) =>
         this.listarArchivos(t.tarea_id, 1).subscribe(
           (x: any[]) => (t.archivos = x)
         )
       );
-      console.log(this.tareas);
     });
   }
 

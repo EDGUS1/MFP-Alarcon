@@ -10,7 +10,7 @@ import { Curso } from '../models/curso';
   providedIn: 'root',
 })
 export class CursoService {
-  urlApi: string = `${environment.api.baseUrl}`;
+  urlApi: string = `${environment.api.baseUrl}/course`;
 
   constructor(private http: HttpClient) {}
   /**
@@ -19,7 +19,7 @@ export class CursoService {
    * @returns Objeto creado
    */
   crearCurso(curso: Curso): Observable<any> {
-    return this.http.post(`${this.urlApi}courses`, curso).pipe(
+    return this.http.post(`${this.urlApi}`, curso).pipe(
       map((response: any) => response.curso as Curso),
       catchError((e) => {
         if (e.status == 400) {
@@ -39,7 +39,7 @@ export class CursoService {
    * @returns Datos del curso
    */
   obtenerCurso(id: number): Observable<any> {
-    return this.http.get(`${this.urlApi}courses/${id}`);
+    return this.http.get(`${this.urlApi}/${id}`);
   }
 
   /**
@@ -48,7 +48,7 @@ export class CursoService {
    * @returns Listado de usarios que pertenecen al curso
    */
   listarUsuariosPorCurso(id: number): Observable<any> {
-    return this.http.get(`${this.urlApi}course-user/${id}`);
+    return this.http.get(`${environment.api.baseUrl}/user/course/${id}`);
   }
 
   /**
@@ -57,16 +57,7 @@ export class CursoService {
    * @returns Listado de cursos por usuario
    */
   listarCursosPorUsuario(id: number): Observable<any> {
-    return this.http.get(`${this.urlApi}cursos/${id}`);
-  }
-
-  /**
-   * Servicio para listar los cursos de un usuario
-   * @param id {Number} - Identificador del usuario
-   * @returns Listado de cursos por usuario
-   */
-  listarCursosPorUsuario2(id: number): Observable<any> {
-    return this.http.get(`${this.urlApi}coursesofuser/${id}`);
+    return this.http.get(`${this.urlApi}/user/${id}`);
   }
 
   /**
@@ -76,7 +67,7 @@ export class CursoService {
    * @returns Mensaje de confirmación
    */
   agrearUsuarioCurso(idCurso: number, correo: string): Observable<any> {
-    return this.http.post(`${this.urlApi}coursesUsers`, {
+    return this.http.post(`${this.urlApi}/user`, {
       curso_id: idCurso,
       correo,
     });
@@ -88,7 +79,7 @@ export class CursoService {
    * @returns Listado de cursos publicos de un usuario
    */
   listarCursosPublicosPorUsuario(id: number): Observable<any> {
-    return this.http.get(`${this.urlApi}coursespublic/${id}`);
+    return this.http.get(`${this.urlApi}/public/${id}`);
   }
 
   /**
@@ -98,10 +89,13 @@ export class CursoService {
    * @returns Mensaje de confirmación
    */
   solicitarAcceso(curso_id, usuario_id): Observable<any> {
-    return this.http.post(`${this.urlApi}solicitarCursoPrivado`, {
-      curso_id,
-      usuario_id,
-    });
+    return this.http.post(
+      `${environment.api.baseUrl}/notification/solicitarCursoPrivado`,
+      {
+        curso_id,
+        usuario_id,
+      }
+    );
   }
 
   /**
@@ -111,11 +105,11 @@ export class CursoService {
    * @returns Mensajde de confirmación
    */
   editarCurso(idCurso: number, curso: Curso) {
-    return this.http.post(`${this.urlApi}coursesEdit/${idCurso}`, curso);
+    return this.http.put(`${this.urlApi}/${idCurso}`, curso);
   }
 
   unirCursoPublico(idCurso: number, idUser: number) {
-    return this.http.post(`${this.urlApi}join-public-course/${idCurso}`, {
+    return this.http.post(`${this.urlApi}/join/${idCurso}`, {
       idUser,
     });
   }
@@ -126,13 +120,15 @@ export class CursoService {
    * @returns Mensaje de de confirmación
    */
   unirPorCodigo(codigo: Codigo) {
-    return this.http.post(`${this.urlApi}unirPorCodigo`, codigo);
+    return this.http.post(`${this.urlApi}/code`, codigo);
   }
 
   eliminarUsuarioCurso(curso_id: number, usuario_id: number) {
-    return this.http.post(`${this.urlApi}deletecoursesUsers`, {
-      curso_id,
-      usuario_id,
+    return this.http.delete(`${this.urlApi}/user`, {
+      body: {
+        curso_id,
+        usuario_id,
+      },
     });
   }
 }

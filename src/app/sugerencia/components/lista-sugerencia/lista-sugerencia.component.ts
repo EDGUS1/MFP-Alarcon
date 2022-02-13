@@ -67,8 +67,6 @@ export class ListaSugerenciaComponent {
     newVoto.sugerencia_id = id;
     newVoto.usuario_id = +sessionStorage.getItem('usuario_id');
     this.sugerenciaService.votarSugerencia(newVoto).subscribe((x) => {
-      console.log(x);
-
       /**
        * Se llama a la función para listar votos
        */

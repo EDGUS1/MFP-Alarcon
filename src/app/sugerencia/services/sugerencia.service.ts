@@ -13,7 +13,7 @@ export class SugerenciaService extends AppServiceBase {
    * @returns Listado de las sugerencias
    */
   listarSugerencias(): Observable<any> {
-    return this.get('suggestions');
+    return this.get('/suggestion');
   }
 
   /**
@@ -21,7 +21,7 @@ export class SugerenciaService extends AppServiceBase {
    * @returns Lista de los votos de la sugerencia
    */
   listarSugerenciasVotos(): Observable<any> {
-    return this.get('listarSugerenciasVotos');
+    return this.get('/suggestion/vote');
   }
 
   /**
@@ -30,7 +30,7 @@ export class SugerenciaService extends AppServiceBase {
    * @returns lista con los votos del usuario
    */
   listarVotosPorusuario(id: number) {
-    return this.get(`listarVotosUsuario/${id}`);
+    return this.get(`/suggestion/vote/${id}`);
   }
 
   /**
@@ -39,7 +39,7 @@ export class SugerenciaService extends AppServiceBase {
    * @returns Sugerencia creada
    */
   crearSugerencia(sugerencia: Sugerencia): Observable<any> {
-    return this.post('suggestions', sugerencia);
+    return this.post('/suggestion', sugerencia);
   }
 
   /**
@@ -48,6 +48,6 @@ export class SugerenciaService extends AppServiceBase {
    * @returns Voto creado
    */
   votarSugerencia(sugerencia: Voto): Observable<any> {
-    return this.put('votarSugerencias', sugerencia);
+    return this.put('/suggestion/vote', sugerencia);
   }
 }

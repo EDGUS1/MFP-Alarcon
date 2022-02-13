@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
       /**
        * Se almacena los cursos en la variable curso
        */
-      this.cursos = x['cursos'];
+      this.cursos = x;
     });
   }
 
@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
       /**
        * Se alamcena las sugerencias
        */
-      this.sugerencias = x['list'];
+      this.sugerencias = x;
       this.listarVotos();
     });
   }
@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
       /**
        * Se almacenan las categorias
        */
-      this.categorias = x['categories'];
+      this.categorias = x;
       /**
        * Se llama a la función para listar cursos
        */
@@ -139,7 +139,8 @@ export class HomeComponent implements OnInit {
       /**
        * Se almacena los votos de las sugerencias
        */
-      this.votosSugerencias = x['list'];
+
+      this.votosSugerencias = x;
       /**
        * Se filtra las sugerencias ocn mayor cantidad de votos
        */

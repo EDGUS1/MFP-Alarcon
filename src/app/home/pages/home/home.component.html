@@ -110,18 +110,26 @@
   </div>
   <!-- Se cierra la etiqueta de la fila -->
   <!-- Se crea una segunda fila para mostrar las sugerencias -->
-  <!-- <div class="row" *ngIf="sugerencias?.length > 0"> -->
-  <div class="row">
+  <div class="row" *ngIf="sugerencias.length > 0; else loadcardsug">
     <!-- Se crea una colunma de doce para mostrar la información -->
     <!-- Se crea una tarjeta -->
-    <!-- <app-sugerencia-populares class="col-12 col-md-4" [sugerencia]="s" *ngFor="let s of sugerencias"></app-sugerencia-populares> -->
-    <app-card-sugerencia-preload
+    <app-sugerencia-populares
       class="col-12 col-md-4"
-      *ngFor="let s of [1, 2, 3]"
-    ></app-card-sugerencia-preload>
+      [sugerencia]="s"
+      *ngFor="let s of sugerencias"
+    ></app-sugerencia-populares>
+
     <!-- Se cierra el contenedor de la tarjeta -->
     <!-- Se cierra la etiqueta de la columna -->
   </div>
+  <ng-template #loadcardsug>
+    <div class="row">
+      <app-card-sugerencia-preload
+        class="col-12 col-md-4"
+        *ngFor="let s of [1, 2, 3]"
+      ></app-card-sugerencia-preload>
+    </div>
+  </ng-template>
   <!-- Se cierra la segunda fila -->
   <!-- Se crea una tercera fila -->
   <div class="row">

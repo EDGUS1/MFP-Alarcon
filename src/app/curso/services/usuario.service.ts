@@ -11,6 +11,6 @@ export class UsuarioService extends AppServiceBase {
    * @returns Objeto con la informacipon del usuario
    */
   obtenerUsuario(id: number) {
-    return this.get(`users/${id}`);
+    return this.get(`/user/${id}`);
   }
 }

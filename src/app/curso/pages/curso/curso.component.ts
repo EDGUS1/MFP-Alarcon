@@ -99,7 +99,8 @@ export class CursoComponent implements OnInit {
       /**
        * Se almacena el nombre del curso desde la respuesta obtenida del servicio
        */
-      this.nombreCurso = x['data']?.curso_nombre;
+
+      this.nombreCurso = x?.curso_nombre;
     });
   }
 }

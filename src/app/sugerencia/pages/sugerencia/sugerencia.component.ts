@@ -190,11 +190,11 @@ export class SugerenciaComponent implements OnInit {
       /**
        * Se almacena las sugerencias
        */
-      this.sugerencias = x['list'];
+      this.sugerencias = x;
       /**
        * Se almacen las sugerencias iniciales
        */
-      this.sugerenciasIniciales = x['list'];
+      this.sugerenciasIniciales = x;
     });
   }
 
@@ -206,9 +206,8 @@ export class SugerenciaComponent implements OnInit {
       /**
        * Se alamcena la respueta del servicio
        */
-      console.log(x);
 
-      this.sugerenciasVotos = x['list'];
+      this.sugerenciasVotos = x;
     });
   }
 
@@ -221,6 +220,7 @@ export class SugerenciaComponent implements OnInit {
       /**
        * Se almacena los votos del usuario
        */
+
       this.usuariosVotos = x['list'];
     });
   }
@@ -234,9 +234,7 @@ export class SugerenciaComponent implements OnInit {
      */
     this.categoriaService
       .listarCategorias()
-      .subscribe(
-        (x) => (this.categorias = this.categorias.concat(x['categories']))
-      );
+      .subscribe((x) => (this.categorias = this.categorias.concat(x)));
   }
 
   /**

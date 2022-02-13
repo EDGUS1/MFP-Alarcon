@@ -161,8 +161,10 @@ export class CrearCursoComponent implements OnInit {
         icon: 'success',
         confirmButtonColor: '#2F6DF2',
       }).then((res) => {
-        //redireccionando a dashboard
-        this.router.navigate(['cursos/dashboard']);
+        this.image = null;
+        this.cursoForm.reset();
+
+        //TODO:redireccionando a dashboard
       });
     });
   }
@@ -175,7 +177,7 @@ export class CrearCursoComponent implements OnInit {
     //a un array de categoria
     this.categoriaService
       .listarCategorias()
-      .subscribe((x) => (this.categorias = x['categories']));
+      .subscribe((x) => (this.categorias = x));
   }
 
   /**

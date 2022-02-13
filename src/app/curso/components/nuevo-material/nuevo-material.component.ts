@@ -64,8 +64,6 @@ export class NuevoMaterialComponent implements OnInit {
    */
   guardarTarea() {
     this.materialService.crearTarea(this.objeto).subscribe((rep) => {
-      console.log(rep);
-
       if (this.archivos.length > 0) {
         this.archivos.forEach((e) => {
           this.saveFile(
@@ -124,7 +122,6 @@ export class NuevoMaterialComponent implements OnInit {
     this.objeto.tarea_nombre = tarea?.tarea_nombre;
     this.objeto.tarea_descripcion = tarea?.tarea_descripcion;
     this.objeto.tarea_fecha_entrega = new Date(tarea?.tarea_fecha_entrega);
-    console.log(this.objeto);
   }
 
   /**

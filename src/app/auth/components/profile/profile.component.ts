@@ -102,11 +102,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     /*Funcion importada que obtiene el numero de cursos en los que el usuario esta matriculado con respecto
     a su ID*/
-    this.cursoService
-      .listarCursosPorUsuario2(this.usuario_id)
-      .subscribe((rep) => {
-        this.cursosm = rep['data'].length;
-      });
+    // this.cursoService
+    //   .listarCursosPorUsuario2(this.usuario_id)
+    //   .subscribe((rep) => {
+    //     this.cursosm = rep['data'].length;
+    //   });
 
     /*Funcion importada que usa al atributo formado anteriormente para definir las restricciones y validaciones
     de los input que posean el mismo nombre que el formulario*/
@@ -221,8 +221,6 @@ export class ProfileComponent implements OnInit {
     this.newUsuarioService
       .editarUsuario(user, +sessionStorage.getItem('usuario_id'))
       .subscribe((rep) => {
-        console.log(rep);
-
         this.correo = rep['user1'][0]['usuario_correo'];
         this.url = rep['user1'][0]['usuario_imagen'];
         this.usuario_apellidos = rep['user1'][0]['usuario_apellido_paterno'];

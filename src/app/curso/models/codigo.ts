@@ -1,6 +1,6 @@
 export class Codigo {
   //codigo
-  codigo: any;
+  curso_codigo: string;
   //clave primaria por usuario
-  usuario_id: any;
+  usuario_id: number;
 }

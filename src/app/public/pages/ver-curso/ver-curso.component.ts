@@ -163,27 +163,28 @@ export class VerCursoComponent implements OnInit {
        * Se almacena el numero de alumnos
        */
       this.alumnosMatriculados = x['alumnos'];
+
       /**
        * Se almacena le curso
        */
-      this.curso = x['data'];
+      this.curso = x;
       /**
        * Se valida si es profesor del curso
        */
       this.esProfesorCurso =
-        x['data']['usuario_id'] === +sessionStorage?.getItem('usuario_id');
+        x['usuario_id'] === +sessionStorage?.getItem('usuario_id');
       /**
        * Se obtiene la información del usuario
        */
-      this.obtenerUsuario(x['data']['usuario_id']);
+      this.obtenerUsuario(x['usuario_id']);
       /**
        * Se llama a la función para listar cursos
        */
-      this.listarCursos(x['data']['usuario_id'], id);
+      this.listarCursos(x['usuario_id'], id);
       /**
        * se busca la cateoria del curso
        */
-      this.buscarCategoria(x['data']['categoria_id']);
+      this.buscarCategoria(x['categoria_id']);
       /**
        * Se valida si el usuario ha iniciado sesión
        */
@@ -191,7 +192,7 @@ export class VerCursoComponent implements OnInit {
         /**
          * Se listan los cursos del usuario
          */
-        this.listarCursoUsuario(+sessionStorage.getItem('usuario_id'), id);
+        // this.listarCursoUsuario(+sessionStorage.getItem('usuario_id'), id);
       }
     });
   }
@@ -205,8 +206,6 @@ export class VerCursoComponent implements OnInit {
       /**
        * Se almacena la información del usuario
        */
-      console.log(x);
-
       this.usuario = x['user'][0];
       /**
        * Se almacena la cantidad de cursos
@@ -229,7 +228,7 @@ export class VerCursoComponent implements OnInit {
       /**
        * Se alamcenan los cursos relacionados
        */
-      this.cursos = x['cursos'];
+      this.cursos = x;
       /**
        * Se filtran los cursos por el id
        */
@@ -255,7 +254,7 @@ export class VerCursoComponent implements OnInit {
       /**
        * Se almacenan las categorias
        */
-      this.categoria = x['categories'][0];
+      this.categoria = x[0];
     });
   }
 
@@ -264,13 +263,13 @@ export class VerCursoComponent implements OnInit {
    * @param id Identificador del usuario
    * @param idCurso Identificador del curso actual
    */
-  listarCursoUsuario(id: number, idCurso: number) {
-    this.cursoService.listarCursosPorUsuario2(id).subscribe((x) => {
-      /**
-       * Se valida que el usuario pertence al curso
-       */
-      this.esAlumnoCurso =
-        x['data'].find((c) => c?.curso_id === idCurso) !== undefined;
-    });
-  }
+  // listarCursoUsuario(id: number, idCurso: number) {
+  //   this.cursoService.listarCursosPorUsuario2(id).subscribe((x) => {
+  //     /**
+  //      * Se valida que el usuario pertence al curso
+  //      */
+  //     this.esAlumnoCurso =
+  //       x['data'].find((c) => c?.curso_id === idCurso) !== undefined;
+  //   });
+  // }
 }

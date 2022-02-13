@@ -74,7 +74,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     if (this.usuarioRegistrado) {
       this.usuario = sessionStorage.getItem('usuario_nombre');
       this.imagen = sessionStorage.getItem('url');
-      console.log(this.imagen);
     }
   }
 

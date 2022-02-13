@@ -11,10 +11,10 @@ export class CursoService extends AppServiceBase {
    * @returns Listado con los cursos con la mayor cantidad de alumnos
    */
   listarCursosPublicos(): Observable<any> {
-    return this.get('coursespublicmax');
+    return this.get('/course/publicmax');
   }
 
   listarCursosPublicosTotal(): Observable<any> {
-    return this.get(`coursespublic`);
+    return this.get(`/course/public`);
   }
 }

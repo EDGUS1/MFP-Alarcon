@@ -56,8 +56,10 @@ export class ListaCursoComponent implements OnInit {
       showLoaderOnConfirm: true,
       confirmButtonColor: '#18bc9c',
       preConfirm: (login) => {
-        this.codigo.codigo = login;
-        // this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {});
+        this.codigo.curso_codigo = login;
+        this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {
+          //TODO: VOLVER A CARGAR LA PAGINA O VOLVER A LISTAR LOS CURSOS DE ALGUNA FORMA
+        });
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
@@ -79,19 +81,7 @@ export class ListaCursoComponent implements OnInit {
    */
   listarCursos(id: number) {
     this.cursoService.listarCursosPorUsuario(id).subscribe((x) => {
-      this.cursos = x['list'];
-
-      this.listarCursos2(id);
-    });
-  }
-
-  /**
-   * Función para la busqueda de los cursos de un usuario
-   * @param id {Number} - Identificador del usuario
-   */
-  listarCursos2(id: number) {
-    this.cursoService.listarCursosPorUsuario2(id).subscribe((x) => {
-      this.cursos = this.cursos.concat(x['data']);
+      this.cursos = x;
     });
   }
 

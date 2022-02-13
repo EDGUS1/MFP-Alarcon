@@ -9,19 +9,19 @@ import { Tarea } from '../models/tarea';
 })
 export class NuevoMaterialService extends AppServiceBase {
   crearTarea(tarea: Tarea): Observable<any> {
-    return this.post('creartarea', tarea);
+    return this.post('/task', tarea);
   }
 
   listarMaterial(idcurso: number): Observable<any> {
-    return this.get(`listMaterials/${idcurso}`);
+    return this.get(`/material/${idcurso}`);
   }
 
   crearMaterialCurso(idCurso: number, material: Material) {
-    return this.post(`course-material/${idCurso}`, material);
+    return this.post(`/material/course/${idCurso}`, material);
   }
 
   listarEntregaTareas(idTarea: number) {
-    return this.get(`list-task-submissions/${idTarea}`);
+    return this.get(`/task/list/${idTarea}`);
   }
 
   saveFileMaterial(
@@ -31,7 +31,7 @@ export class NuevoMaterialService extends AppServiceBase {
     archivo_nombre: string
   ) {
     // Tipo => 1 Tarea ; 2 Material
-    return this.post(`materialfile`, {
+    return this.post(`/material/file`, {
       origen_id,
       tipo_id,
       archivo_url,
@@ -40,6 +40,6 @@ export class NuevoMaterialService extends AppServiceBase {
   }
 
   listFileByMaterial(id: number, tipoId: number) {
-    return this.get(`listMaterialsFiles/${id}/${tipoId}`);
+    return this.get(`/material/${id}/${tipoId}`);
   }
 }

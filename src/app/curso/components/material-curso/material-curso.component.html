@@ -28,39 +28,40 @@
     <!-- Se finaliza la columna -->
   </div>
   <!-- Se cierra la fila -->
-  <!-- <p>{{ material | json }}</p> -->
   <!-- Se crear tarjeta para mostrar cada material -->
-  <div
-    class="card bg-light my-4"
-    *ngFor="let c of material | filter: { material_nombre: materialFiltro }"
-  >
-    <!-- Se crea la cabera del material con el titulo -->
-    <div class="card-header">
-      {{ c?.material_nombre }}
-      {{ c?.material_fecha_modificaion | date: "short" }}
-    </div>
-    <!-- Se cierra la etiqueta -->
-    <div class="card-body">
-      <!-- Se añade la descripcion del material -->
-      <p class="card-text">
-        {{ c?.material_descripcion }}
-      </p>
-      <div
-        class="d-flex justify-content-between my-2"
-        *ngFor="let f of c.archivos"
-      >
-        <small>{{ f.archivo_nombre }}</small>
-        <!-- <button class="btn btn-info" (click)="descargarArchivo(f.archivo_url)">
+  <ng-container *ngIf="material">
+    <div
+      class="card bg-light my-4"
+      *ngFor="let c of material | filter: { material_nombre: materialFiltro }"
+    >
+      <!-- Se crea la cabera del material con el titulo -->
+      <div class="card-header">
+        {{ c?.material_nombre }}
+        {{ c?.material_fecha_modificaion | date: "short" }}
+      </div>
+      <!-- Se cierra la etiqueta -->
+      <div class="card-body">
+        <!-- Se añade la descripcion del material -->
+        <p class="card-text">
+          {{ c?.material_descripcion }}
+        </p>
+        <div
+          class="d-flex justify-content-between my-2"
+          *ngFor="let f of c.archivos"
+        >
+          <small>{{ f.archivo_nombre }}</small>
+          <!-- <button class="btn btn-info" (click)="descargarArchivo(f.archivo_url)">
           Descargar
         </button> -->
-        <a class="btn btn-info" href="{{ f.archivo_url }}" target="_blank">
-          Descargar
-        </a>
+          <a class="btn btn-info" href="{{ f.archivo_url }}" target="_blank">
+            Descargar
+          </a>
+        </div>
+        <!-- Se cierra la etiqueta del material -->
       </div>
-      <!-- Se cierra la etiqueta del material -->
+      <!-- Se cierra el cuerpo de la tarjeta -->
     </div>
-    <!-- Se cierra el cuerpo de la tarjeta -->
-  </div>
+  </ng-container>
   <!-- Se cierra la tarjeta del material -->
 </div>
 <!-- Se cierra el contenedor general -->
