@@ -163,7 +163,8 @@ export class CrearCursoComponent implements OnInit {
       }).then((res) => {
         this.image = null;
         this.cursoForm.reset();
-
+        //FIXME: NOMBRE DE LA IMAGEN NO DESAPARECE
+        //FIXME: NO APARECE TODAS LAS CATEGORIAS AL MOMENTO DE CREAR EL CURSO
         //TODO:redireccionando a dashboard
       });
     });
