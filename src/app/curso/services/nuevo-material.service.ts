@@ -30,7 +30,7 @@ export class NuevoMaterialService extends AppServiceBase {
     archivo_url: string,
     archivo_nombre: string
   ) {
-    // Tipo => 1 Tarea ; 2 Material
+    // Tipo => 1 Tarea ; 2 Material; Tarea_asignada
     return this.post(`/material/file`, {
       origen_id,
       tipo_id,

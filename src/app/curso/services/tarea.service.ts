@@ -25,4 +25,11 @@ export class TareaService extends AppServiceBase {
   actualizarTarea(id: number, tarea: Tarea) {
     return this.put(`/task/${id}`, tarea);
   }
+
+  entregar(idTarea: number, idUsuario: number) {
+    return this.post('/task/entregar', {
+      tarea_id: idTarea,
+      usuario_id: idUsuario,
+    });
+  }
 }

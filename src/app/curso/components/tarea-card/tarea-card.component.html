@@ -59,6 +59,7 @@
                 class="form-control"
                 id="inputGroupFile04"
                 aria-describedby="inputGroupFileAddon04"
+                (change)="subirArvhivos($event)"
               />
               <!-- <label class="custom-file-label" for="inputGroupFile04"
                 >Elige el archivo</label
@@ -69,6 +70,7 @@
                 class="btn btn-outline-dark"
                 type="button"
                 id="inputGroupFileAddon04"
+                (click)="entregarTarea()"
               >
                 Entregar
               </button>

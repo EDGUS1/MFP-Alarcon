@@ -1,6 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FileStoreService } from 'src/app/core/services/file-store.service';
+import Swal from 'sweetalert2';
 import { Tarea } from '../../models/tarea';
+import { NuevoMaterialService } from '../../services/nuevo-material.service';
+import { TareaService } from '../../services/tarea.service';
 import { NuevoMaterialComponent } from '../nuevo-material/nuevo-material.component';
 import { VerEntregaTareaComponent } from '../ver-entrega-tarea/ver-entrega-tarea.component';
 
@@ -12,8 +16,14 @@ import { VerEntregaTareaComponent } from '../ver-entrega-tarea/ver-entrega-tarea
 export class TareaCardComponent {
   @Input() tarea: Tarea;
   @Input() usuarioProfesor: boolean;
+  archivo: any;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private fileService: FileStoreService,
+    public materialService: NuevoMaterialService,
+    private tareaService: TareaService
+  ) {}
 
   /**
    * Función para abrir un modal para editar la tarea
@@ -33,7 +43,7 @@ export class TareaCardComponent {
     modalRef.componentInstance.fromParent = data;
     modalRef.result.then(
       (result) => {
-        //llamar al padre - Output TODO
+        //llamar al padre - Output TODO:
         // this.listarTareas(this.cursoId);
       },
       (reason) => {
@@ -65,5 +75,46 @@ export class TareaCardComponent {
         //intencional
       }
     );
+  }
+
+  entregarTarea() {
+    this.tareaService
+      .entregar(this.tarea.tarea_id, +sessionStorage.getItem('usuario_id'))
+      .subscribe((x) => {
+        if (this.archivo != 'undefined') {
+          this.saveFile(
+            this.archivo,
+            +sessionStorage.getItem('usuario_id'),
+            x['data'],
+            3 //constante
+          );
+        }
+      });
+  }
+
+  subirArvhivos(event) {
+    this.archivo = event.target.files[0];
+  }
+
+  saveFile(file: any, idUser: number, id_tarea_asig: number, tipo_id: number) {
+    let reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.fileService
+        .subirImagen(file.name, reader.result, idUser)
+        .then((url) => {
+          this.materialService
+            .saveFileMaterial(id_tarea_asig, tipo_id, url, file.name)
+            .subscribe((x) => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Tarea entregada',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            });
+        });
+    };
   }
 }

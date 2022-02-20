@@ -360,7 +360,7 @@ export class AgregarUsuarioComponent implements OnInit {
     /**
      * Se valida que el profesor no acepta la invitación
      */
-    if (usuario?.situacion_id === 5) {
+    if (usuario?.situacion_id === 4) {
       return 'Pendiente';
     }
   }

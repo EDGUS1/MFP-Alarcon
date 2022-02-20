@@ -1,8 +1,5 @@
 <div class="container">
-  <div
-    class="row"
-    *ngIf="solicutdAcceso2?.length == 0 && solicutdAcceso?.length == 0"
-  >
+  <div class="row" *ngIf="solicitudes?.length == 0">
     <div class="col-12">
       <div class="card">
         <h4 class="py-3 px-4">No tiene ninguna notificación</h4>
@@ -10,74 +7,34 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12" *ngFor="let c of solicutdAcceso">
+    <div class="col-12" *ngFor="let c of solicitudes">
       <div class="card border-primary mb-3">
         <div class="card-header d-flex justify-content-between">
-          <h5>{{ c.curso_nombre }}</h5>
+          <h5>Nombre del curso: {{ c.curso_nombre }}</h5>
           <button class="btn btn-secondary">X</button>
         </div>
         <div class="card-body">
           <p class="card-text">
-            El usuario {{ c?.usuario_nombre }} desea unirse a su curso.
+            El usuario <strong>{{ c?.usuario_nombre }}</strong>
+            {{
+              c.situacion_id == 3
+                ? "desea unirse a su curso."
+                : "lo ha invitado a unirse a su curso"
+            }}
           </p>
           <div class="d-flex flex-row-reverse">
             <button
               class="btn btn-danger"
-              (click)="darBloquearAcceso(2, c.curso_id, c.usuario_id)"
+              (click)="darAcceso(c.curso_id, c.usuario_id)"
             >
-              Rechazar
+              {{ c.situacion_id == 3 ? "Rechazar" : "No aceptar" }}
             </button>
             <button
-              class="btn btn-primary mr-2"
-              (click)="darBloquearAcceso(1, c.curso_id, c.usuario_id)"
+              class="btn btn-primary mx-2"
+              (click)="bloquearAcceso(c.curso_id, c.usuario_id)"
             >
-              Unirme
+              {{ c.situacion_id == 3 ? "Dar acceso" : "Unirme" }}
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12" *ngFor="let c of solicutdAcceso2">
-      <div class="card border-primary mb-3">
-        <div class="card-header d-flex justify-content-between">
-          <h5>{{ c?.curso_nombre }}</h5>
-          <button class="btn btn-secondary">X</button>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            El usuario {{ c?.usuario_nombre }} le ha invitado al curso
-          </p>
-          <div class="d-flex flex-row-reverse">
-            <button
-              class="btn btn-danger"
-              (click)="aceptarInvitacion(2, c.curso_id, c.usuario_id)"
-            >
-              Rechazar
-            </button>
-            <button
-              class="btn btn-primary mr-2"
-              (click)="aceptarInvitacion(1, c.curso_id, c.usuario_id)"
-            >
-              Aceptar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12" *ngFor="let c of notificaciones">
-      <div class="card border-primary mb-3">
-        <div class="card-header d-flex justify-content-between">
-          <h5>Nombre curso</h5>
-          <button class="btn btn-secondary">X</button>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <div class="d-flex flex-row-reverse">
-            <button class="btn btn-danger">Rechazar</button>
-            <button class="btn btn-primary mr-2">Unirme</button>
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ export class NuevoMaterialComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
-    public materialService: NuevoMaterialService,
+    private materialService: NuevoMaterialService,
     private tareaService: TareaService,
     private fileService: FileStoreService
   ) {}

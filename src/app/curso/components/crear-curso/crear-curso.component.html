@@ -1,6 +1,6 @@
 <!-- Formulario de crear curso -->
 <form [formGroup]="cursoForm" autocomplete="off">
-  <div class="form-group">
+  <div class="form-group my-2">
     <!-- Campo del nombre del curso -->
     <label for="nombreCurso">Nombre:</label>
     <input
@@ -17,7 +17,7 @@
     >
   </div>
   <!-- Fin de la etiquea que agrupa el nombre -->
-  <div class="form-group">
+  <div class="form-group my-2">
     <!-- Campo de la descripcion del curso -->
     <label for="descripcionCurso">Descripcion:</label>
     <textarea
@@ -80,7 +80,7 @@
   </ng-container>
   <!-- </div> -->
   <!-- Fin de la etiquea que agrupa la privacidad -->
-  <div class="form-group" *ngIf="editar">
+  <div class="form-group my-2" *ngIf="editar">
     <!-- <div class="row"> -->
     <label for="categoriaCurso">Privacidad:</label>
     <select
@@ -101,7 +101,7 @@
     >
   </div>
   <!-- Fin de la etiquea que agrupa la privacidad editar -->
-  <div class="form-group">
+  <div class="form-group my-2">
     <!-- Lista de categoria del curso -->
     <label for="categoriaCurso">Categoria:</label>
     <select
@@ -117,7 +117,7 @@
     </select>
   </div>
   <!-- Fin de la etiquea que agrupa la privacidad categoria -->
-  <div class="form-group" *ngIf="!editar">
+  <div class="form-group my-2" *ngIf="!editar">
     <div class="input-group">
       <div class="col-12 px-0">
         <label for="formGroupExampleInput">Imagen:</label>
@@ -138,7 +138,7 @@
     </div>
   </div>
   <!-- Fin de la etiquea que agrupa la privacidad imagen -->
-  <div class="form-group">
+  <div class="form-group my-2">
     <!-- Campo de conocimiento previo -->
     <label for="conocimientoCurso">Conocimiento previo:</label>
     <textarea

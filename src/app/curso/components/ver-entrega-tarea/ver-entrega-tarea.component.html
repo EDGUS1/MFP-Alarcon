@@ -11,7 +11,6 @@
     (click)="closeModal('dismiss')"
   >
     <!-- Se añade un icono al botón -->
-    <!-- <span aria-hidden="true">&times;</span> -->
     <!-- Se cierra la etiqueta de span -->
   </button>
   <!-- Se cierra la etiqueta del botón -->
@@ -61,20 +60,31 @@
               <tr *ngFor="let t of tareas">
                 <!-- Etiqueta para mostrar los nombres de los usuarios -->
                 <td class="align-middle">
-                  {{ t?.usuario_nombre }} {{ t?.usuario_apellidos }}
+                  {{ t?.usuario_nombre }} {{ t?.usuario_apellido_paterno }}
                 </td>
                 <!-- Etiqueta para mostrar la url de descarga -->
-                <td>{{ t?.url }}</td>
+                <td class="align-middle">
+                  {{
+                    t?.archivo_nombre != null
+                      ? t.archivo_nombre
+                      : "No se ha subido archivo"
+                  }}
+                </td>
                 <!-- Etiqueta para mostrar la fecha de entrega -->
-                <td>{{ t?.fecha_entrega }}</td>
+                <td class="align-middle">
+                  {{ t?.fecha_entrega | date: "short" }}
+                </td>
                 <!-- Etiqueta pata mostrar el boton de descarga -->
-                <td>
+                <td class="align-middle">
                   <!-- Boton para descargar un archivo -->
-                  <button class="btn btn-outline-info">
-                    <!-- Icono de descarga para mejorar la interacción con el sistema -->
+                  <a
+                    class="btn btn-outline-info"
+                    href="{{ t.archivo_url }}"
+                    target="_blank"
+                    [ngClass]="{ disabled: t.arhivo_url == null }"
+                  >
                     <em class="uil uil-import"></em>
-                    <!-- Se cierra la etiqueta del icono -->
-                  </button>
+                  </a>
                   <!-- Se cierra la etiqueta del boton de descarga -->
                 </td>
               </tr>

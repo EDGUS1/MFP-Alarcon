@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
         });
         Toast.fire({
           icon: 'success',
-          title: 'Signed in successfully',
+          title: 'Inicio de sesión correcto',
         });
         this.navbarService.changeLogin.emit(
           this.navbarService.getIsAuthenticated()

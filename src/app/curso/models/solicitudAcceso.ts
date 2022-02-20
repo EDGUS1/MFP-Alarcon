@@ -9,4 +9,6 @@ export class SolicitudAcceso {
   descripcion: string;
   //clave primaria unica por usuario
   usuario_id: number;
+
+  situacion_id: number;
 }

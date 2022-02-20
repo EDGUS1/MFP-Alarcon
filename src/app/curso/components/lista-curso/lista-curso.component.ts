@@ -59,6 +59,7 @@ export class ListaCursoComponent implements OnInit {
         this.codigo.curso_codigo = login;
         this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {
           //TODO: VOLVER A CARGAR LA PAGINA O VOLVER A LISTAR LOS CURSOS DE ALGUNA FORMA
+          this.listarCursos(this.usuarioId);
         });
       },
       allowOutsideClick: () => !Swal.isLoading(),
@@ -67,7 +68,7 @@ export class ListaCursoComponent implements OnInit {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Your work has been saved',
+          title: 'Se agrego un nuevo curso',
           showConfirmButton: false,
           timer: 1500,
         });
