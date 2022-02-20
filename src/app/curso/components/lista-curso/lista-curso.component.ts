@@ -133,6 +133,19 @@ export class ListaCursoComponent implements OnInit {
    * @param curso Objeto con la informacion de un curso
    */
   mostrarCodigo(curso: Curso) {
-    Swal.fire(`El código del curso es: ${curso?.curso_codigo}`);
+    // Swal.fire({ text: `El código del curso es: ${curso?.curso_codigo}` });
+    Swal.fire({
+      title: `El código del curso es: ${curso?.curso_codigo}`,
+      showCancelButton: true,
+      confirmButtonText: 'Copiar',
+      cancelButtonText: 'Cerrar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigator.clipboard.writeText(curso?.curso_codigo).then(
+          function () {},
+          function (err) {}
+        );
+      }
+    });
   }
 }
