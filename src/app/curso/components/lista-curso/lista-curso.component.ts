@@ -58,7 +58,6 @@ export class ListaCursoComponent implements OnInit {
       preConfirm: (login) => {
         this.codigo.curso_codigo = login;
         this.cursoService.unirPorCodigo(this.codigo).subscribe((x) => {
-          //TODO: VOLVER A CARGAR LA PAGINA O VOLVER A LISTAR LOS CURSOS DE ALGUNA FORMA
           this.listarCursos(this.usuarioId);
         });
       },

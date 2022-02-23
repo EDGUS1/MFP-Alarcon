@@ -211,12 +211,12 @@ export class ProfileComponent implements OnInit {
     this.newUsuarioService
       .editarUsuario(user, +sessionStorage.getItem('usuario_id'))
       .subscribe((rep) => {
-        this.correo = rep['user1'][0]['usuario_correo'];
-        this.url = rep['user1'][0]['usuario_imagen'];
-        this.usuario_apellidos = rep['user1'][0]['usuario_apellido_paterno'];
-        this.usuario_id = rep['user1'][0]['usuario_id'];
-        this.usuario_nombre = rep['user1'][0]['usuario_nombre'];
-        this.descripcion = rep['user1'][0]['usuario_descripcion'];
+        this.correo = rep[0]['usuario_correo'];
+        this.url = rep[0]['usuario_imagen'];
+        this.usuario_apellidos = rep[0]['usuario_apellido_paterno'];
+        this.usuario_id = rep[0]['usuario_id'];
+        this.usuario_nombre = rep[0]['usuario_nombre'];
+        this.descripcion = rep[0]['usuario_descripcion'];
 
         sessionStorage.setItem('usuario_id', this.usuario_id);
         sessionStorage.setItem('usuario_apellidos', this.usuario_apellidos);
@@ -288,7 +288,6 @@ export class ProfileComponent implements OnInit {
       user.usuario_correo = this.perfilForm.get('correo').value;
       user.usuario_descripcion = this.perfilForm.get('descripcion').value;
       if (this.url == 'null') {
-        // TODO: comprobar que hubo cambios
         this.enviarDatos(user);
       } else {
         this.cargarImagen(this.file, 300, user);

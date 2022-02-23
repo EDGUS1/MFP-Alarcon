@@ -40,6 +40,7 @@ export class CrearCursoComponent implements OnInit {
   /* Parametro de salida*/
   @Output() cerrarModal = new EventEmitter<string>();
   @ViewChild('Privacidad3') Privacidad3: ElementRef;
+  guardarActivo: boolean;
 
   /* Constructor */
   constructor(
@@ -58,6 +59,7 @@ export class CrearCursoComponent implements OnInit {
 
   //metodo para inicializar los metodos del componenete
   ngOnInit(): void {
+    this.guardarActivo = false;
     //Asignacion de usuario_id de la sessionStorage
     this.usuario_id = +sessionStorage.getItem('usuario_id');
     //Creacion del formulario del curso con sus valores iniciales
@@ -104,7 +106,7 @@ export class CrearCursoComponent implements OnInit {
      */
     if (this.cursoForm.valid) {
       //Creacion de un objeto curso
-
+      this.guardarActivo = true;
       // Otra validacion para saber si se quiere editar el curso
       if (this.editar) {
         //se le esta asignando el valor del nombre del curso del formulario al objeto curso en su variable curso_nombre

@@ -152,9 +152,12 @@
     ></textarea>
   </div>
   <!-- Boton para crear o actualizar -->
-  <!-- TODO: DESCATIVAR BOTON CUANDO SE ESTA GUARDANDO -->
   <div class="form-group d-flex justify-content-center mt-3">
-    <button class="btn btn-info me-2 btn-lg" (click)="crearCurso()">
+    <button
+      class="btn btn-info me-2 btn-lg"
+      (click)="crearCurso()"
+      [ngClass]="{ disabled: guardarActivo }"
+    >
       {{ editar ? "Actualizar" : "Guardar" }} Curso
     </button>
   </div>

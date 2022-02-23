@@ -124,8 +124,11 @@
 
               <!-- Segunda columna para el nombre del usuairo -->
               <td class="align-middle">
-                {{ usuario?.usuario_nombre }}
-                {{ usuario?.usuario_apellido_paterno }}
+                {{
+                  usuario?.usuario_nombre +
+                    " " +
+                    usuario?.usuario_apellido_paterno
+                }}
               </td>
               <!-- Se cierra la etiqueta del nombre del usuario -->
 
@@ -134,8 +137,9 @@
               <!-- Se cierra la etiqueta del correo del usuario -->
 
               <!-- Cuarta etiqueta para mostrar el estado de un usuario -->
-              <!-- TODO: CAMBIAR A PIPE obtenerEstado() -->
-              <td class="align-middle">{{ obtenerEstado(usuario) }}</td>
+              <td class="align-middle">
+                {{ usuario | obtenerEstado: usuario?.situacion_id }}
+              </td>
               <!-- Se cierra la etiqueta del estado del usuario -->
 
               <!-- Se muestra el contendor del boton para eliminar un usuario -->

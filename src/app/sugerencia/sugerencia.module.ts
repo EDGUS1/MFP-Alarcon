@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SugerenciaComponent } from './pages/sugerencia/sugerencia.component';
+import { ObtenerVotosPipe } from './pipes/obtener-votos.pipe';
 
 /* es una función que toma un solo objeto de metadatos, cuyas propiedades describen el módulo */
 @NgModule({
@@ -17,6 +18,7 @@ import { SugerenciaComponent } from './pages/sugerencia/sugerencia.component';
     ListaSugerenciaComponent,
     NuevaSugerenciaComponent,
     SugerenciaComponent,
+    ObtenerVotosPipe,
   ],
   /* Otros módulos cuyas clases exportadas son necesarias para las plantillas de componentes declaradas en este NgModule. */
   imports: [

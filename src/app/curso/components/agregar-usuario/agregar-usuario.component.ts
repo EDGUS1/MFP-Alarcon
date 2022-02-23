@@ -330,38 +330,4 @@ export class AgregarUsuarioComponent implements OnInit {
       }
     });
   }
-
-  /**
-   * Función para obtener el estado de un usuario respecto a un curso
-   * @param usuario Objeto con la informacion de un usuario
-   * @returns Cadena con el nombre del estado
-   */
-  obtenerEstado(usuario) {
-    /**
-     * Se valida que el usuario pertenece al curso
-     */
-    if (usuario?.situacion_id === 1) {
-      return 'Activo';
-    }
-
-    /**
-     * Se valida que el usuario no ha rechazado unirse al curso
-     */
-    if (usuario?.situacion_id === 2) {
-      return 'Denegado';
-    }
-
-    /**
-     * Se valida que el usuario no acepta la invitación
-     */
-    if (usuario?.situacion_id === 3) {
-      return 'Pendiente';
-    }
-    /**
-     * Se valida que el profesor no acepta la invitación
-     */
-    if (usuario?.situacion_id === 4) {
-      return 'Pendiente';
-    }
-  }
 }

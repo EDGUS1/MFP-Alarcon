@@ -6,7 +6,6 @@
     <!-- Se cierra la etiqueta del nombre de la sugerencia -->
     <!-- Se crea la etiqueta para mostrar la categoria del curso -->
     <h6 class="card-subtitle text-muted">
-      <!-- {{ getNombreCategoria(sugerencia?.categoria_id) }} -->
       {{ sugerencia | obtenerCategoria: sugerencia?.categoria_id:categorias }}
     </h6>
     <!-- Se cierra la etiqueta de la categoria -->
@@ -54,7 +53,9 @@
       <!-- Se cierra la etiqueta del icono -->
       <!-- Se crea un contenedor para el numero de votos -->
       <span class="mx-2 h5 mt-2">
-        {{ obtenerCantidadVotos(sugerencia?.sugerencia_id) }}
+        {{
+          sugerencia | obtenerVotos: sugerencia?.sugerencia_id:sugerenciasVotos
+        }}
       </span>
       <!-- Se cierra la etiqueta del numero de votos -->
     </span>

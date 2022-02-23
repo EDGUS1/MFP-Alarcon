@@ -25,41 +25,13 @@ export class ListaSugerenciaComponent {
   constructor(private readonly sugerenciaService: SugerenciaService) {}
 
   /**
-   * Función para mostrar los votos de una sugerencia
-   * @param id identificador de la sugenreica
-   * @returns retorna la cantidad de votos de la sugerencia
-   */
-  obtenerCantidadVotos(id: number) {
-    /**
-     * se busca el numero de votos
-     */
-    //TODO: MEJORAR SERVICIO O ARREGLAR CON UN PIPE
-    console.log('b');
-
-    const votos = this.sugerenciasVotos?.find((s) => s.sugerencia_id === id);
-
-    /**
-     * Se valida que la cantidad de votos exista
-     */
-    if (votos !== undefined) {
-      /**
-       * Se devuelve la cantidad de votos
-       */
-      return votos['votos'];
-    }
-    /**
-     * Se devuelve valor por defecto
-     */
-    return '0';
-  }
-  /**
    * Función para obtner el estado del voto del usuario
    * @param id identificador de la sugerencia
    * @returns retorna verdadero o false
    */
   obtenerVotoUsuario(id: number) {
-    // TODO: transformar a pipe o utilziar zone.js - Y CAMBIAR NGCLASS O ALGO ASI
-    // console.log('a');
+    // TODO: transformar a pipe o utilziar zone.js - intentar cambiar a ngClass
+    console.log('a');
     return (
       this.usuariosVotos?.find((v) => v.sugerencia_id === id) !== undefined
     );

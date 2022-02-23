@@ -72,4 +72,8 @@ export class TareaCursoComponent implements OnInit {
   listarArchivos(id: number, tipo: number) {
     return this.materialService.listFileByMaterial(id, tipo);
   }
+
+  updateItem($event) {
+    this.listarTareas(this.cursoId);
+  }
 }

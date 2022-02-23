@@ -26,6 +26,7 @@
         <app-tarea-card
           [tarea]="t"
           [usuarioProfesor]="usuarioProfesor"
+          (updateTareas)="updateItem($event)"
         ></app-tarea-card>
       </div>
     </div>

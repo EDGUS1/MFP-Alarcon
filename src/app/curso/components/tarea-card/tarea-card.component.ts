@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FileStoreService } from 'src/app/core/services/file-store.service';
 import Swal from 'sweetalert2';
@@ -17,6 +17,7 @@ export class TareaCardComponent {
   @Input() tarea: Tarea;
   @Input() usuarioProfesor: boolean;
   archivo: any;
+  @Output() updateTareas = new EventEmitter<string>();
 
   constructor(
     private modalService: NgbModal,
@@ -43,8 +44,7 @@ export class TareaCardComponent {
     modalRef.componentInstance.fromParent = data;
     modalRef.result.then(
       (result) => {
-        //llamar al padre - Output TODO:
-        // this.listarTareas(this.cursoId);
+        this.updateTareas.emit('x');
       },
       (reason) => {
         //intencional

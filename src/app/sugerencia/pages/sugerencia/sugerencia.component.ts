@@ -248,7 +248,7 @@ export class SugerenciaComponent implements OnInit {
     this.pageActual = 1;
   }
 
-  addItem(newItem: string) {
+  updateItem(newItem: string) {
     this.listarSugerenciasVotos();
     /**
      * Se valida que el usuario haya iniciado sesión
