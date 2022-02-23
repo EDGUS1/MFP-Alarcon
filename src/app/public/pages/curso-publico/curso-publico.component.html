@@ -6,25 +6,27 @@
       idiomas, informatica, letras, etc.
     </p>
     <div class="row mx-auto justify-content-center mt-5">
-      <div class="input-group mb-3 justify-content-center">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">
-            <em class="uil uil-search"></em>
-          </span>
-        </div>
-        <input
-          type="text"
-          class="form-control col-md-5"
-          placeholder="Ingrese nombre del curso"
-          [(ngModel)]="cursoFilter"
-          name="cursoFilter"
-          autocomplete="off"
-          (keyup)="cambiarPagina()"
-        />
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-danger" (click)="borrarBusqueda()">
-            X
-          </button>
+      <div class="col-md-6">
+        <div class="input-group mb-3 justify-content-center">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <em class="uil uil-search"></em>
+            </span>
+          </div>
+          <input
+            type="text"
+            class="form-control col-md-5"
+            placeholder="Ingrese nombre del curso"
+            [(ngModel)]="cursoFilter"
+            name="cursoFilter"
+            autocomplete="off"
+            (keyup)="cambiarPagina()"
+          />
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-danger" (click)="borrarBusqueda()">
+              X
+            </button>
+          </div>
         </div>
       </div>
     </div>

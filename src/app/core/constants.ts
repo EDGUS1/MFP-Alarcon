@@ -11,7 +11,7 @@ export const CURSO_PRIVADO = 2;
 /**
  * Se exporto Curso_Con_Invitacion
  */
-export const CURSO_CON_INVITACION = 5;
+export const CURSO_CON_INVITACION = 3;
 
 /**
  * Se exporto Usuario_Activo

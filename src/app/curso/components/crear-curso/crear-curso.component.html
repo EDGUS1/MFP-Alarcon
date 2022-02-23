@@ -90,9 +90,9 @@
       formControlName="privacidad_id"
     >
       <option value="" hidden>seleccione</option>
-      <option [ngValue]="1">Publico</option>
+      <option [ngValue]="1">Público</option>
       <option [ngValue]="2">Privado</option>
-      <option [ngValue]="3">Invitacion</option>
+      <option [ngValue]="3">Invitación</option>
     </select>
     <!-- </div> -->
     <!-- Validacion de la privacidad -->
@@ -122,19 +122,19 @@
       <div class="col-12 px-0">
         <label for="formGroupExampleInput">Imagen:</label>
       </div>
-      <div class="form-inline">
-        <div id="div_file">
-          <!-- Input de la seleccion de la imagen -->
-          <p id="texto">Seleccionar imagen</p>
-          <input
-            type="file"
-            id="btn_enviar"
-            (change)="onFileChange($event)"
-            accept=".jpg, .png"
-          />
-        </div>
-        <p>&nbsp; &nbsp; {{ nombreImagen }}</p>
+      <!-- <div class="form-inline"> -->
+      <div id="div_file">
+        <!-- Input de la seleccion de la imagen -->
+        <p id="texto">Seleccionar imagen</p>
+        <input
+          type="file"
+          id="btn_enviar"
+          (change)="onFileChange($event)"
+          accept=".jpg, .png"
+        />
       </div>
+      <p id="nombre_imagen"><!-- &nbsp; &nbsp;  -->{{ nombreImagen }}</p>
+      <!-- </div> -->
     </div>
   </div>
   <!-- Fin de la etiquea que agrupa la privacidad imagen -->
@@ -152,6 +152,7 @@
     ></textarea>
   </div>
   <!-- Boton para crear o actualizar -->
+  <!-- TODO: DESCATIVAR BOTON CUANDO SE ESTA GUARDANDO -->
   <div class="form-group d-flex justify-content-center mt-3">
     <button class="btn btn-info me-2 btn-lg" (click)="crearCurso()">
       {{ editar ? "Actualizar" : "Guardar" }} Curso

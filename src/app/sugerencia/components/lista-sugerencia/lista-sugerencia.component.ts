@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Categoria } from 'src/app/curso/models/categoria';
 import { Sugerencia } from '../../models/sugerencia';
 import { Voto } from '../../models/voto';
@@ -12,10 +12,6 @@ import { SugerenciaService } from '../../services/sugerencia.service';
   templateUrl: './lista-sugerencia.component.html',
   styleUrls: ['./lista-sugerencia.component.css'],
 })
-
-/**
- * Se crea la clase para el componente listar sugerencias
- */
 export class ListaSugerenciaComponent {
   @Input() sugerencia: Sugerencia;
   @Input() sugerenciasVotos: any[];
@@ -23,6 +19,8 @@ export class ListaSugerenciaComponent {
   @Input() categorias: Categoria[];
   @Input() usuariosVotos: Sugerencia[];
   @Input() i: number;
+
+  @Output() updateComponentEvent = new EventEmitter<string>();
 
   constructor(private readonly sugerenciaService: SugerenciaService) {}
 
@@ -36,6 +34,8 @@ export class ListaSugerenciaComponent {
      * se busca el numero de votos
      */
     //TODO: MEJORAR SERVICIO O ARREGLAR CON UN PIPE
+    console.log('b');
+
     const votos = this.sugerenciasVotos?.find((s) => s.sugerencia_id === id);
 
     /**
@@ -59,6 +59,7 @@ export class ListaSugerenciaComponent {
    */
   obtenerVotoUsuario(id: number) {
     // TODO: transformar a pipe o utilziar zone.js - Y CAMBIAR NGCLASS O ALGO ASI
+    // console.log('a');
     return (
       this.usuariosVotos?.find((v) => v.sugerencia_id === id) !== undefined
     );
@@ -72,17 +73,7 @@ export class ListaSugerenciaComponent {
       /**
        * Se llama a la función para listar votos
        */
-      // TODO: LLamar componente padre para actualizar
-      // this.listarSugerenciasVotos();
-      /**
-       * Se valida que el usuario haya iniciado sesión
-       */
-      // if (this.usuarioRegistrado) {
-      //   /**
-      //    * Se llama a la funcion de votos
-      //    */
-      //   this.listarVotosUsuarios(+sessionStorage.getItem('usuario_id'));
-      // }
+      this.updateComponentEvent.emit(x);
     });
   }
 }

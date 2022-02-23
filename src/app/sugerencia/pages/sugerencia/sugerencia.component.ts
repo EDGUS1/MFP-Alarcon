@@ -247,4 +247,17 @@ export class SugerenciaComponent implements OnInit {
      */
     this.pageActual = 1;
   }
+
+  addItem(newItem: string) {
+    this.listarSugerenciasVotos();
+    /**
+     * Se valida que el usuario haya iniciado sesión
+     */
+    if (this.usuarioRegistrado) {
+      /**
+       * Se llama a la funcion de votos
+       */
+      this.listarVotosUsuarios(+sessionStorage.getItem('usuario_id'));
+    }
+  }
 }

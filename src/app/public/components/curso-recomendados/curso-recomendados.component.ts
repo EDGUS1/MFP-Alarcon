@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { Curso } from 'src/app/curso/models/curso';
 
 @Component({
@@ -17,7 +16,7 @@ export class CursoRecomendadosComponent implements OnInit {
       value: null,
     },
   }; */
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {}
 

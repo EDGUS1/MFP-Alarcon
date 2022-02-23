@@ -2,7 +2,7 @@
   <div class="row" *ngIf="solicitudes?.length == 0">
     <div class="col-12">
       <div class="card">
-        <h4 class="py-3 px-4">No tiene ninguna notificación</h4>
+        <h4 class="py-3 px-4 mb-0">No tiene ninguna notificación</h4>
       </div>
     </div>
   </div>
@@ -11,7 +11,7 @@
       <div class="card border-primary mb-3">
         <div class="card-header d-flex justify-content-between">
           <h5>Nombre del curso: {{ c.curso_nombre }}</h5>
-          <button class="btn btn-secondary">X</button>
+          <!-- <button class="btn btn-secondary">X</button> -->
         </div>
         <div class="card-body">
           <p class="card-text">
@@ -25,13 +25,13 @@
           <div class="d-flex flex-row-reverse">
             <button
               class="btn btn-danger"
-              (click)="darAcceso(c.curso_id, c.usuario_id)"
+              (click)="bloquearAcceso(c.curso_id, c.usuario_id)"
             >
               {{ c.situacion_id == 3 ? "Rechazar" : "No aceptar" }}
             </button>
             <button
-              class="btn btn-primary mx-2"
-              (click)="bloquearAcceso(c.curso_id, c.usuario_id)"
+              class="btn btn-secondary mx-2"
+              (click)="darAcceso(c.curso_id, c.usuario_id)"
             >
               {{ c.situacion_id == 3 ? "Dar acceso" : "Unirme" }}
             </button>

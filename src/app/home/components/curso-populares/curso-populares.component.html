@@ -1,17 +1,5 @@
 <div
-  class="
-    row
-    no-gutters
-    border
-    rounded
-    overflow-hidden
-    flex-md-row
-    mb-4
-    shadow-sm
-    h-md-250
-    px-2
-    mx-1
-  "
+  class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 px-2 mx-1"
 >
   <!-- Se crea la columna de seis espacios -->
   <div class="col-md-6 p-4 d-flex flex-column bg-white" id="contenido">
@@ -20,7 +8,7 @@
     <!-- Se cierra la etiqueta del nombre del curso -->
     <!-- Se crea la etiqueta para mostrar la cateogria del curso -->
     <div class="mb-1 text-muted">
-      <small>
+      <small class="badge rounded-pill bg-secondary">
         {{ curso | obtenerCategoria: curso?.categoria_id:categorias }}
       </small>
     </div>

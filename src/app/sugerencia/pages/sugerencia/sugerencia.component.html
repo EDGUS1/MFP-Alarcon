@@ -9,11 +9,7 @@
         <!-- Se crea un contenedor para cada elemento de la lista -->
         <button
           type="button"
-          class="
-            list-group-item list-group-item-action
-            d-flex
-            justify-content-between
-          "
+          class="list-group-item list-group-item-action d-flex justify-content-between"
           aria-current="true"
           (click)="actualizarCategoria(c)"
           *ngFor="let c of categorias"
@@ -79,6 +75,7 @@
             [categorias]="categorias"
             [usuariosVotos]="usuariosVotos"
             [i]="i"
+            (updateComponentEvent)="addItem($event)"
           ></app-lista-sugerencia>
           <!-- Se cierra la etiqueta del cuerpo de la sugerencia -->
         </div>

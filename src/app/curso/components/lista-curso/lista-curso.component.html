@@ -8,7 +8,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Buscar curso"
+        placeholder="Ingrese el nombre del curso para realizar la búsqueda..."
         [(ngModel)]="nombreFiltro"
         name="cursoFilter"
         autocomplete="off"
@@ -44,14 +44,14 @@
           <h5 class="align-items-center">
             {{ c?.curso_nombre }}
             <br />
-            <small *ngIf="c?.privacidad_id == 1" class="align-items-center h6"
-              >Privacidad: Publico
+            <small *ngIf="c?.privacidad_id == 1" class="align-items-center h6">
+              Estado: Público
             </small>
-            <small *ngIf="c?.privacidad_id == 2" class="align-items-center"
-              >Privacidad: Privado
+            <small *ngIf="c?.privacidad_id == 2" class="align-items-center h6">
+              Estado: Privado
             </small>
-            <small *ngIf="c?.privacidad_id == 3" class="align-items-center"
-              >Privacidad: Invitacion
+            <small *ngIf="c?.privacidad_id == 3" class="align-items-center h6">
+              Estado: Solo Invitación
             </small>
           </h5>
           <!-- Menu de la carta -->

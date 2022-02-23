@@ -74,7 +74,7 @@
       <!-- Se crea el contenedor de un curso -->
       <!-- Se crea la tarjeta para mostrar el contenido del curso -->
       <app-curso-populares
-        class="col-md-6"
+        class="col-lg-6"
         *ngFor="let c of cursos"
         [curso]="c"
         [categorias]="categorias"
@@ -84,7 +84,7 @@
     <ng-template #loadcard>
       <div class="row">
         <app-card-curso-preload
-          class="col-md-6"
+          class="col-lg-6"
           *ngFor="let c of [1, 2, 3]"
         ></app-card-curso-preload>
       </div>

@@ -89,13 +89,10 @@ export class CursoService {
    * @returns Mensaje de confirmación
    */
   solicitarAcceso(curso_id, usuario_id): Observable<any> {
-    return this.http.post(
-      `${environment.api.baseUrl}/notification/solicitarCursoPrivado`,
-      {
-        curso_id,
-        usuario_id,
-      }
-    );
+    return this.http.post(`${environment.api.baseUrl}/notification/solicitar`, {
+      curso_id,
+      usuario_id,
+    });
   }
 
   /**

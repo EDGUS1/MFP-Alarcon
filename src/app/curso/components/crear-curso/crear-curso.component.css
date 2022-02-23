@@ -1,16 +1,22 @@
-/* esticlo para la etiqueta p */
-p#texto {
-  text-align: center;
-  margin-bottom: 0px;
-  color: white;
-}
 /* esticlo para la etiqueta div_file */
 div#div_file {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
   width: 120px;
   background-color: #2499e3;
   border-radius: 5px;
   box-shadow: 0px 3px 0px #1a71a9;
+}
+
+/* esticlo para la etiqueta p */
+p#texto {
+  display: inline;
+  text-align: center;
+  margin-bottom: 0px;
+  color: white;
 }
 /* esticlo para la el boton al momento de enviar el mensaje*/
 input#btn_enviar {
@@ -22,4 +28,10 @@ input#btn_enviar {
   width: 100%;
   height: 100%;
   opacity: 0;
+  cursor: pointer;
+}
+
+#nombre_imagen{
+  padding: 0;
+  margin: 0 20px;
 }
